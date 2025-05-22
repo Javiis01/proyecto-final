@@ -1,0 +1,86 @@
+Creación del diccionario de datos
+Creando archivo de bitacoras
+Listo!!  Verficar la correcta creación del DD
+dbms_dictionary_check on 18-NOV-2024 15:25:39
+----------------------------------------------
+Catalog Version 23.0.0.0.0 (2300000000)
+db_name: FREE
+Is CDB?: YES CON_ID: 1 Container: CDB$ROOT
+Trace File: /opt/oracle/diag/rdbms/free/free/trace/free_ora_447_DICTCHECK.trc
+
+				   Catalog	 Fixed
+Procedure Name			   Version    Vs Release    Timestamp
+Result
+------------------------------ ... ---------- -- ---------- --------------
+------
+.- OIDOnObjCol		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- LobNotInObj		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- SourceNotInObj	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- OversizedFiles	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- PoorDefaultStorage	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- PoorStorage		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- TabPartCountMismatch        ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- TabComPartObj	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- Mview		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ValidDir		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- DuplicateDataobj	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ObjSyn		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ObjSeq		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ValidateSeg		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- UndoSeg		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- IndexSeg		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- IndexPartitionSeg	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- IndexSubPartitionSeg        ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- TableSeg		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- TablePartitionSeg	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- TableSubPartitionSeg        ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- PartCol		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- IndPartObj		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- DuplicateBlockUse	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- FetUet		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- Uet0Check		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- SeglessUET		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ValidInd		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ValidTab		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- IcolDepCnt		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ObjIndDobj		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- TrgAfterUpgrade	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ObjType0		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ValidOwner		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- StmtAuditOnCommit	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- PublicObjects	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- SegFreelist		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ValidDepends 	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- CheckDual		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ObjectNames		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ChkIotTs		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- NoSegmentIndex	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- NextObject		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- DroppedROTS		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- FilBlkZero		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- DbmsSchemaCopy	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- IdnseqObj		       ... 2300000000 >  1201000000 11/18 15:25:39 PASS
+.- IdnseqSeq		       ... 2300000000 >  1201000000 11/18 15:25:39 PASS
+.- ObjError		       ... 2300000000 >  1102000000 11/18 15:25:39 PASS
+.- ObjNotLob		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- MaxControlfSeq	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- SegNotInDeferredStg	       ... 2300000000 >  1102000000 11/18 15:25:39 PASS
+.- SystemNotRfile1	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- DictOwnNonDefaultSYSTEM     ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ValidateTrigger	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ObjNotTrigger	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- InvalidTSMaxSCN	       ... 2300000000 >  1202000000 11/18 15:25:39 PASS
+.- OBJRecycleBin	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- LobSeg		       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ObjLogicalConstraints       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- SysSequences 	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+.- ValidateFile 	       ... 2300000000 <=  *All Rel* 11/18 15:25:39 PASS
+---------------------------------------
+18-NOV-2024 15:25:39  Elapsed: 0 secs
+---------------------------------------
+Found 0 potential problem(s) and 0 warning(s)
+Trace File: /opt/oracle/diag/rdbms/free/free/trace/free_ora_447_DICTCHECK.trc
+
+PL/SQL procedure successfully completed.
+
+Listo

@@ -1,0 +1,5 @@
+1. Creando un archivo de passwords usar como password Hola1234*
+Verificando la existencia del archivo
+Creando archivo /opt/oracle/product/23ai/dbhomeFree/dbs/orapwfree
+2. Verificando la existencia del archivo
+-rw-r----- 1 oracle oinstall 6144 Nov 16 09:38 /opt/oracle/product/23ai/dbhomeFree/dbs/orapwfree

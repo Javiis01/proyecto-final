@@ -1,0 +1,16 @@
+1. Conectando como sys empleando archivo de passwords
+Connected.
+
+
+
+2. Creando el SPFILE a partir del PFILE
+create spfile from pfile
+*
+ERROR at line 1:
+ORA-32002: SPFILE creation failed as the specified file is already in use.
+Help: https://docs.oracle.com/error-help/db/ora-32002/
+
+
+3. verificando su existencia.
+
+Listo!

@@ -1,0 +1,17 @@
+Creando un archivo de parametros básico
+Validando la existencia del archivo de parámetros
+ 1. Creando el archivo de parámetros
+Listo
+Comprobando la existencia y contenido del PFILE
+
+
+  db_name=free
+  memory_target=768M
+  control_files=(
+    /unam/diplo-bd/disks/d01/app/oracle/oradata/FREE/control01.ctl,
+    /unam/diplo-bd/disks/d02/app/oracle/oradata/FREE/control02.ctl,
+    /unam/diplo-bd/disks/d03/app/oracle/oradata/FREE/control03.ctl
+  )
+  db_domain=fi.unam
+  enable_pluggable_database=true
+

@@ -1,0 +1,367 @@
+Connected.
+
+
+
+declare
+*
+ERROR at line 1:
+ORA-65265: PDB cannot be dropped or unplugged.
+ORA-06512: at line 12
+Help: https://docs.oracle.com/error-help/db/ora-65265/
+
+
+create pluggable database pet_care_ac as application container
+*
+ERROR at line 1:
+ORA-65012: Pluggable database PET_CARE_AC already exists.
+Help: https://docs.oracle.com/error-help/db/ora-65012/
+
+
+
+Pluggable database altered.
+
+
+Session altered.
+
+create pluggable database petcare_ventas_sur
+*
+ERROR at line 1:
+ORA-65012: Pluggable database PETCARE_VENTAS_SUR already exists.
+Help: https://docs.oracle.com/error-help/db/ora-65012/
+
+
+
+Pluggable database altered.
+
+alter pluggable database application pet_care_app begin install '1.0'
+*
+ERROR at line 1:
+ORA-65221: application PET_CARE_APP exists already
+Help: https://docs.oracle.com/error-help/db/ora-65221/
+
+
+
+System altered.
+
+
+Tablespace created.
+
+create user pet_care_user identified by pet_care_user
+            *
+ERROR at line 1:
+ORA-01920: user name 'PET_CARE_USER' conflicts with another user or role name
+Help: https://docs.oracle.com/error-help/db/ora-01920/
+
+
+
+Grant succeeded.
+
+Connected.
+
+
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+    fotoDespuesEst            LONG RAW         NOT NULL,
+    *
+ERROR at line 8:
+ORA-01754: a table may contain only one column of type LONG
+Help: https://docs.oracle.com/error-help/db/ora-01754/
+
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+ALTER TABLE SERVICIO_ESTETICA ADD CONSTRAINT fk_estilista_servicioestetica
+*
+ERROR at line 1:
+ORA-00942: table or view "PET_CARE_USER"."SERVICIO_ESTETICA" does not exist
+Help: https://docs.oracle.com/error-help/db/ora-00942/
+
+
+ALTER TABLE SERVICIO_ESTETICA ADD CONSTRAINT fk_mascota_servicioestetica
+*
+ERROR at line 1:
+ORA-00942: table or view "PET_CARE_USER"."SERVICIO_ESTETICA" does not exist
+Help: https://docs.oracle.com/error-help/db/ora-00942/
+
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+Connected.
+
+
+
+
+Session altered.
+
+alter pluggable database application pet_care_app end install
+*
+ERROR at line 1:
+ORA-65214: application action has not begun
+Help: https://docs.oracle.com/error-help/db/ora-65214/
+
+
+Connected.
+
+
+
+ERROR:
+ORA-01031: insufficient privileges
+Help: https://docs.oracle.com/error-help/db/ora-01031/
+
+
+alter pluggable database  application all sync
+*
+ERROR at line 1:
+ORA-01031: insufficient privileges
+Help: https://docs.oracle.com/error-help/db/ora-01031/
+
+
+
+1 row created.
+
+
+ CLVESTADO NOMBREESTADO
+---------- --------------------
+         1 CDMX
+
+Connected.
+
+
+
+
+Session altered.
+
+
+Pluggable database altered.
+
+
+Pluggable database dropped.
+
+
+Pluggable database altered.
+
+Connected.
+
+
+
+drop table rol_usuario
+           *
+ERROR at line 1:
+ORA-00942: table or view "PET_CARE_USER"."ROL_USUARIO" does not exist
+Help: https://docs.oracle.com/error-help/db/ora-00942/
+
+
+Disconnected from Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free
+Version 23.5.0.24.07
+Connected.
+
+
+
+
+Session altered.
+
+drop user pet_care_user cascade
+*
+ERROR at line 1:
+ORA-00604: Error occurred at recursive SQL level 1. Check subsequent errors.
+ORA-65297: operation not allowed inside an application action
+Help: https://docs.oracle.com/error-help/db/ora-00604/
+
+
+drop tablespace pet_care_app_ts including contents and datafiles
+*
+ERROR at line 1:
+ORA-00604: Error occurred at recursive SQL level 1. Check subsequent errors.
+ORA-65297: operation not allowed inside an application action
+Help: https://docs.oracle.com/error-help/db/ora-00604/
+
+
+alter pluggable database application pet_care_app end uninstall
+*
+ERROR at line 1:
+ORA-65344: cannot uninstall or purge an application that has objects, users,
+roles, and profiles
+Help: https://docs.oracle.com/error-help/db/ora-65344/
+
+
+
+Session altered.
+
+
+Pluggable database altered.
+
+
+Pluggable database dropped.
+
