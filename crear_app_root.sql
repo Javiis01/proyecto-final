@@ -46,6 +46,7 @@ create tablespace pet_care_ix_ts
   extent management local autoallocate 
   segment space management auto;
 
+--HAy que darle permisos a las carpetas donde iran lso datafile desde ul usuario root de host
 
 create tablespace pet_care_tbs 
   datafile
@@ -57,9 +58,9 @@ create tablespace pet_care_tbs
 
   create tablespace pet_care_blob_ts
 datafile
-'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf' size 1g autoextend on next 50m maxsize unlimited, 
-'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_02.dbf' size 1g autoextend on next 50m maxsize unlimited, 
-'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_03.dbf' size 1g autoextend on next 50m maxsize unlimited 
+'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf' size 100m autoextend on next 50m maxsize unlimited, 
+'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_02.dbf' size 100m autoextend on next 50m maxsize unlimited, 
+'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_03.dbf' size 100m autoextend on next 50m maxsize unlimited 
 extent management local autoallocate 
 segment space management auto;
 
@@ -70,14 +71,6 @@ create user pet_care_admin identified by pet_care_admin
   container = all;
 
 grant create session, create table, create procedure to pet_care_admin;
-
-
-
-
- connect sys/system2@pet_care_ac  as sysdba
-
--- Iniciar nueva versión de la aplicación
-alter pluggable database application pet_care_app begin upgrade '1.0' to '2.0';
 
 
 -- Conectarse como el usuario común de la app

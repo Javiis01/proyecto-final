@@ -13,7 +13,13 @@
 --
 
 
-
+CREATE TABLE CATEGORIA(
+    clvCategoria            NUMBER(38, 0)    NOT NULL,
+    nombreCategoria         VARCHAR2(20)     NOT NULL,
+    descripcionCategoria    VARCHAR2(30)     NOT NULL,
+    CONSTRAINT pk_categoria PRIMARY KEY (clvCategoria)
+using index tablespace pet_care_ix_ts
+) tablespace pet_care_tbs;
 
 
 -- 
@@ -120,7 +126,6 @@ CREATE TABLE EMPLEADO(
     CONSTRAINT pk_empleado PRIMARY KEY (clvEmpleado)
 using index tablespace pet_care_ix_ts
 ) tablespace pet_care_tbs
-tablespace pet_care_tbs
 lob (fotoEmp) store as (
     tablespace pet_care_blob_ts
 );
