@@ -42,7 +42,10 @@ alter pluggable database application pet_care_app begin install '1.0';
 
 create tablespace pet_care_ix_ts 
   datafile '/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf'
-  size 5m autoextend on next 1m 
+  size 5m 
+  AUTOEXTEND ON 
+  NEXT 10M 
+  MAXSIZE UNLIMITED 
   extent management local autoallocate 
   segment space management auto;
 
@@ -71,7 +74,8 @@ create user pet_care_admin identified by pet_care_admin
   container = all;
 
 grant create session, create table, create procedure to pet_care_admin;
-
+ALTER USER pet_care_admin QUOTA UNLIMITED ON pet_care_ix_ts;
+ALTER USER pet_care_admin QUOTA UNLIMITED ON pet_care_blob_ts;
 
 -- Conectarse como el usuario común de la app
  connect pet_care_admin/pet_care_admin@pet_care_ac 
@@ -80,109 +84,14 @@ grant create session, create table, create procedure to pet_care_admin;
 @petCare.sql
 
 -- Volver a SYS y cerrar el upgrade
-connect sys/system2 as sysdba
-alter session set container=pet_care_ac;
+connect sys/system2@pet_care_ac  as sysdba
 alter pluggable database application pet_care_app end install;
 
+alter pluggable database  application pet_care_app begin upgrade '1.0' to '1.1';
 
+ connect pet_care_admin/pet_care_admin@pet_care_ac 
 
-/*
+@petcare_inserts_completo
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-create pluggable database petcare_ventas_sur
-  admin user admin identified by admin
-  file_name_convert=(
-    '/opt/oracle/oradata/FREE/pdbseed',
-    '/opt/oracle/oradata/FREE/pet_care_ac/petcare_ventas_sur'
-  );
-  alter pluggable database petcare_ventas_sur open read write;
-
--- 6. Iniciar instalación de la aplicación
-alter pluggable database application pet_care_app begin install '1.0';
-
--- 6.1 Crear tablespace y usuario común
-alter system set db_create_file_dest = '/opt/oracle/oradata' scope = memory;
-
-create tablespace pet_care_app_ts
-  datafile size 100m autoextend on next 10m;
-
-create user pet_care_user identified by pet_care_user
-  default tablespace pet_care_app_ts
-  quota unlimited on pet_care_app_ts
-  container=all;
-
-grant create session, create table, create procedure to pet_care_user;
-
--- 6.2 Conectarse como pet_care_user
-connect pet_care_user/pet_care_user@JCMDIPLO5_PETCARE
-
--- 6.3 Crear objetos como usuario común (ejemplo)
-@petCare.sql
-
--- Si aquí tienes tu script de creación del modelo PetCare, lo puedes ejecutar directamente
-
--- 7. Terminar instalación desde SYS
-connect sys/system5 as sysdba
-alter session set container = pet_care_ac;
-alter pluggable database application pet_care_app end install;
-
-connect pet_care_user/pet_care_user@JCMDIPLO5_PETCARE
-alter session set container=petcare_ventas_sur;
-alter pluggable database  application all sync;
-
-insert into ESTADO values(1,'CDMX');
-
-select * from ESTADO;
-
-connect sys/system5 as sysdba
-
-alter session set container = pet_care_ac;
--- ==============================
--- 8. Desinstalación de aplicación
--- ==============================
-
-alter pluggable database petcare_ventas_sur close;
-drop pluggable database petcare_ventas_sur including datafiles;
-
--- Iniciar uninstall
-alter pluggable database application pet_care_app begin uninstall;
-
--- Conectarse como pet_care_user para eliminar objetos comunes
-connect pet_care_user/pet_care_user@JCMDIPLO5_PETCARE
-
-disconnect
-
--- Volver a SYS y eliminar usuario/tablespace
-connect sys/system5 as sysdba
-alter session set container = pet_care_ac;
-
-drop user pet_care_user cascade;
-drop tablespace pet_care_app_ts including contents and datafiles;
-
--- Terminar uninstall de la aplicación
-alter pluggable database application pet_care_app end uninstall;
-
--- 9. Eliminar el application container
-alter session set container = cdb$root;
-alter pluggable database pet_care_ac close;
-drop pluggable database pet_care_ac including datafiles;
-
--- 10. Finalizar spool
-spool off
-disconnect
-*/
+connect sys/system2@pet_care_ac  as sysdba
+alter pluggable database  application  jcm_ventas_app end upgrade;

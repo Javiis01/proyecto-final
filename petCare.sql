@@ -305,7 +305,7 @@ using index tablespace pet_care_ix_ts
 
 CREATE TABLE MUNICIPIO(
     clvMunicipio       NUMBER(38, 0)    NOT NULL,
-    nombreMunicipio    CHAR(20)         NOT NULL,
+    nombreMunicipio    CHAR(50)         NOT NULL,
     clvEstado          NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_municipios PRIMARY KEY (clvMunicipio)
 using index tablespace pet_care_ix_ts
@@ -440,9 +440,9 @@ CREATE TABLE VETERINARIA(
     clvGerente        NUMBER(38, 0)    NOT NULL,
     latitudVet        NUMBER(9, 6)     NOT NULL,
     longitudVet       NUMBER(9, 6)     NOT NULL,
-    horarioSemVet     VARCHAR2(10)     NOT NULL,
-    horarioSabVet     VARCHAR2(10)     NOT NULL,
-    domicilioVet      VARCHAR2(30)     NOT NULL,
+    horarioSemVet     VARCHAR2(50)     NOT NULL,
+    horarioSabVet     VARCHAR2(50)     NOT NULL,
+    domicilioVet      VARCHAR2(300)     NOT NULL,
     CONSTRAINT pk_veterinaria PRIMARY KEY (clvVeterinaria)
 using index tablespace pet_care_ix_ts
 ) tablespace pet_care_tbs;
@@ -463,6 +463,10 @@ using index tablespace pet_care_ix_ts
 ) tablespace pet_care_tbs;
 
 
+
+
+
+--------------------------------------Fi tablas ---------------------------
 
 -- 
 -- TABLE: CERTIFICADO 
