@@ -38,10 +38,10 @@ alter session set container = pet_care_ac;
 
 alter pluggable database application pet_care_app begin install '1.0';
 
---alter system set db_create_file_dest = '/opt/oracle/oradata' scope = memory;
+-- crearmkdir -p /opt/oracle/oradata/FREE/pet_care_ac_tbs crear desde oracle
 
 create tablespace pet_care_ix_ts 
-  datafile '/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf'
+  datafile '/opt/oracle/oradata/FREE/pet_care_ac_tbs/pet_care_ix_ts_01.dbf'
   size 5m 
   AUTOEXTEND ON 
   NEXT 10M 
@@ -91,7 +91,63 @@ alter pluggable database  application pet_care_app begin upgrade '1.0' to '1.1';
 
  connect pet_care_admin/pet_care_admin@pet_care_ac 
 
-@petcare_inserts_completo
+@petcare_inserts_catalogos
 
 connect sys/system2@pet_care_ac  as sysdba
-alter pluggable database  application  jcm_ventas_app end upgrade;
+alter pluggable database  application  pet_care_app end upgrade;
+
+
+/*
+create pluggable database pet_care_sur
+  admin user admin identified by admin
+  file_name_convert=(
+    '/opt/oracle/oradata/FREE/pdbseed',
+    '/opt/oracle/oradata/FREE/pet_care_ac/pet_care_sur'
+  );
+
+  alter pluggable database pet_care_sur open read write;
+
+
+alter session set container=pet_care_sur;
+
+
+Prompt TBS de la pdb sur
+
+create tablespace pet_care_ix_ts 
+  datafile '/opt/oracle/oradata/FREE/pet_care_ac/pet_care_sur/pet_care_ix_ts_01.dbf'
+  size 5m 
+  AUTOEXTEND ON 
+  NEXT 10M 
+  MAXSIZE UNLIMITED 
+  extent management local autoallocate 
+  segment space management auto;
+
+
+create tablespace pet_care_tbs 
+  datafile
+    '/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_sur_01.dbf' size 50m autoextend on next 5m maxsize unlimited,
+    '/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_sur_02.dbf' size 50m autoextend on next 5m maxsize unlimited,
+    '/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_sur_03.dbf' size 50m autoextend on next 5m maxsize unlimited
+  extent management local autoallocate
+  segment space management auto;
+
+  create tablespace pet_care_blob_ts
+datafile
+'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_sur_blob_ts_01.dbf' size 100m autoextend on next 50m maxsize unlimited, 
+'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_sur_blob_ts_02.dbf' size 100m autoextend on next 50m maxsize unlimited, 
+'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_sur_blob_ts_03.dbf' size 100m autoextend on next 50m maxsize unlimited 
+extent management local autoallocate 
+segment space management auto;
+
+
+
+Borrar pdb
+ALTER PLUGGABLE DATABASE pet_care_sur CLOSE IMMEDIATE;
+DROP PLUGGABLE DATABASE pet_care_sur INCLUDING DATAFILES;
+
+Borrar pdb
+ALTER PLUGGABLE DATABASE pet_care_ac CLOSE IMMEDIATE;
+DROP PLUGGABLE DATABASE pet_care_ac INCLUDING DATAFILES;
+
+*/
+alter pluggable database  application all sync;
