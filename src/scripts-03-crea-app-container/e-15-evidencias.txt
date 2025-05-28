@@ -1,40 +1,19 @@
-Ejecutar en usuario oracle 
-rman target sys/system2@pet_care_ac
+[oracle@pet-care admin]$ rman target sys/system2@pet_care_ac 
 
-mkdir pet-care-backups-database
+Recovery Manager: Release 23.0.0.0.0 - Production on Tue May 27 23:04:46 2025
+Version 23.7.0.25.01
 
-chmod 777 pet-care-backups-database/
-chown oracle:oinstall pet-care-backups-database/
+Copyright (c) 1982, 2025, Oracle and/or its affiliates.  All rights reserved.
 
-Punto 7 Una copia de los backups tipo BackupSet deberá ubicarse en la FRA, otra copia fuera de la FRA
+connected to target database: FREE:PET_CARE_AC (DBID=2304219800, not open)
 
-# 7.1 BackupSet en FRA y fuera de FRA
-#Dentro de FRA
-rman target sys/system2@pet_care_ac
-BACKUP AS BACKUPSET DATABASE TAG petcareBkSetInFRA01;
+RMAN> ^C
+user interrupt received
 
-# Fuera de FRA
-rman target sys/system2
-BACKUP AS BACKUPSET DATABASE TAG petcareBkSetOutFRA01 FORMAT '/unam/diplo-bd/pet-care-backups-database/backupset_%U.bkp';
 
-# 7.2 Backup Copy en FRA y fuera de FRA
-# En FRA
-rman target sys/system2@pet_care_ac
-BACKUP AS COPY DATABASE TAG petcareBkCopyInFRA01;
 
-# Fuera de FRA
-rman target sys/system2
-BACKUP AS COPY DATABASE FORMAT '/unam/diplo-bd/pet-care-backups-database/copy_%U.bkp';
+RMAN> 
 
-Punto 8
-backup database plus archivelog tag petcareFullBk01;
-
-Punto 9
-backup incremental level 0 database tag petcareIncBk01;
-
-Dentro de la FRA
-
-Punto 7.1 Respuesta 
 RMAN> BACKUP AS BACKUPSET DATABASE TAG petcareBkSetInFRA01;
 BACKUP AS BACKUPSET DATABASE TAG petcareBkSetInFRA01;
 Starting backup at 27-MAY-25
@@ -66,7 +45,49 @@ piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E06
 channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
 Finished backup at 27-MAY-25
 
-Punto 7.2 Respuesta
+
+RMAN> BACKUP AS BACKUPSET DATABASE TAG petcareBkSetOutFRA01 FORMAT '/unam/diplo-bd/pet-care-backups-database/backupset_%U.bkp';
+BACKUP AS BACKUPSET DATABASE TAG petcareBkSetOutFRA01 FORMAT '/unam/diplo-bd/pet-care-backups-database/backupset_%U.bkp';
+Starting backup at 27-MAY-25
+using channel ORA_DISK_1
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-03002: failure of backup command at 05/27/2025 23:43:17
+RMAN-05169: cannot use a 'format' specifier or a 'to' specifier when connected to a pluggable database and recovery file destination parameter is set
+RMAN Client Diagnostic Trace file : /opt/oracle/diag/clients/user_oracle/RMAN_637674394_115/trace/ora_rman_18345_0.trc
+
+
+RMAN> REPORT SCHEMA;
+REPORT SCHEMA;
+Report of database schema for database with db_unique_name FREE
+
+List of Permanent Datafiles
+===========================
+File Size(MB) Tablespace           RB segs Datafile Name
+---- -------- -------------------- ------- ------------------------
+68   250      PET_CARE_AC:SYSTEM   NO      /opt/oracle/oradata/FREE/pet_care_ac/system01.dbf
+69   200      PET_CARE_AC:SYSAUX   NO      /opt/oracle/oradata/FREE/pet_care_ac/sysaux01.dbf
+70   140      PET_CARE_AC:UNDOTBS1 NO      /opt/oracle/oradata/FREE/pet_care_ac/undotbs01.dbf
+71   50       PET_CARE_AC:USERS    NO      /opt/oracle/oradata/FREE/pet_care_ac/users01.dbf
+72   5        PET_CARE_AC:PET_CARE_IX_TS NO      /opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf
+73   50       PET_CARE_AC:PET_CARE_TBS NO      /unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_tbs_01.dbf
+74   50       PET_CARE_AC:PET_CARE_TBS NO      /unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_tbs_02.dbf
+75   50       PET_CARE_AC:PET_CARE_TBS NO      /unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_tbs_03.dbf
+76   100      PET_CARE_AC:PET_CARE_BLOB_TS NO      /unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf
+77   100      PET_CARE_AC:PET_CARE_BLOB_TS NO      /unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_blob_ts_02.dbf
+78   100      PET_CARE_AC:PET_CARE_BLOB_TS NO      /unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_blob_ts_03.dbf
+
+List of Temporary Files
+=======================
+File Size(MB) Tablespace           Maxsize(MB) Tempfile Name
+---- -------- -------------------- ----------- --------------------
+4    20       PET_CARE_AC:TEMPTS1  11264       /opt/oracle/oradata/FREE/pet_care_ac/temp01.dbf
+
+
+RMAN> 
+
+
 RMAN> BACKUP AS COPY DATABASE TAG petcareBkCopyInFRA01;
 BACKUP AS COPY DATABASE TAG petcareBkCopyInFRA01;
 Starting backup at 27-MAY-25
@@ -118,7 +139,20 @@ channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:02
 Finished backup at 27-MAY-25
 
 
-FUERA DE LA FRA 
+RMAN> exit
+exit
+
+
+Recovery Manager complete.
+[oracle@pet-care admin]$ rman target sys/system2
+
+Recovery Manager: Release 23.0.0.0.0 - Production on Tue May 27 23:49:43 2025
+Version 23.7.0.25.01
+
+Copyright (c) 1982, 2025, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: FREE (DBID=1474208544)
+
 RMAN> BACKUP AS BACKUPSET DATABASE TAG petcareBkSetOutFRA01 FORMAT '/unam/diplo-bd/pet-care-backups-database/backupset_%U.bkp';
 BACKUP AS BACKUPSET DATABASE TAG petcareBkSetOutFRA01 FORMAT '/unam/diplo-bd/pet-care-backups-database/backupset_%U.bkp';
 Starting backup at 27-MAY-25
@@ -322,3 +356,172 @@ Starting Control File and SPFILE Autobackup at 27-MAY-25
 piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/autobackup/2025_05_27/o1_mf_s_1202255614_n3f96z84_.bkp comment=NONE
 Finished Control File and SPFILE Autobackup at 27-MAY-25
 
+
+RMAN> backup database plus archivelog tag petcareFullBk01;
+backup database plus archivelog tag petcareFullBk01;
+
+Starting backup at 27-MAY-25
+current log archived
+using channel ORA_DISK_1
+channel ORA_DISK_1: starting archived log backup set
+channel ORA_DISK_1: specifying archived log(s) in backup set
+input archived log thread=1 sequence=68 RECID=1 STAMP=1202255740
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/backupset/2025_05_27/o1_mf_annnn_PETCAREFULLBK01_n3f9bxsg_.bkp tag=PETCAREFULLBK01 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
+Finished backup at 27-MAY-25
+
+Starting backup at 27-MAY-25
+using channel ORA_DISK_1
+channel ORA_DISK_1: starting full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00001 name=/opt/oracle/oradata/FREE/system01.dbf
+input datafile file number=00003 name=/opt/oracle/oradata/FREE/sysaux01.dbf
+input datafile file number=00005 name=/opt/oracle/oradata/FREE/undotbs01.dbf
+input datafile file number=00007 name=/opt/oracle/oradata/FREE/users01.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/backupset/2025_05_27/o1_mf_nnndf_TAG20250527T235543_n3f9c17w_.bkp tag=TAG20250527T235543 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:16
+channel ORA_DISK_1: starting full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00090 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_system_n3f2c62v_.dbf
+input datafile file number=00091 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_sysaux_n3f2c62x_.dbf
+input datafile file number=00092 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_undotbs1_n3f2c62z_.dbf
+input datafile file number=00098 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63m_.dbf
+input datafile file number=00099 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63p_.dbf
+input datafile file number=00100 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63s_.dbf
+input datafile file number=00093 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_users_n3f2c633_.dbf
+input datafile file number=00095 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63d_.dbf
+input datafile file number=00096 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63h_.dbf
+input datafile file number=00097 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63k_.dbf
+input datafile file number=00094 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c638_.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B29EE8E8F40BDE063020011ACCA60/backupset/2025_05_27/o1_mf_nnndf_TAG20250527T235543_n3f9cl78_.bkp tag=TAG20250527T235543 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:07
+channel ORA_DISK_1: starting full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00068 name=/opt/oracle/oradata/FREE/pet_care_ac/system01.dbf
+input datafile file number=00076 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf
+input datafile file number=00073 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_tbs_01.dbf
+input datafile file number=00077 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_blob_ts_02.dbf
+input datafile file number=00074 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_tbs_02.dbf
+input datafile file number=00078 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_blob_ts_03.dbf
+input datafile file number=00075 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_tbs_03.dbf
+input datafile file number=00069 name=/opt/oracle/oradata/FREE/pet_care_ac/sysaux01.dbf
+input datafile file number=00070 name=/opt/oracle/oradata/FREE/pet_care_ac/undotbs01.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/backupset/2025_05_27/o1_mf_nnndf_TAG20250527T235543_n3f9csl2_.bkp tag=TAG20250527T235543 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:07
+channel ORA_DISK_1: starting full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00071 name=/opt/oracle/oradata/FREE/pet_care_ac/users01.dbf
+input datafile file number=00072 name=/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/backupset/2025_05_27/o1_mf_nnndf_TAG20250527T235543_n3f9d1fq_.bkp tag=TAG20250527T235543 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
+channel ORA_DISK_1: starting full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00002 name=/opt/oracle/oradata/FREE/pdbseed/system01.dbf
+input datafile file number=00004 name=/opt/oracle/oradata/FREE/pdbseed/sysaux01.dbf
+input datafile file number=00006 name=/opt/oracle/oradata/FREE/pdbseed/undotbs01.dbf
+input datafile file number=00008 name=/opt/oracle/oradata/FREE/pdbseed/users01.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/3614A7CF36850129E063020011AC745C/backupset/2025_05_27/o1_mf_nnndf_TAG20250527T235543_n3f9d3np_.bkp tag=TAG20250527T235543 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:07
+Finished backup at 27-MAY-25
+
+Starting backup at 27-MAY-25
+current log archived
+using channel ORA_DISK_1
+channel ORA_DISK_1: starting archived log backup set
+channel ORA_DISK_1: specifying archived log(s) in backup set
+input archived log thread=1 sequence=69 RECID=2 STAMP=1202255786
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/backupset/2025_05_27/o1_mf_annnn_PETCAREFULLBK01_n3f9ddd3_.bkp tag=PETCAREFULLBK01 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
+Finished backup at 27-MAY-25
+
+Starting Control File and SPFILE Autobackup at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/autobackup/2025_05_27/o1_mf_s_1202255790_n3f9dhdd_.bkp comment=NONE
+Finished Control File and SPFILE Autobackup at 27-MAY-25
+
+
+RMAN> backup incremental level 0 database tag petcareIncBk01;
+backup incremental level 0 database tag petcareIncBk01;
+Starting backup at 27-MAY-25
+using channel ORA_DISK_1
+channel ORA_DISK_1: starting incremental level 0 datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00001 name=/opt/oracle/oradata/FREE/system01.dbf
+input datafile file number=00003 name=/opt/oracle/oradata/FREE/sysaux01.dbf
+input datafile file number=00005 name=/opt/oracle/oradata/FREE/undotbs01.dbf
+input datafile file number=00007 name=/opt/oracle/oradata/FREE/users01.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/backupset/2025_05_27/o1_mf_nnnd0_PETCAREINCBK01_n3f9fswt_.bkp tag=PETCAREINCBK01 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:08
+channel ORA_DISK_1: starting incremental level 0 datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00090 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_system_n3f2c62v_.dbf
+input datafile file number=00091 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_sysaux_n3f2c62x_.dbf
+input datafile file number=00092 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_undotbs1_n3f2c62z_.dbf
+input datafile file number=00098 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63m_.dbf
+input datafile file number=00099 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63p_.dbf
+input datafile file number=00100 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63s_.dbf
+input datafile file number=00093 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_users_n3f2c633_.dbf
+input datafile file number=00095 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63d_.dbf
+input datafile file number=00096 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63h_.dbf
+input datafile file number=00097 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63k_.dbf
+input datafile file number=00094 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c638_.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B29EE8E8F40BDE063020011ACCA60/backupset/2025_05_27/o1_mf_nnnd0_PETCAREINCBK01_n3f9g23z_.bkp tag=PETCAREINCBK01 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:07
+channel ORA_DISK_1: starting incremental level 0 datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00068 name=/opt/oracle/oradata/FREE/pet_care_ac/system01.dbf
+input datafile file number=00076 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf
+input datafile file number=00073 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_tbs_01.dbf
+input datafile file number=00077 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_blob_ts_02.dbf
+input datafile file number=00074 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_tbs_02.dbf
+input datafile file number=00078 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_blob_ts_03.dbf
+input datafile file number=00075 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_tbs_03.dbf
+input datafile file number=00069 name=/opt/oracle/oradata/FREE/pet_care_ac/sysaux01.dbf
+input datafile file number=00070 name=/opt/oracle/oradata/FREE/pet_care_ac/undotbs01.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/backupset/2025_05_27/o1_mf_nnnd0_PETCAREINCBK01_n3f9gbx8_.bkp tag=PETCAREINCBK01 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:07
+channel ORA_DISK_1: starting incremental level 0 datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00071 name=/opt/oracle/oradata/FREE/pet_care_ac/users01.dbf
+input datafile file number=00072 name=/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/backupset/2025_05_27/o1_mf_nnnd0_PETCAREINCBK01_n3f9gl4q_.bkp tag=PETCAREINCBK01 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
+channel ORA_DISK_1: starting incremental level 0 datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00002 name=/opt/oracle/oradata/FREE/pdbseed/system01.dbf
+input datafile file number=00004 name=/opt/oracle/oradata/FREE/pdbseed/sysaux01.dbf
+input datafile file number=00006 name=/opt/oracle/oradata/FREE/pdbseed/undotbs01.dbf
+input datafile file number=00008 name=/opt/oracle/oradata/FREE/pdbseed/users01.dbf
+channel ORA_DISK_1: starting piece 1 at 27-MAY-25
+channel ORA_DISK_1: finished piece 1 at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/3614A7CF36850129E063020011AC745C/backupset/2025_05_27/o1_mf_nnnd0_PETCAREINCBK01_n3f9gncc_.bkp tag=PETCAREINCBK01 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:07
+Finished backup at 27-MAY-25
+
+Starting Control File and SPFILE Autobackup at 27-MAY-25
+piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/autobackup/2025_05_27/o1_mf_s_1202255868_n3f9gwvj_.bkp comment=NONE
+Finished Control File and SPFILE Autobackup at 27-MAY-25
+
+
+RMAN> 
