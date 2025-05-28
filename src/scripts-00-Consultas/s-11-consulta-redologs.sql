@@ -7,10 +7,11 @@ connect sys/system2 as sysdba
 alter session set container = pet_care_ac;
 
 set linesize window
-col tablespace_name format a20
-col file_name format a70
+col MEMBER format a70
 
-select 
-  tablespace_name, file_name, bytes / 1024 / 1024 AS size_mb, autoextensible
-from dba_data_files
-order by tablespace_name;
+select
+  a.GROUP#, a.MEMBER, b.BYTES / 1024 / 1024 AS SIZE_MB, b.STATUS, 
+  b.ARCHIVED, b.FIRST_TIME, b.SEQUENCE#
+from v$logfile a join v$log b  
+on a.GROUP# = b.GROUP#
+order by a.GROUP#;
