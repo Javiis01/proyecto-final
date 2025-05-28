@@ -9,6 +9,7 @@ INSERT INTO ESTADO (clvEstado, nombreEstado) VALUES (2, 'CDMX');
 INSERT INTO ESTADO (clvEstado, nombreEstado) VALUES (3, 'Quintana Roo');
 INSERT INTO ESTADO (clvEstado, nombreEstado) VALUES (4, 'Tabasco');
 INSERT INTO ESTADO (clvEstado, nombreEstado) VALUES (5, 'Tamaulipas');
+
 INSERT INTO MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (1, 'Vieja República Demo', 1);
 INSERT INTO MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (2, 'Nueva Togo', 4);
 INSERT INTO MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (3, 'Vieja Guinea', 5);
@@ -40,6 +41,7 @@ INSERT INTO CLIENTE (clvCliente, clvMunicipio, nombreClie, apPaternoClie, apMate
 INSERT INTO CLIENTE (clvCliente, clvMunicipio, nombreClie, apPaternoClie, apMaternoClie, fechaNacimientoClie, correoClie) VALUES (18, 6, 'Elvia', 'Padilla', 'Saldaña', TO_DATE('1996-07-09', 'YYYY-MM-DD'), 'carrascosocorro@gmail.com');
 INSERT INTO CLIENTE (clvCliente, clvMunicipio, nombreClie, apPaternoClie, apMaternoClie, fechaNacimientoClie, correoClie) VALUES (19, 3, 'José Manuél', 'Báez', 'Acosta', TO_DATE('1985-02-16', 'YYYY-MM-DD'), 'yolanda58@gmail.com');
 INSERT INTO CLIENTE (clvCliente, clvMunicipio, nombreClie, apPaternoClie, apMaternoClie, fechaNacimientoClie, correoClie) VALUES (20, 7, 'Rubén', 'de la O', 'Galván', TO_DATE('1983-05-02', 'YYYY-MM-DD'), 'fernando74@hotmail.com');
+
 INSERT INTO TELEFONO_CLIENTE (clvTelefono, telefonoClie, clvCliente) VALUES (1, 7928266934, 1);
 INSERT INTO TELEFONO_CLIENTE (clvTelefono, telefonoClie, clvCliente) VALUES (2, 8819943082, 2);
 INSERT INTO TELEFONO_CLIENTE (clvTelefono, telefonoClie, clvCliente) VALUES (3, 5978980467, 3);
@@ -60,6 +62,7 @@ INSERT INTO TELEFONO_CLIENTE (clvTelefono, telefonoClie, clvCliente) VALUES (17,
 INSERT INTO TELEFONO_CLIENTE (clvTelefono, telefonoClie, clvCliente) VALUES (18, 6065600182, 18);
 INSERT INTO TELEFONO_CLIENTE (clvTelefono, telefonoClie, clvCliente) VALUES (19, 4352920989, 19);
 INSERT INTO TELEFONO_CLIENTE (clvTelefono, telefonoClie, clvCliente) VALUES (20, 2112864009, 20);
+
 INSERT INTO MASCOTA (clvMascota, clvCliente, razaMasc, nombreMasc, pesoMasc, fechaNacimientoMasc, edadMasc, razgosParticularesMasc) VALUES (1, 1, 'Bulldog', 'Nayeli', 26.6, TO_DATE('2017-03-27', 'YYYY-MM-DD'), 7, 'Dormilón');
 INSERT INTO MASCOTA (clvMascota, clvCliente, razaMasc, nombreMasc, pesoMasc, fechaNacimientoMasc, edadMasc, razgosParticularesMasc) VALUES (2, 2, 'Chihuahua', 'Perla', 15.59, TO_DATE('2016-12-09', 'YYYY-MM-DD'), 5, 'Travieso');
 INSERT INTO MASCOTA (clvMascota, clvCliente, razaMasc, nombreMasc, pesoMasc, fechaNacimientoMasc, edadMasc, razgosParticularesMasc) VALUES (3, 3, 'Pug', 'Mónica', 23.62, TO_DATE('2016-07-01', 'YYYY-MM-DD'), 1, 'Dormilón');
@@ -80,6 +83,7 @@ INSERT INTO MASCOTA (clvMascota, clvCliente, razaMasc, nombreMasc, pesoMasc, fec
 INSERT INTO MASCOTA (clvMascota, clvCliente, razaMasc, nombreMasc, pesoMasc, fechaNacimientoMasc, edadMasc, razgosParticularesMasc) VALUES (18, 18, 'Labrador', 'Patricio', 29.72, TO_DATE('2021-06-22', 'YYYY-MM-DD'), 1, 'Travieso');
 INSERT INTO MASCOTA (clvMascota, clvCliente, razaMasc, nombreMasc, pesoMasc, fechaNacimientoMasc, edadMasc, razgosParticularesMasc) VALUES (19, 19, 'Bulldog', 'Hernán', 10.86, TO_DATE('2023-10-22', 'YYYY-MM-DD'), 8, 'Juguetón');
 INSERT INTO MASCOTA (clvMascota, clvCliente, razaMasc, nombreMasc, pesoMasc, fechaNacimientoMasc, edadMasc, razgosParticularesMasc) VALUES (20, 20, 'Bulldog', 'Carla', 15.77, TO_DATE('2023-09-12', 'YYYY-MM-DD'), 8, 'Obediente');
+
 INSERT INTO FOTO_MASCOTA (clvFotoMascota, clvMascota, fotoMascota) VALUES (1, 17, EMPTY_BLOB());
 INSERT INTO FOTO_MASCOTA (clvFotoMascota, clvMascota, fotoMascota) VALUES (2, 3, EMPTY_BLOB());
 INSERT INTO FOTO_MASCOTA (clvFotoMascota, clvMascota, fotoMascota) VALUES (3, 8, EMPTY_BLOB());
@@ -90,11 +94,13 @@ INSERT INTO FOTO_MASCOTA (clvFotoMascota, clvMascota, fotoMascota) VALUES (7, 6,
 INSERT INTO FOTO_MASCOTA (clvFotoMascota, clvMascota, fotoMascota) VALUES (8, 4, EMPTY_BLOB());
 INSERT INTO FOTO_MASCOTA (clvFotoMascota, clvMascota, fotoMascota) VALUES (9, 1, EMPTY_BLOB());
 INSERT INTO FOTO_MASCOTA (clvFotoMascota, clvMascota, fotoMascota) VALUES (10, 7, EMPTY_BLOB());
+
 INSERT INTO CATEGORIA (clvCategoria, nombreCategoria, descripcionCategoria) VALUES (1, 'Cat_1', 'Descripción 1');
 INSERT INTO CATEGORIA (clvCategoria, nombreCategoria, descripcionCategoria) VALUES (2, 'Cat_2', 'Descripción 2');
 INSERT INTO CATEGORIA (clvCategoria, nombreCategoria, descripcionCategoria) VALUES (3, 'Cat_3', 'Descripción 3');
 INSERT INTO CATEGORIA (clvCategoria, nombreCategoria, descripcionCategoria) VALUES (4, 'Cat_4', 'Descripción 4');
 INSERT INTO CATEGORIA (clvCategoria, nombreCategoria, descripcionCategoria) VALUES (5, 'Cat_5', 'Descripción 5');
+
 INSERT INTO PRODUCTO (SKU, nombreProducto, precioActualProducto, clvCategoria) VALUES ('SKU001', 'Producto_1', 338.79, 4);
 INSERT INTO PRODUCTO (SKU, nombreProducto, precioActualProducto, clvCategoria) VALUES ('SKU002', 'Producto_2', 64.85, 5);
 INSERT INTO PRODUCTO (SKU, nombreProducto, precioActualProducto, clvCategoria) VALUES ('SKU003', 'Producto_3', 230.81, 3);
@@ -115,6 +121,7 @@ INSERT INTO PRODUCTO (SKU, nombreProducto, precioActualProducto, clvCategoria) V
 INSERT INTO PRODUCTO (SKU, nombreProducto, precioActualProducto, clvCategoria) VALUES ('SKU018', 'Producto_18', 286.08, 4);
 INSERT INTO PRODUCTO (SKU, nombreProducto, precioActualProducto, clvCategoria) VALUES ('SKU019', 'Producto_19', 430.95, 3);
 INSERT INTO PRODUCTO (SKU, nombreProducto, precioActualProducto, clvCategoria) VALUES ('SKU020', 'Producto_20', 468.27, 1);
+
 INSERT INTO EMPLEADO (clvEmpleado, clvSupervisorEmp, rfcEmp, curpEmp, nombreEmp, apPaternoEmp, apMaternoEmp, telefonoEmp, edadEmp, fotoEmp, fechaNacimientoEmp, tipoEmpleado, clvVeterinaria) VALUES (1, 1, 'GKZPGCJTNATR', 'IYXJRFZIAWOEULUHCX', 'Mónica', 'Quintanilla', 'Feliciano', 3551418035, 28, EMPTY_BLOB(), TO_DATE('1993-06-25', 'YYYY-MM-DD'), 2, 1);
 INSERT INTO EMPLEADO (clvEmpleado, clvSupervisorEmp, rfcEmp, curpEmp, nombreEmp, apPaternoEmp, apMaternoEmp, telefonoEmp, edadEmp, fotoEmp, fechaNacimientoEmp, tipoEmpleado, clvVeterinaria) VALUES (2, 1, 'THYNURXVQYTB', 'FZNTTYKFZAJTMBMBYI', 'Patricia', 'Venegas', 'de Jesús', 6657283164, 56, EMPTY_BLOB(), TO_DATE('1985-02-13', 'YYYY-MM-DD'), 2, 1);
 INSERT INTO EMPLEADO (clvEmpleado, clvSupervisorEmp, rfcEmp, curpEmp, nombreEmp, apPaternoEmp, apMaternoEmp, telefonoEmp, edadEmp, fotoEmp, fechaNacimientoEmp, tipoEmpleado, clvVeterinaria) VALUES (3, 2, 'EWXPMNZVNCZW', 'IDNIYEOSJCVQXJQWBY', 'Pascual', 'Gómez', 'Quintero', 1555253611, 23, EMPTY_BLOB(), TO_DATE('1968-09-26', 'YYYY-MM-DD'), 1, 1);
@@ -145,14 +152,17 @@ INSERT INTO EMPLEADO (clvEmpleado, clvSupervisorEmp, rfcEmp, curpEmp, nombreEmp,
 INSERT INTO EMPLEADO (clvEmpleado, clvSupervisorEmp, rfcEmp, curpEmp, nombreEmp, apPaternoEmp, apMaternoEmp, telefonoEmp, edadEmp, fotoEmp, fechaNacimientoEmp, tipoEmpleado, clvVeterinaria) VALUES (28, 27, 'AKTAERFYTQKE', 'LWBNDJYZSYPWYGSOSM', 'María', 'Terrazas', 'Sánchez', 5604327686, 41, EMPTY_BLOB(), TO_DATE('1987-04-27', 'YYYY-MM-DD'), 2, 3);
 INSERT INTO EMPLEADO (clvEmpleado, clvSupervisorEmp, rfcEmp, curpEmp, nombreEmp, apPaternoEmp, apMaternoEmp, telefonoEmp, edadEmp, fotoEmp, fechaNacimientoEmp, tipoEmpleado, clvVeterinaria) VALUES (29, 28, 'UQVIACHYVKJF', 'OYEBHLGZYPQSLOXRZC', 'Leonel', 'Fierro', 'Salas', 8732437753, 51, EMPTY_BLOB(), TO_DATE('1985-08-28', 'YYYY-MM-DD'), 2, 3);
 INSERT INTO EMPLEADO (clvEmpleado, clvSupervisorEmp, rfcEmp, curpEmp, nombreEmp, apPaternoEmp, apMaternoEmp, telefonoEmp, edadEmp, fotoEmp, fechaNacimientoEmp, tipoEmpleado, clvVeterinaria) VALUES (30, 29, 'UPUYNSJKPOBX', 'SUAHWKWQJMREBOACFJ', 'Dalia', 'Páez', 'Prado', 8560329006, 27, EMPTY_BLOB(), TO_DATE('1971-03-01', 'YYYY-MM-DD'), 2, 3);
+
 INSERT INTO VETERINARIA (clvVeterinaria, clvGerente, latitudVet, longitudVet, horarioSemVet, horarioSabVet, domicilioVet) VALUES (1, 1, 19.025304, -97.205798, '09:00-18:00', '09:00-13:00', 'Calzada Reino Unido de Gran Bretaña e Irlanda del Norte 397 166 Vieja Qatar, ZAC 85204-4978');
 INSERT INTO VETERINARIA (clvVeterinaria, clvGerente, latitudVet, longitudVet, horarioSemVet, horarioSabVet, domicilioVet) VALUES (2, 2, 19.855018, -98.755696, '09:00-18:00', '09:00-13:00', 'Calle Valencia 036 Interior 861 San Francisco de la Montaña, MEX 20255-5328');
 INSERT INTO VETERINARIA (clvVeterinaria, clvGerente, latitudVet, longitudVet, horarioSemVet, horarioSabVet, domicilioVet) VALUES (3, 3, 19.933361, -97.229865, '09:00-18:00', '09:00-13:00', 'Avenida Mateo 430 Interior 587 San Karina los bajos, BC 98770-8221');
+
 INSERT INTO VENDEDOR (clvVendedor, horaEntradaVen, horaSalidaVen, numOrdenesMinVen, gerenciaVendedor, puedePasearVen) VALUES (1, TO_DATE('2023-05-17', 'YYYY-MM-DD'), TO_DATE('2023-04-06', 'YYYY-MM-DD'), '3', 'GR_1', 0);
 INSERT INTO VENDEDOR (clvVendedor, horaEntradaVen, horaSalidaVen, numOrdenesMinVen, gerenciaVendedor, puedePasearVen) VALUES (2, TO_DATE('2024-09-22', 'YYYY-MM-DD'), TO_DATE('2024-10-17', 'YYYY-MM-DD'), '5', 'GR_2', 1);
 INSERT INTO VENDEDOR (clvVendedor, horaEntradaVen, horaSalidaVen, numOrdenesMinVen, gerenciaVendedor, puedePasearVen) VALUES (3, TO_DATE('2023-08-13', 'YYYY-MM-DD'), TO_DATE('2024-02-25', 'YYYY-MM-DD'), '4', 'GR_3', 0);
 INSERT INTO VENDEDOR (clvVendedor, horaEntradaVen, horaSalidaVen, numOrdenesMinVen, gerenciaVendedor, puedePasearVen) VALUES (4, TO_DATE('2024-04-29', 'YYYY-MM-DD'), TO_DATE('2022-12-27', 'YYYY-MM-DD'), '1', 'GR_4', 0);
 INSERT INTO VENDEDOR (clvVendedor, horaEntradaVen, horaSalidaVen, numOrdenesMinVen, gerenciaVendedor, puedePasearVen) VALUES (5, TO_DATE('2022-10-15', 'YYYY-MM-DD'), TO_DATE('2021-02-24', 'YYYY-MM-DD'), '6', 'GR_5', 1);
+
 INSERT INTO ORDEN_COMPRA (clvOrdenCompra, clvVendedorCompra, clvClienteCompra, fechaOrdenCompra, importeServiciosOrdenCompra, importeTotalOrdenCompra) VALUES (1, 5, 8, TO_DATE('2024-08-02', 'YYYY-MM-DD'), 133.56, 451.28);
 INSERT INTO ORDEN_COMPRA (clvOrdenCompra, clvVendedorCompra, clvClienteCompra, fechaOrdenCompra, importeServiciosOrdenCompra, importeTotalOrdenCompra) VALUES (2, 5, 12, TO_DATE('2022-12-18', 'YYYY-MM-DD'), 234.48, 775.78);
 INSERT INTO ORDEN_COMPRA (clvOrdenCompra, clvVendedorCompra, clvClienteCompra, fechaOrdenCompra, importeServiciosOrdenCompra, importeTotalOrdenCompra) VALUES (3, 5, 18, TO_DATE('2020-11-06', 'YYYY-MM-DD'), 100.52, 843.29);
@@ -163,6 +173,7 @@ INSERT INTO ORDEN_COMPRA (clvOrdenCompra, clvVendedorCompra, clvClienteCompra, f
 INSERT INTO ORDEN_COMPRA (clvOrdenCompra, clvVendedorCompra, clvClienteCompra, fechaOrdenCompra, importeServiciosOrdenCompra, importeTotalOrdenCompra) VALUES (8, 5, 14, TO_DATE('2021-10-20', 'YYYY-MM-DD'), 250.12, 862.59);
 INSERT INTO ORDEN_COMPRA (clvOrdenCompra, clvVendedorCompra, clvClienteCompra, fechaOrdenCompra, importeServiciosOrdenCompra, importeTotalOrdenCompra) VALUES (9, 3, 3, TO_DATE('2023-02-28', 'YYYY-MM-DD'), 213.55, 644.67);
 INSERT INTO ORDEN_COMPRA (clvOrdenCompra, clvVendedorCompra, clvClienteCompra, fechaOrdenCompra, importeServiciosOrdenCompra, importeTotalOrdenCompra) VALUES (10, 1, 1, TO_DATE('2022-08-30', 'YYYY-MM-DD'), 220.92, 407.66);
+
 INSERT INTO ORDEN_PRODUCTO (clvOrdenProducto, clvOrdenCompra, SKU, cantidadOrdenProductos) VALUES (1, 1, 'SKU018', 1.26);
 INSERT INTO ORDEN_PRODUCTO (clvOrdenProducto, clvOrdenCompra, SKU, cantidadOrdenProductos) VALUES (2, 10, 'SKU005', 4.44);
 INSERT INTO ORDEN_PRODUCTO (clvOrdenProducto, clvOrdenCompra, SKU, cantidadOrdenProductos) VALUES (3, 5, 'SKU006', 3.97);
@@ -177,6 +188,7 @@ INSERT INTO ORDEN_PRODUCTO (clvOrdenProducto, clvOrdenCompra, SKU, cantidadOrden
 INSERT INTO ORDEN_PRODUCTO (clvOrdenProducto, clvOrdenCompra, SKU, cantidadOrdenProductos) VALUES (12, 3, 'SKU004', 3.75);
 INSERT INTO ORDEN_PRODUCTO (clvOrdenProducto, clvOrdenCompra, SKU, cantidadOrdenProductos) VALUES (13, 7, 'SKU012', 4.23);
 INSERT INTO ORDEN_PRODUCTO (clvOrdenProducto, clvOrdenCompra, SKU, cantidadOrdenProductos) VALUES (14, 3, 'SKU017', 4.19);
+
 INSERT INTO CURSO (clvCurso, codigoInternoCurso, UUID, nombreCurso, descripcionCurso) VALUES (1, 1001, 'b32be00d-cde6-472b-a4db-16dda0ac6a66', 'Curso 1', 'Curso especializado 1');
 INSERT INTO CURSO (clvCurso, codigoInternoCurso, UUID, nombreCurso, descripcionCurso) VALUES (2, 1002, 'ac32e9b1-9aed-4189-a4fb-a2c9fd0c75e4', 'Curso 2', 'Curso especializado 2');
 INSERT INTO CURSO (clvCurso, codigoInternoCurso, UUID, nombreCurso, descripcionCurso) VALUES (3, 1003, 'b4f84515-8c9c-4546-bdd1-af59817b8dfb', 'Curso 3', 'Curso especializado 3');
@@ -187,6 +199,7 @@ INSERT INTO CURSO (clvCurso, codigoInternoCurso, UUID, nombreCurso, descripcionC
 INSERT INTO CURSO (clvCurso, codigoInternoCurso, UUID, nombreCurso, descripcionCurso) VALUES (8, 1008, '2e8294cb-bb49-4848-bb13-c8dd52f8cb61', 'Curso 8', 'Curso especializado 8');
 INSERT INTO CURSO (clvCurso, codigoInternoCurso, UUID, nombreCurso, descripcionCurso) VALUES (9, 1009, 'e25ebb1f-37b3-4971-852d-03b4d6fa8889', 'Curso 9', 'Curso especializado 9');
 INSERT INTO CURSO (clvCurso, codigoInternoCurso, UUID, nombreCurso, descripcionCurso) VALUES (10, 1010, '916e484c-c7e4-4fc3-a956-2b4bd8646b8a', 'Curso 10', 'Curso especializado 10');
+
 INSERT INTO ESTILISTA (clvEstilista, reseniaHabilidadesEst) VALUES (1, 'Voluptas illo accusamus consectetur.');
 INSERT INTO ESTILISTA (clvEstilista, reseniaHabilidadesEst) VALUES (2, 'Illo earum rerum.');
 INSERT INTO ESTILISTA (clvEstilista, reseniaHabilidadesEst) VALUES (3, 'Facere adipisci harum explicabo quae dolores.');
@@ -197,6 +210,7 @@ INSERT INTO ESTILISTA (clvEstilista, reseniaHabilidadesEst) VALUES (7, 'Minima r
 INSERT INTO ESTILISTA (clvEstilista, reseniaHabilidadesEst) VALUES (8, 'Labore illum sint error voluptatibus asperiores.');
 INSERT INTO ESTILISTA (clvEstilista, reseniaHabilidadesEst) VALUES (9, 'Sed nemo animi nihil delectus eaque.');
 INSERT INTO ESTILISTA (clvEstilista, reseniaHabilidadesEst) VALUES (10, 'Rem molestias fugit assumenda.');
+
 INSERT INTO INSCRIPCION_CURSO (clvInscripcionCurso, clvCurso, clvEstilista) VALUES (1, 5, 2);
 INSERT INTO INSCRIPCION_CURSO (clvInscripcionCurso, clvCurso, clvEstilista) VALUES (2, 2, 10);
 INSERT INTO INSCRIPCION_CURSO (clvInscripcionCurso, clvCurso, clvEstilista) VALUES (3, 1, 8);
@@ -207,6 +221,7 @@ INSERT INTO INSCRIPCION_CURSO (clvInscripcionCurso, clvCurso, clvEstilista) VALU
 INSERT INTO INSCRIPCION_CURSO (clvInscripcionCurso, clvCurso, clvEstilista) VALUES (8, 7, 6);
 INSERT INTO INSCRIPCION_CURSO (clvInscripcionCurso, clvCurso, clvEstilista) VALUES (9, 5, 2);
 INSERT INTO INSCRIPCION_CURSO (clvInscripcionCurso, clvCurso, clvEstilista) VALUES (10, 1, 2);
+
 INSERT INTO CERTIFICADO (clvCursoAprobado, clvInscripcionCurso, nombreCertificado, certificadoPrueba, fechaAprobadoCertificado) VALUES (1, 1, 'Cert_1', 'APROBADO', TO_DATE('2020-12-19', 'YYYY-MM-DD'));
 INSERT INTO CERTIFICADO (clvCursoAprobado, clvInscripcionCurso, nombreCertificado, certificadoPrueba, fechaAprobadoCertificado) VALUES (2, 2, 'Cert_2', 'APROBADO', TO_DATE('2023-03-10', 'YYYY-MM-DD'));
 INSERT INTO CERTIFICADO (clvCursoAprobado, clvInscripcionCurso, nombreCertificado, certificadoPrueba, fechaAprobadoCertificado) VALUES (3, 3, 'Cert_3', 'APROBADO', TO_DATE('2022-08-17', 'YYYY-MM-DD'));
@@ -217,6 +232,7 @@ INSERT INTO CERTIFICADO (clvCursoAprobado, clvInscripcionCurso, nombreCertificad
 INSERT INTO CERTIFICADO (clvCursoAprobado, clvInscripcionCurso, nombreCertificado, certificadoPrueba, fechaAprobadoCertificado) VALUES (8, 8, 'Cert_8', 'APROBADO', TO_DATE('2023-08-18', 'YYYY-MM-DD'));
 INSERT INTO CERTIFICADO (clvCursoAprobado, clvInscripcionCurso, nombreCertificado, certificadoPrueba, fechaAprobadoCertificado) VALUES (9, 9, 'Cert_9', 'APROBADO', TO_DATE('2023-03-14', 'YYYY-MM-DD'));
 INSERT INTO CERTIFICADO (clvCursoAprobado, clvInscripcionCurso, nombreCertificado, certificadoPrueba, fechaAprobadoCertificado) VALUES (10, 10, 'Cert_10', 'APROBADO', TO_DATE('2022-08-23', 'YYYY-MM-DD'));
+
 INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnostico, descripcionDiagnostico) VALUES (1, 'Diag_1', 5, 'Descripción del diagnóstico 1');
 INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnostico, descripcionDiagnostico) VALUES (2, 'Diag_2', 1, 'Descripción del diagnóstico 2');
 INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnostico, descripcionDiagnostico) VALUES (3, 'Diag_3', 4, 'Descripción del diagnóstico 3');
@@ -227,6 +243,7 @@ INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnos
 INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnostico, descripcionDiagnostico) VALUES (8, 'Diag_8', 3, 'Descripción del diagnóstico 8');
 INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnostico, descripcionDiagnostico) VALUES (9, 'Diag_9', 5, 'Descripción del diagnóstico 9');
 INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnostico, descripcionDiagnostico) VALUES (10, 'Diag_10', 2, 'Descripción del diagnóstico 10');
+
 INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (1, 'CEDULA000001', 'Reynoso, Madera y Quiroz', TO_DATE('2010-08-10', 'YYYY-MM-DD'));
 INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (2, 'CEDULA000002', 'de la O, Muro y Soto', TO_DATE('2012-09-14', 'YYYY-MM-DD'));
 INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (3, 'CEDULA000003', 'Velázquez y Carreón S.A.', TO_DATE('2011-07-31', 'YYYY-MM-DD'));
@@ -237,6 +254,7 @@ INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, f
 INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (8, 'CEDULA000008', 'Salgado, Quiñones y Juárez', TO_DATE('2004-10-08', 'YYYY-MM-DD'));
 INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (9, 'CEDULA000009', 'Medrano-Rascón S.A. de C.V.', TO_DATE('2009-06-11', 'YYYY-MM-DD'));
 INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (10, 'CEDULA000010', 'Santana, Navarro y Solís', TO_DATE('2002-09-13', 'YYYY-MM-DD'));
+
 INSERT INTO CONSULTA_MEDICA (clvConsultaMedica, clvVeterinario, clvDiagnostico, descripcionEstadoConsulta, costoConsulta, fechaConsulta, clvMascota) VALUES (1, 1, 6, 'Finalizado', 191.92, TO_DATE('2020-02-01', 'YYYY-MM-DD'), 16);
 INSERT INTO CONSULTA_MEDICA (clvConsultaMedica, clvVeterinario, clvDiagnostico, descripcionEstadoConsulta, costoConsulta, fechaConsulta, clvMascota) VALUES (2, 7, 9, 'Finalizado', 467.67, TO_DATE('2021-09-27', 'YYYY-MM-DD'), 13);
 INSERT INTO CONSULTA_MEDICA (clvConsultaMedica, clvVeterinario, clvDiagnostico, descripcionEstadoConsulta, costoConsulta, fechaConsulta, clvMascota) VALUES (3, 5, 5, 'En progreso', 430.59, TO_DATE('2020-04-20', 'YYYY-MM-DD'), 12);
@@ -251,6 +269,7 @@ INSERT INTO CONSULTA_MEDICA (clvConsultaMedica, clvVeterinario, clvDiagnostico, 
 INSERT INTO CONSULTA_MEDICA (clvConsultaMedica, clvVeterinario, clvDiagnostico, descripcionEstadoConsulta, costoConsulta, fechaConsulta, clvMascota) VALUES (12, 6, 10, 'En progreso', 315.16, TO_DATE('2023-01-05', 'YYYY-MM-DD'), 16);
 INSERT INTO CONSULTA_MEDICA (clvConsultaMedica, clvVeterinario, clvDiagnostico, descripcionEstadoConsulta, costoConsulta, fechaConsulta, clvMascota) VALUES (13, 7, 2, 'Finalizado', 116.4, TO_DATE('2022-09-20', 'YYYY-MM-DD'), 3);
 INSERT INTO CONSULTA_MEDICA (clvConsultaMedica, clvVeterinario, clvDiagnostico, descripcionEstadoConsulta, costoConsulta, fechaConsulta, clvMascota) VALUES (14, 1, 9, 'Finalizado', 358.46, TO_DATE('2024-12-07', 'YYYY-MM-DD'), 10);
+
 INSERT INTO SERVICIO_ESTETICA (clvservicioestetica, clvestilista, descripcionservicioest, precioservicioest, fechaservicioest, fotoantesest, fotodespuesest, clvmascota) VALUES (1, 1, 'Baño y corte 1', 237.42, TO_DATE('2023-11-22', 'YYYY-MM-DD'), EMPTY_BLOB(), EMPTY_BLOB(), 17);
 INSERT INTO SERVICIO_ESTETICA (clvservicioestetica, clvestilista, descripcionservicioest, precioservicioest, fechaservicioest, fotoantesest, fotodespuesest, clvmascota) VALUES (2, 3, 'Baño y corte 2', 224.92, TO_DATE('2024-03-02', 'YYYY-MM-DD'), EMPTY_BLOB(), EMPTY_BLOB(), 15);
 INSERT INTO SERVICIO_ESTETICA (clvservicioestetica, clvestilista, descripcionservicioest, precioservicioest, fechaservicioest, fotoantesest, fotodespuesest, clvmascota) VALUES (3, 9, 'Baño y corte 3', 218.9, TO_DATE('2023-07-21', 'YYYY-MM-DD'), EMPTY_BLOB(), EMPTY_BLOB(), 19);
@@ -261,11 +280,13 @@ INSERT INTO SERVICIO_ESTETICA (clvservicioestetica, clvestilista, descripcionser
 INSERT INTO SERVICIO_ESTETICA (clvservicioestetica, clvestilista, descripcionservicioest, precioservicioest, fechaservicioest, fotoantesest, fotodespuesest, clvmascota) VALUES (8, 6, 'Baño y corte 8', 290.3, TO_DATE('2023-01-18', 'YYYY-MM-DD'), EMPTY_BLOB(), EMPTY_BLOB(), 3);
 INSERT INTO SERVICIO_ESTETICA (clvservicioestetica, clvestilista, descripcionservicioest, precioservicioest, fechaservicioest, fotoantesest, fotodespuesest, clvmascota) VALUES (9, 6, 'Baño y corte 9', 154.19, TO_DATE('2022-09-04', 'YYYY-MM-DD'), EMPTY_BLOB(), EMPTY_BLOB(), 7);
 INSERT INTO SERVICIO_ESTETICA (clvservicioestetica, clvestilista, descripcionservicioest, precioservicioest, fechaservicioest, fotoantesest, fotodespuesest, clvmascota) VALUES (10, 3, 'Baño y corte 10', 350.25, TO_DATE('2024-06-19', 'YYYY-MM-DD'), EMPTY_BLOB(), EMPTY_BLOB(), 14);
+
 INSERT INTO ESTATUS_PROD_INVENTARIO (clvEstatusProdInventario, estatusProdInventario, descripcionProdInventario) VALUES (1, 'Estatus_1', 'Descripción 1');
 INSERT INTO ESTATUS_PROD_INVENTARIO (clvEstatusProdInventario, estatusProdInventario, descripcionProdInventario) VALUES (2, 'Estatus_2', 'Descripción 2');
 INSERT INTO ESTATUS_PROD_INVENTARIO (clvEstatusProdInventario, estatusProdInventario, descripcionProdInventario) VALUES (3, 'Estatus_3', 'Descripción 3');
 INSERT INTO ESTATUS_PROD_INVENTARIO (clvEstatusProdInventario, estatusProdInventario, descripcionProdInventario) VALUES (4, 'Estatus_4', 'Descripción 4');
 INSERT INTO ESTATUS_PROD_INVENTARIO (clvEstatusProdInventario, estatusProdInventario, descripcionProdInventario) VALUES (5, 'Estatus_5', 'Descripción 5');
+
 INSERT INTO INVENTARIO_VETERINARIA (clvInventarioVet, clvEstatusProdInventario, clvVeterinaria, SKU, fechaInventarioVet) VALUES (1, 3, 3, 'SKU014', TO_DATE('2024-12-02', 'YYYY-MM-DD'));
 INSERT INTO INVENTARIO_VETERINARIA (clvInventarioVet, clvEstatusProdInventario, clvVeterinaria, SKU, fechaInventarioVet) VALUES (2, 2, 3, 'SKU002', TO_DATE('2023-07-22', 'YYYY-MM-DD'));
 INSERT INTO INVENTARIO_VETERINARIA (clvInventarioVet, clvEstatusProdInventario, clvVeterinaria, SKU, fechaInventarioVet) VALUES (3, 1, 2, 'SKU015', TO_DATE('2023-09-10', 'YYYY-MM-DD'));
@@ -281,6 +302,7 @@ INSERT INTO INVENTARIO_VETERINARIA (clvInventarioVet, clvEstatusProdInventario, 
 INSERT INTO INVENTARIO_VETERINARIA (clvInventarioVet, clvEstatusProdInventario, clvVeterinaria, SKU, fechaInventarioVet) VALUES (13, 1, 2, 'SKU004', TO_DATE('2020-07-31', 'YYYY-MM-DD'));
 INSERT INTO INVENTARIO_VETERINARIA (clvInventarioVet, clvEstatusProdInventario, clvVeterinaria, SKU, fechaInventarioVet) VALUES (14, 5, 2, 'SKU008', TO_DATE('2024-05-21', 'YYYY-MM-DD'));
 INSERT INTO INVENTARIO_VETERINARIA (clvInventarioVet, clvEstatusProdInventario, clvVeterinaria, SKU, fechaInventarioVet) VALUES (15, 3, 2, 'SKU014', TO_DATE('2022-02-03', 'YYYY-MM-DD'));
+
 INSERT INTO HISTORICO_PRECIO (clvHistoricoPrecio, SKU, fechaInicioHistPrecio, fechaFinalHistPrecio, precioHistPrecio) VALUES (1, 'SKU001', TO_DATE('2023-12-09', 'YYYY-MM-DD'), TO_DATE('2024-10-30', 'YYYY-MM-DD'), 212.56);
 INSERT INTO HISTORICO_PRECIO (clvHistoricoPrecio, SKU, fechaInicioHistPrecio, fechaFinalHistPrecio, precioHistPrecio) VALUES (2, 'SKU007', TO_DATE('2023-05-28', 'YYYY-MM-DD'), TO_DATE('2024-02-06', 'YYYY-MM-DD'), 439.85);
 INSERT INTO HISTORICO_PRECIO (clvHistoricoPrecio, SKU, fechaInicioHistPrecio, fechaFinalHistPrecio, precioHistPrecio) VALUES (3, 'SKU006', TO_DATE('2023-06-20', 'YYYY-MM-DD'), TO_DATE('2024-04-13', 'YYYY-MM-DD'), 201.59);
@@ -296,6 +318,7 @@ INSERT INTO HISTORICO_PRECIO (clvHistoricoPrecio, SKU, fechaInicioHistPrecio, fe
 INSERT INTO HISTORICO_PRECIO (clvHistoricoPrecio, SKU, fechaInicioHistPrecio, fechaFinalHistPrecio, precioHistPrecio) VALUES (13, 'SKU006', TO_DATE('2022-10-04', 'YYYY-MM-DD'), TO_DATE('2023-10-27', 'YYYY-MM-DD'), 559.18);
 INSERT INTO HISTORICO_PRECIO (clvHistoricoPrecio, SKU, fechaInicioHistPrecio, fechaFinalHistPrecio, precioHistPrecio) VALUES (14, 'SKU007', TO_DATE('2022-12-05', 'YYYY-MM-DD'), TO_DATE('2024-06-11', 'YYYY-MM-DD'), 130.38);
 INSERT INTO HISTORICO_PRECIO (clvHistoricoPrecio, SKU, fechaInicioHistPrecio, fechaFinalHistPrecio, precioHistPrecio) VALUES (15, 'SKU019', TO_DATE('2022-03-29', 'YYYY-MM-DD'), TO_DATE('2023-03-05', 'YYYY-MM-DD'), 653.58);
+
 INSERT INTO HISTORICO_ESTATUS_PRODUCTOS (clvHistoricoEstatus, clvInventarioVet, clvEstatusProdInventario, fechaCambioHistEstatusProd) VALUES (1, 12, 4, TO_DATE('2023-05-01', 'YYYY-MM-DD'));
 INSERT INTO HISTORICO_ESTATUS_PRODUCTOS (clvHistoricoEstatus, clvInventarioVet, clvEstatusProdInventario, fechaCambioHistEstatusProd) VALUES (2, 11, 1, TO_DATE('2020-07-09', 'YYYY-MM-DD'));
 INSERT INTO HISTORICO_ESTATUS_PRODUCTOS (clvHistoricoEstatus, clvInventarioVet, clvEstatusProdInventario, fechaCambioHistEstatusProd) VALUES (3, 13, 3, TO_DATE('2024-07-07', 'YYYY-MM-DD'));
@@ -311,6 +334,7 @@ INSERT INTO HISTORICO_ESTATUS_PRODUCTOS (clvHistoricoEstatus, clvInventarioVet, 
 INSERT INTO HISTORICO_ESTATUS_PRODUCTOS (clvHistoricoEstatus, clvInventarioVet, clvEstatusProdInventario, fechaCambioHistEstatusProd) VALUES (13, 2, 3, TO_DATE('2024-08-11', 'YYYY-MM-DD'));
 INSERT INTO HISTORICO_ESTATUS_PRODUCTOS (clvHistoricoEstatus, clvInventarioVet, clvEstatusProdInventario, fechaCambioHistEstatusProd) VALUES (14, 9, 5, TO_DATE('2024-09-06', 'YYYY-MM-DD'));
 INSERT INTO HISTORICO_ESTATUS_PRODUCTOS (clvHistoricoEstatus, clvInventarioVet, clvEstatusProdInventario, fechaCambioHistEstatusProd) VALUES (15, 7, 3, TO_DATE('2020-02-01', 'YYYY-MM-DD'));
+
 INSERT INTO PASEO (clvPaseo, clvVendedor, inicioPaseo, finPaseo, fechaPaseo) VALUES (1, 1, TO_DATE('2022-10-23', 'YYYY-MM-DD'), TO_DATE('2024-09-01', 'YYYY-MM-DD'), TO_DATE('2024-08-03', 'YYYY-MM-DD'));
 INSERT INTO PASEO (clvPaseo, clvVendedor, inicioPaseo, finPaseo, fechaPaseo) VALUES (2, 5, TO_DATE('2023-04-23', 'YYYY-MM-DD'), TO_DATE('2022-05-19', 'YYYY-MM-DD'), TO_DATE('2023-08-12', 'YYYY-MM-DD'));
 INSERT INTO PASEO (clvPaseo, clvVendedor, inicioPaseo, finPaseo, fechaPaseo) VALUES (3, 4, TO_DATE('2021-07-10', 'YYYY-MM-DD'), TO_DATE('2020-12-04', 'YYYY-MM-DD'), TO_DATE('2023-12-14', 'YYYY-MM-DD'));
@@ -321,6 +345,7 @@ INSERT INTO PASEO (clvPaseo, clvVendedor, inicioPaseo, finPaseo, fechaPaseo) VAL
 INSERT INTO PASEO (clvPaseo, clvVendedor, inicioPaseo, finPaseo, fechaPaseo) VALUES (8, 4, TO_DATE('2023-08-01', 'YYYY-MM-DD'), TO_DATE('2024-08-29', 'YYYY-MM-DD'), TO_DATE('2023-04-25', 'YYYY-MM-DD'));
 INSERT INTO PASEO (clvPaseo, clvVendedor, inicioPaseo, finPaseo, fechaPaseo) VALUES (9, 3, TO_DATE('2021-10-13', 'YYYY-MM-DD'), TO_DATE('2022-06-15', 'YYYY-MM-DD'), TO_DATE('2023-06-12', 'YYYY-MM-DD'));
 INSERT INTO PASEO (clvPaseo, clvVendedor, inicioPaseo, finPaseo, fechaPaseo) VALUES (10, 2, TO_DATE('2024-12-15', 'YYYY-MM-DD'), TO_DATE('2020-02-23', 'YYYY-MM-DD'), TO_DATE('2020-02-08', 'YYYY-MM-DD'));
+
 INSERT INTO MASCOTA_PASEO (clvMascotaPaseo, clvPaseo, clvMascota) VALUES (1, 3, 16);
 INSERT INTO MASCOTA_PASEO (clvMascotaPaseo, clvPaseo, clvMascota) VALUES (2, 1, 1);
 INSERT INTO MASCOTA_PASEO (clvMascotaPaseo, clvPaseo, clvMascota) VALUES (3, 2, 7);
@@ -331,6 +356,7 @@ INSERT INTO MASCOTA_PASEO (clvMascotaPaseo, clvPaseo, clvMascota) VALUES (7, 3, 
 INSERT INTO MASCOTA_PASEO (clvMascotaPaseo, clvPaseo, clvMascota) VALUES (8, 5, 6);
 INSERT INTO MASCOTA_PASEO (clvMascotaPaseo, clvPaseo, clvMascota) VALUES (9, 1, 8);
 INSERT INTO MASCOTA_PASEO (clvMascotaPaseo, clvPaseo, clvMascota) VALUES (10, 6, 4);
+
 INSERT INTO MONITOREO_PASEO (clvMonitoreoPaseo, clvPaseo, latitudMonitoreoPaseo, longitudMonitoreoPaseo, fechaRegistroMonitoreoPaseo) VALUES (1, 4, 19.805702, -98.283933, TO_DATE('2023-07-14', 'YYYY-MM-DD'));
 INSERT INTO MONITOREO_PASEO (clvMonitoreoPaseo, clvPaseo, latitudMonitoreoPaseo, longitudMonitoreoPaseo, fechaRegistroMonitoreoPaseo) VALUES (2, 8, 19.693564, -98.332846, TO_DATE('2024-03-07', 'YYYY-MM-DD'));
 INSERT INTO MONITOREO_PASEO (clvMonitoreoPaseo, clvPaseo, latitudMonitoreoPaseo, longitudMonitoreoPaseo, fechaRegistroMonitoreoPaseo) VALUES (3, 2, 19.640346, -98.616659, TO_DATE('2024-09-18', 'YYYY-MM-DD'));
