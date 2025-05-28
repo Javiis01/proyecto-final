@@ -1,3 +1,7 @@
+--@Autor: Martinez Martinez Francisco David
+--@Fecha creación: 27/05/2025
+--@Descripción: Creación del App Container y Llamado a creacion de tablas e inserts
+
 -- 1. spool del script
 spool logs/crear_app_root.txt
 
@@ -38,10 +42,10 @@ alter session set container = pet_care_ac;
 
 alter pluggable database application pet_care_app begin install '1.0';
 
---alter system set db_create_file_dest = '/opt/oracle/oradata' scope = memory;
+-- crearmkdir -p /opt/oracle/oradata/FREE/pet_care_ac_tbs crear desde oracle
 
 create tablespace pet_care_ix_ts 
-  datafile '/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf'
+  datafile '/opt/oracle/oradata/FREE/pet_care_ac_tbs/pet_care_ix_ts_01.dbf'
   size 5m 
   AUTOEXTEND ON 
   NEXT 10M 
@@ -78,7 +82,7 @@ ALTER USER pet_care_admin QUOTA UNLIMITED ON pet_care_ix_ts;
 ALTER USER pet_care_admin QUOTA UNLIMITED ON pet_care_blob_ts;
 
 -- Conectarse como el usuario común de la app
- connect pet_care_admin/pet_care_admin@pet_care_ac 
+connect pet_care_admin/pet_care_admin@pet_care_ac 
 
 -- Crear tablas con sus respectivos tablespaces
 pause Todo se ejecuto Bien ??
@@ -91,6 +95,7 @@ alter pluggable database application pet_care_app end install;
 alter pluggable database  application pet_care_app begin upgrade '1.0' to '1.1';
 
 connect pet_care_admin/pet_care_admin@pet_care_ac 
+
 
 Pause ANTES DE DESACTIVAR FKś
 -- Desahibilitando las FK
@@ -109,6 +114,6 @@ alter table inventario_veterinaria enable constraint fk_estatusprod_inventariove
 alter table historico_estatus_productos enable constraint fk_estatusproducto_historicoestatusprod;
 
 connect sys/system2@pet_care_ac  as sysdba
-alter pluggable database  application  jcm_ventas_app end upgrade;
+alter pluggable database  application  pet_care_app end upgrade;
 
 alter pluggable database  application all sync;

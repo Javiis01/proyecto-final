@@ -2,10 +2,12 @@
 --@Fecha creación: 27/05/2025
 --@Descripción: 10. Preparar una consulta que muestre la distribución de todos sus datafiles
 
+Prompt Conectandose como sys
 connect sys/system2 as sysdba
 
 alter session set container = pet_care_ac;
 
+Prompt 
 set linesize window
 col tablespace_name format a20
 col file_name format a70
