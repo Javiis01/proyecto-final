@@ -244,16 +244,16 @@ INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnos
 INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnostico, descripcionDiagnostico) VALUES (9, 'Diag_9', 5, 'Descripción del diagnóstico 9');
 INSERT INTO DIAGNOSTICO (clvDiagnostico, nombreDiagnostico, nivelGravedadDiagnostico, descripcionDiagnostico) VALUES (10, 'Diag_10', 2, 'Descripción del diagnóstico 10');
 
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (1, 'CEDULA000001', 'Reynoso, Madera y Quiroz', TO_DATE('2010-08-10', 'YYYY-MM-DD'));
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (2, 'CEDULA000002', 'de la O, Muro y Soto', TO_DATE('2012-09-14', 'YYYY-MM-DD'));
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (3, 'CEDULA000003', 'Velázquez y Carreón S.A.', TO_DATE('2011-07-31', 'YYYY-MM-DD'));
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (4, 'CEDULA000004', 'Olmos-Lara', TO_DATE('2000-01-24', 'YYYY-MM-DD'));
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (5, 'CEDULA000005', 'Munguía-Colunga', TO_DATE('2000-04-13', 'YYYY-MM-DD'));
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (6, 'CEDULA000006', 'Casillas S.A.', TO_DATE('2005-07-11', 'YYYY-MM-DD'));
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (7, 'CEDULA000007', 'Despacho Arredondo, Maestas y ', TO_DATE('2007-01-24', 'YYYY-MM-DD'));
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (8, 'CEDULA000008', 'Salgado, Quiñones y Juárez', TO_DATE('2004-10-08', 'YYYY-MM-DD'));
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (9, 'CEDULA000009', 'Medrano-Rascón S.A. de C.V.', TO_DATE('2009-06-11', 'YYYY-MM-DD'));
-INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (10, 'CEDULA000010', 'Santana, Navarro y Solís', TO_DATE('2002-09-13', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (1, 'CEDULA0001', 'Reynoso, Madera y Quiroz', TO_DATE('2010-08-10', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (2, 'CEDULA0002', 'de la O, Muro y Soto', TO_DATE('2012-09-14', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (3, 'CEDULA0003', 'Velázquez y Carreón S.A.', TO_DATE('2011-07-31', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (4, 'CEDULA0004', 'Olmos-Lara', TO_DATE('2000-01-24', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (5, 'CEDULA0005', 'Munguía-Colunga', TO_DATE('2000-04-13', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (6, 'CEDULA0006', 'Casillas S.A.', TO_DATE('2005-07-11', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (7, 'CEDULA0007', 'Despacho Arredondo, Maestas y ', TO_DATE('2007-01-24', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (8, 'CEDULA0008', 'Salgado, Quiñones y Juárez', TO_DATE('2004-10-08', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (9, 'CEDULA0009', 'Medrano-Rascón S.A. de C.V.', TO_DATE('2009-06-11', 'YYYY-MM-DD'));
+INSERT INTO VETERINARIO (clvVeterinario, cedulaProfesionalVet, universidadVet, fechaTitulacionVet) VALUES (10, 'CEDULA010', 'Santana, Navarro y Solís', TO_DATE('2002-09-13', 'YYYY-MM-DD'));
 
 INSERT INTO CONSULTA_MEDICA (clvConsultaMedica, clvVeterinario, clvDiagnostico, descripcionEstadoConsulta, costoConsulta, fechaConsulta, clvMascota) VALUES (1, 1, 6, 'Finalizado', 191.92, TO_DATE('2020-02-01', 'YYYY-MM-DD'), 16);
 INSERT INTO CONSULTA_MEDICA (clvConsultaMedica, clvVeterinario, clvDiagnostico, descripcionEstadoConsulta, costoConsulta, fechaConsulta, clvMascota) VALUES (2, 7, 9, 'Finalizado', 467.67, TO_DATE('2021-09-27', 'YYYY-MM-DD'), 13);

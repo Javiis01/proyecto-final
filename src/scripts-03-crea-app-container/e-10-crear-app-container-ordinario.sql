@@ -109,6 +109,6 @@ alter table inventario_veterinaria enable constraint fk_estatusprod_inventariove
 alter table historico_estatus_productos enable constraint fk_estatusproducto_historicoestatusprod;
 
 connect sys/system2@pet_care_ac  as sysdba
-alter pluggable database  application  jcm_ventas_app end upgrade;
+alter pluggable database  application  pet_care_app end upgrade;
 
 alter pluggable database  application all sync;
