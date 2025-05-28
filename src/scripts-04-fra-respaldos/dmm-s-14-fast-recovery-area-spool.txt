@@ -1,0 +1,73 @@
+1. Conectandose a sys
+Connected.
+
+
+
+2. Vericando el área de FRA
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+db_recovery_auto_rekey               string      ON
+db_recovery_file_dest                string      /unam/diplo-bd/pet-care-fast-r
+                                                 ecovery-area
+db_recovery_file_dest_size           big integer 30G
+2.1. Especificando ubicación y tamaño de la FRA
+
+System altered.
+
+
+System altered.
+
+2.2 Vericando el área de FRA
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+db_recovery_auto_rekey               string      ON
+db_recovery_file_dest                string      /unam/diplo-bd/pet-care-fast-r
+                                                 ecovery-area
+db_recovery_file_dest_size           big integer 30G
+2.3 Reiniciando instancia
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+ORACLE instance started.
+
+Total System Global Area  802346584 bytes
+Fixed Size                  5428824 bytes
+Variable Size             708837376 bytes
+Database Buffers           83886080 bytes
+Redo Buffers                4194304 bytes
+Database mounted.
+3. Habilitar Flashback por al menos 3 días
+
+System altered.
+
+
+System altered.
+
+4. Habilitadn Flash
+
+Database altered.
+
+
+Database altered.
+
+5. Verificando que la base de datos este en modo flashback
+
+FLASHBACK_ON
+------------------
+YES
+
+6.Mostrar el tiempo de retención
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+undo_retention                       integer     4320
+7. Un miembro de los Redo Logs en la FRA
+ALTER DATABASE ADD LOGFILE MEMBER '/unam/diplo-bd/pet-care-fast-recovery-area/redo01.log' TO GROUP 1
+*
+ERROR at line 1:
+ORA-01577: cannot add log file '/unam/diplo-bd/pet-care-fast-recovery-area/redo01.log' - file already part of database
+Help: https://docs.oracle.com/error-help/db/ora-01577/
+
+

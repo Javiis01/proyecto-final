@@ -1,0 +1,29 @@
+Ejecutar en usuario oracle 
+rman target sys/system2@pet_care_ac
+
+mkdir pet-care-backups-database
+
+chmod 777 pet-care-backups-database/
+chown oracle:oinstall pet-care-backups-database/
+
+Punto 7 Una copia de los backups tipo BackupSet deberá ubicarse en la FRA, otra copia fuera de la FRA
+
+# 7.1 BackupSet en FRA y fuera de FRA
+#Dentro de FRA
+BACKUP AS BACKUPSET DATABASE;
+
+# Fuera de FRA
+BACKUP AS BACKUPSET DATABASE FORMAT '/unam/diplo-bd/pet-care-backups-database/backupset_%U.bkp';
+
+# 7.2 Backup Copy en FRA y fuera de FRA
+# En FRA
+BACKUP AS COPY DATABASE FORMAT '+FRA';
+
+# Fuera de FRA
+BACKUP AS COPY DATABASE FORMAT '/unam/diplo-bd/pet-care-backups-database/copy_%U.bkp';
+
+Punto 8
+backup database plus archivelog tag petcareFullBk01;
+
+Punto 9
+backup incremental level 0 database tag petcareIncBk01;
