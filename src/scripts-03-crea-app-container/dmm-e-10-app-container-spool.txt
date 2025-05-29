@@ -1,0 +1,88 @@
+1. Conectandonos al CBD como sys
+Connected.
+
+
+
+2. ================{ Application Container }====================
+===> 2.1 Eliminando App COntainer
+Eliminando pet_care_ac con sus datafiles en caso de existir
+
+PL/SQL procedure successfully completed.
+
+===> 2.2 Crear el application container
+
+Pluggable database created.
+
+3. Abrir el application container
+
+Pluggable database altered.
+
+4. Conectarse al application container
+
+Session altered.
+
+============{ 5. Configuraicon Version 1.0 de la App }=================
+====> Para pet_care_norte
+===> 5. 1. Iniciando la instalacion
+old   1: alter pluggable database application pet_care_app_01 begin install '&version'
+new   1: alter pluggable database application pet_care_app_01 begin install '1.0'
+
+Pluggable database altered.
+
+===> { 5. 2. Limpienado la app }
+[ENTER] para continuar o Ctrl + C para cancelar
+
+===> { 5. 2.1 Limpieza de usuario y tablas }
+
+Session altered.
+
+
+User dropped.
+
+
+Tablespace dropped.
+
+
+Tablespace dropped.
+
+
+Tablespace dropped.
+
+[ENTER] para continuar o Ctrl + C para cancelar
+
+===> { 5. 3. tablespace}
+[ENTER] para continuar o Ctrl + C para cancelar
+
+===> { 5. 3. Distribucion fisica de datafiles }
+5. 3.1. distribucion fisica para =={ TABLAS }==
+old   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/&directorio_pdb/pet_care_tb_ts_01.dbf' size 50m autoextend on next 5m maxsize unlimited,
+new   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_norte/pet_care_tb_ts_01.dbf' size 50m autoextend on next 5m maxsize unlimited,
+old   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/&directorio_pdb/pet_care_tb_ts_02.dbf' size 50m autoextend on next 5m maxsize unlimited,
+new   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_norte/pet_care_tb_ts_02.dbf' size 50m autoextend on next 5m maxsize unlimited,
+old   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/&directorio_pdb/pet_care_tb_ts_03.dbf' size 50m autoextend on next 5m maxsize unlimited
+new   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_norte/pet_care_tb_ts_03.dbf' size 50m autoextend on next 5m maxsize unlimited
+
+Tablespace created.
+
+5. 3.2. distribucion fisica para =={ INDICES }==
+old   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/&directorio_pdb/pet_care_ix_ts_01.dbf' size 5m autoextend on next 10m maxsize unlimited,
+new   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_norte/pet_care_ix_ts_01.dbf' size 5m autoextend on next 10m maxsize unlimited,
+old   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/&directorio_pdb/pet_care_ix_ts_02.dbf' size 5m autoextend on next 10m maxsize unlimited,
+new   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_norte/pet_care_ix_ts_02.dbf' size 5m autoextend on next 10m maxsize unlimited,
+old   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/&directorio_pdb/pet_care_ix_ts_03.dbf' size 5m autoextend on next 10m maxsize unlimited
+new   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_norte/pet_care_ix_ts_03.dbf' size 5m autoextend on next 10m maxsize unlimited
+
+Tablespace created.
+
+5. 3.3. distribucion fisica para =={ almacenamiento de datos CLOB/BLOB }==
+old   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/&directorio_pdb/pet_care_blob_ts_01.dbf' size 100m autoextend on next 50m maxsize unlimited,
+new   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_norte/pet_care_blob_ts_01.dbf' size 100m autoextend on next 50m maxsize unlimited,
+old   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/&directorio_pdb/pet_care_blob_ts_02.dbf' size 100m autoextend on next 50m maxsize unlimited,
+new   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_norte/pet_care_blob_ts_02.dbf' size 100m autoextend on next 50m maxsize unlimited,
+old   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/&directorio_pdb/pet_care_blob_ts_03.dbf' size 100m autoextend on next 50m maxsize unlimited
+new   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_norte/pet_care_blob_ts_03.dbf' size 100m autoextend on next 50m maxsize unlimited
+
+Tablespace created.
+
+===> { 5. 4. Creando y Configurando Uusarios }
+=
