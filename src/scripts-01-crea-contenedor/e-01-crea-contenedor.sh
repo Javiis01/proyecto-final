@@ -17,4 +17,4 @@ docker run -i -t \
 --expose 1521 \
 --expose 5500 \
 --shm-size=2gb \
--e DISPLAY=$DISPLAY ol-jcm:1.0 bash
+-e DISPLAY=$DISPLAY ol-dmm:1.0 bash

@@ -13,76 +13,624 @@ PL/SQL procedure successfully completed.
 
 Pluggable database created.
 
-3. Abrir el application container
+===> 3. Abrir el application container
 
 Pluggable database altered.
 
-4. Conectarse al application container
+===> 4. Conectarse al application container
 
 Session altered.
 
-============{ 5. Configuraicon Version 1.0 de la App }=================
-====> Para pet_care_norte
-===> 5. 1. Iniciando la instalacion
-old   1: alter pluggable database application pet_care_app_01 begin install '&version'
-new   1: alter pluggable database application pet_care_app_01 begin install '1.0'
+5. ================{ PDBS pet_care_norte }====================
+[ENTER] para continuar o Ctrl + C para cancelar
+
+===> 5.1 Creando APP PDB pet_care_norte
+
+Pluggable database created.
+
+5.2 abriendo la app pdb pet_care_norte
 
 Pluggable database altered.
 
-===> { 5. 2. Limpienado la app }
-[ENTER] para continuar o Ctrl + C para cancelar
-
-===> { 5. 2.1 Limpieza de usuario y tablas }
+5.3 entrando a la app pdb pet_care_norte
 
 Session altered.
 
+===> { 5.4. Distribucion fisica de datafiles }
+5.4.1. distribucion fisica para =={ TABLAS }==
 
-User dropped.
+Tablespace created.
+
+5.4.2. distribucion fisica para =={ INDICES }==
+
+Tablespace created.
+
+5.4.3. distribucion fisica para =={ almacenamiento de datos CLOB/BLOB }==
+
+Tablespace created.
+
+===> { 5.5. Creando y Configurando Uusarios }
+===> 5.5.1 Creando y Definiendo Usuario admin para pet_care_ac
+y definiendo sus tablespaces
+
+User created.
+
+===> 5.5.2 Otorgandole privilegios al usuario admin
+
+Grant succeeded.
+
+===> 5.5.3 Otorgandole permisos sobre pet_care_ix_ts
+
+User altered.
+
+===> 5.5.4 Otorgandole permisos sobre pet_care_blob_ts
+
+User altered.
+
+===> 5.5.5 Conectandonos con el usuario admin de pec_care_ac
+Connected.
 
 
-Tablespace dropped.
 
-
-Tablespace dropped.
-
-
-Tablespace dropped.
-
+================================
+Ejecutando e-11-creacion-tablas-fk.sql
+================================
 [ENTER] para continuar o Ctrl + C para cancelar
 
-===> { 5. 3. tablespace}
-[ENTER] para continuar o Ctrl + C para cancelar
 
-===> { 5. 3. Distribucion fisica de datafiles }
-5. 3.1. distribucion fisica para =={ TABLAS }==
-old   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/&directorio_pdb/pet_care_tb_ts_01.dbf' size 50m autoextend on next 5m maxsize unlimited,
-new   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_norte/pet_care_tb_ts_01.dbf' size 50m autoextend on next 5m maxsize unlimited,
-old   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/&directorio_pdb/pet_care_tb_ts_02.dbf' size 50m autoextend on next 5m maxsize unlimited,
-new   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_norte/pet_care_tb_ts_02.dbf' size 50m autoextend on next 5m maxsize unlimited,
-old   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/&directorio_pdb/pet_care_tb_ts_03.dbf' size 50m autoextend on next 5m maxsize unlimited
-new   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_norte/pet_care_tb_ts_03.dbf' size 50m autoextend on next 5m maxsize unlimited
+Table created.
 
-Tablespace created.
 
-5. 3.2. distribucion fisica para =={ INDICES }==
-old   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/&directorio_pdb/pet_care_ix_ts_01.dbf' size 5m autoextend on next 10m maxsize unlimited,
-new   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_norte/pet_care_ix_ts_01.dbf' size 5m autoextend on next 10m maxsize unlimited,
-old   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/&directorio_pdb/pet_care_ix_ts_02.dbf' size 5m autoextend on next 10m maxsize unlimited,
-new   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_norte/pet_care_ix_ts_02.dbf' size 5m autoextend on next 10m maxsize unlimited,
-old   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/&directorio_pdb/pet_care_ix_ts_03.dbf' size 5m autoextend on next 10m maxsize unlimited
-new   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_norte/pet_care_ix_ts_03.dbf' size 5m autoextend on next 10m maxsize unlimited
+Table created.
 
-Tablespace created.
 
-5. 3.3. distribucion fisica para =={ almacenamiento de datos CLOB/BLOB }==
-old   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/&directorio_pdb/pet_care_blob_ts_01.dbf' size 100m autoextend on next 50m maxsize unlimited,
-new   3:     '/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_norte/pet_care_blob_ts_01.dbf' size 100m autoextend on next 50m maxsize unlimited,
-old   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/&directorio_pdb/pet_care_blob_ts_02.dbf' size 100m autoextend on next 50m maxsize unlimited,
-new   4:     '/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_norte/pet_care_blob_ts_02.dbf' size 100m autoextend on next 50m maxsize unlimited,
-old   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/&directorio_pdb/pet_care_blob_ts_03.dbf' size 100m autoextend on next 50m maxsize unlimited
-new   5:     '/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_norte/pet_care_blob_ts_03.dbf' size 100m autoextend on next 50m maxsize unlimited
+Table created.
 
-Tablespace created.
 
-===> { 5. 4. Creando y Configurando Uusarios }
-=
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+PL/SQL procedure successfully completed.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+pet_care_admin@pet_care_norte> connect sys/system2@pet_care_ac
+ERROR:
+ORA-28009: connection as SYS should be as SYSDBA or SYSOPER
+Help: https://docs.oracle.com/error-help/db/ora-28009/
+
+
+Warning: You are no longer connected to ORACLE.
+pet_care_admin@pet_care_norte> connect sys/system2@pet_care_ac as sysdba
+Connected.
+
+
+
+sys@pet_care_ac> 
+sys@pet_care_ac> SELECT file_id, file_name, tablespace_name, bytes/1024/1024 AS size_mb, autoextensible
+  2  FROM dba_data_files;
+
+   FILE_ID
+----------
+FILE_NAME
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+TABLESPACE_NAME                   SIZE_MB AUT
+------------------------------ ---------- ---
+       160
+/opt/oracle/oradata/FREE/pet_care_ac/system01.dbf
+SYSTEM                                250 YES
+
+       161
+/opt/oracle/oradata/FREE/pet_care_ac/sysaux01.dbf
+SYSAUX                                200 YES
+
+       162
+/opt/oracle/oradata/FREE/pet_care_ac/undotbs01.dbf
+UNDOTBS1                              140 YES
+
+       163
+/opt/oracle/oradata/FREE/pet_care_ac/users01.dbf
+USERS                                  50 YES
+
+
+sys@pet_care_ac> col
+COLUMN   prompt_name ON
+NEW_VALUE PROMPT_VALUE
+PRINT 
+
+COLUMN   NAME_COL_PDB_CLOUD_IDENTITY ON
+HEADING  'CLOUD IDENTITY'
+
+COLUMN   NAME_COL_PDB_APP_ROOT_CON_ID ON
+HEADING  'APP|ROOT|CONID' headsep '|'
+FORMAT   9999
+
+COLUMN   NAME_COL_PDBD_RESTRICTED ON
+HEADING  'REST'
+FORMAT   A4
+
+COLUMN   NAME_COL_PDB_APP_ROOT_CLONE ON
+HEADING  'APP|ROOT|CLONE' headsep '|'
+FORMAT   A5
+word_wrap 
+
+COLUMN   NAME_COL_PDBD_CON_ID ON
+HEADING  'CONID'
+FORMAT   9999
+
+COLUMN   NAME_COL_PDBD_NAME ON
+HEADING  'CON_NAME'
+FORMAT   A28
+word_wrap 
+
+COLUMN   NAME_COL_PDB_PROXY_PDB ON
+HEADING  'PXY|PDB' headsep '|'
+FORMAT   A3
+word_wrap 
+
+COLUMN   NAME_COL_PDB_APP_SEED ON
+HEADING  'APP|SEED' headsep '|'
+FORMAT   A4
+word_wrap 
+
+COLUMN   NAME_COL_PDB_APP_PDB ON
+HEADING  'APP|PDB' headsep '|'
+FORMAT   A3
+word_wrap 
+
+COLUMN   NAME_COL_PDB_APP_ROOT ON
+HEADING  'APP|ROOT' headsep '|'
+FORMAT   A4
+word_wrap 
+
+COLUMN   NAME_COL_PLUS_PDB_RESTRICTED ON
+HEADING  'RESTRICTED'
+FORMAT   A10
+
+COLUMN   NAME_COL_PLUS_PDB_OPEN_MODE ON
+HEADING  'OPEN MODE'
+FORMAT   A10
+
+COLUMN   NAME_COL_PLUS_PDB_NAME ON
+HEADING  'CON_NAME'
+FORMAT   A30
+word_wrap 
+
+COLUMN   NAME_COL_PLUS_PDB_CON_ID ON
+HEADING  'CON_ID'
+
+COLUMN   NAME_COL_PLUS_PDB_CONTAINERID ON
+HEADING  'CON_ID'
+FORMAT   a30
+word_wrap 
+
+COLUMN   NAME_COL_PLUS_PDB_CONTAINER ON
+HEADING  'CON_NAME'
+FORMAT   a30
+word_wrap 
+
+COLUMN   NAME_COL_PLUS_SHOW_EDITION ON
+HEADING  'EDITION'
+FORMAT   a30
+word_wrap 
+
+COLUMN   result_plus_xquery ON
+HEADING  'Result Sequence'
+
+COLUMN   other_plus_exp ON
+FORMAT   a44
+
+COLUMN   other_tag_plus_exp ON
+FORMAT   a29
+
+COLUMN   object_node_plus_exp ON
+FORMAT   a8
+
+COLUMN   plan_plus_exp ON
+FORMAT   a60
+
+COLUMN   parent_id_plus_exp ON
+HEADING  'p'
+FORMAT   990
+
+COLUMN   id_plus_exp ON
+HEADING  'i'
+FORMAT   990
+
+COLUMN   droptime_plus_show_recyc ON
+HEADING  'DROP TIME'
+FORMAT   a19
+
+COLUMN   objtype_plus_show_recyc ON
+HEADING  'OBJECT TYPE'
+FORMAT   a12
+
+COLUMN   objectname_plus_show_recyc ON
+HEADING  'RECYCLEBIN NAME'
+FORMAT   a30
+
+COLUMN   origname_plus_show_recyc ON
+HEADING  'ORIGINAL NAME'
+FORMAT   a16
+
+COLUMN   SID_COL_PLUS_SHOW_SPPARAM ON
+HEADING  'SID'
+FORMAT   a8
+word_wrap 
+
+COLUMN   VALUE_COL_PLUS_SHOW_SPPARAM ON
+HEADING  'VALUE'
+FORMAT   a28
+word_wrap 
+
+COLUMN   NAME_COL_PLUS_SHOW_SPPARAM ON
+HEADING  'NAME'
+FORMAT   a29
+word_wrap 
+
+COLUMN   value_col_plus_show_param ON
+HEADING  'VALUE'
+FORMAT   a30
+
+COLUMN   name_col_plus_show_param ON
+HEADING  'NAME'
+FORMAT   a36
+
+COLUMN   units_col_plus_show_sga ON
+FORMAT   a15
+
+COLUMN   name_col_plus_show_sga ON
+FORMAT   a24
+
+COLUMN   ERROR ON
+FORMAT   A65
+word_wrap 
+
+COLUMN   LINE/COL ON
+FORMAT   A8
+
+COLUMN   ROWLABEL ON
+FORMAT   A15
+sys@pet_care_ac> 
+sys@pet_care_ac> 
+sys@pet_care_ac> connect sys/system2 as sysdba
+Connected.
+
+
+
+sys@free> SELECT file_id, file_name, tablespace_name, bytes/1024/1024 AS size_mb, autoextensible
+  2  FROM dba_data_files;
+
+   FILE_ID
+----------
+FILE_NAME
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+TABLESPACE_NAME                   SIZE_MB AUT
+------------------------------ ---------- ---
+         1
+/opt/oracle/oradata/FREE/system01.dbf
+SYSTEM                                530 YES
+
+         3
+/opt/oracle/oradata/FREE/sysaux01.dbf
+SYSAUX                                490 YES
+
+         5
+/opt/oracle/oradata/FREE/undotbs01.dbf
+UNDOTBS1                              185 YES
+
+         7
+/opt/oracle/oradata/FREE/users01.dbf
+USERS                                  50 YES
+
+
+sys@free> ALTER SESSION SET CONTAINER = pet_care_norte;
+
+Session altered.
+
+sys@free> SHOW CON_NAME;
+
+CON_NAME
+------------------------------
+PET_CARE_NORTE
+sys@free> SELECT file_id, file_name, tablespace_name, bytes/1024/1024 AS size_mb, autoextensible
+  2  FROM dba_data_files;
+
+   FILE_ID
+----------
+FILE_NAME
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+TABLESPACE_NAME                   SIZE_MB AUT
+------------------------------ ---------- ---
+       164
+/opt/oracle/oradata/FREE/pet_care_norte/system01.dbf
+SYSTEM                                250 YES
+
+       165
+/opt/oracle/oradata/FREE/pet_care_norte/sysaux01.dbf
+SYSAUX                                200 YES
+
+       166
+/opt/oracle/oradata/FREE/pet_care_norte/undotbs01.dbf
+UNDOTBS1                              140 YES
+
+       167
+/opt/oracle/oradata/FREE/pet_care_norte/users01.dbf
+USERS                                  50 YES
+
+       168
+/unam/diplo-bd/pet-care-disks/datafile-d01/pdbseed/pet_care_tb_ts_01.dbf
+PET_CARE_TB_TS                         50 YES
+
+       169
+/unam/diplo-bd/pet-care-disks/datafile-d02/pdbseed/pet_care_tb_ts_02.dbf
+PET_CARE_TB_TS                         50 YES
+
+       170
+/unam/diplo-bd/pet-care-disks/datafile-d03/pdbseed/pet_care_tb_ts_03.dbf
+PET_CARE_TB_TS                         50 YES
+
+
+   FILE_ID
+----------
+FILE_NAME
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+TABLESPACE_NAME                   SIZE_MB AUT
+------------------------------ ---------- ---
+       171
+/unam/diplo-bd/pet-care-disks/datafile-d01/pdbseed/pet_care_ix_ts_01.dbf
+PET_CARE_IX_TS                          5 YES
+
+       172
+/unam/diplo-bd/pet-care-disks/datafile-d02/pdbseed/pet_care_ix_ts_02.dbf
+PET_CARE_IX_TS                          5 YES
+
+       173
+/unam/diplo-bd/pet-care-disks/datafile-d03/pdbseed/pet_care_ix_ts_03.dbf
+PET_CARE_IX_TS                          5 YES
+
+       174
+/unam/diplo-bd/pet-care-disks/datafile-d01/pdbseed/pet_care_blob_ts_01.dbf
+PET_CARE_BLOB_TS                      100 YES
+
+       175
+/unam/diplo-bd/pet-care-disks/datafile-d02/pdbseed/pet_care_blob_ts_02.dbf
+PET_CARE_BLOB_TS                      100 YES
+
+       176
+/unam/diplo-bd/pet-care-disks/datafile-d03/pdbseed/pet_care_blob_ts_03.dbf
+PET_CARE_BLOB_TS                      100 YES
+
+
+13 rows selected.
+
+sys@free> col file_name format col a80
+SP2-0246: Illegal FORMAT string "col"
+Help: https://docs.oracle.com/error-help/db/sp2-0246/
+sys@free> col file_name format a80
+sys@free> 
+sys@free> run
+  1  SELECT file_id, file_name, tablespace_name, bytes/1024/1024 AS size_mb, autoextensible
+  2* FROM dba_data_files
+
+   FILE_ID FILE_NAME                                                                        TABLESPACE_NAME                   SIZE_MB AUT
+---------- -------------------------------------------------------------------------------- ------------------------------ ---------- ---
+       164 /opt/oracle/oradata/FREE/pet_care_norte/system01.dbf                             SYSTEM                                250 YES
+       165 /opt/oracle/oradata/FREE/pet_care_norte/sysaux01.dbf                             SYSAUX                                200 YES
+       166 /opt/oracle/oradata/FREE/pet_care_norte/undotbs01.dbf                            UNDOTBS1                              140 YES
+       167 /opt/oracle/oradata/FREE/pet_care_norte/users01.dbf                              USERS                                  50 YES
+       168 /unam/diplo-bd/pet-care-disks/datafile-d01/pdbseed/pet_care_tb_ts_01.dbf         PET_CARE_TB_TS                         50 YES
+       169 /unam/diplo-bd/pet-care-disks/datafile-d02/pdbseed/pet_care_tb_ts_02.dbf         PET_CARE_TB_TS                         50 YES
+       170 /unam/diplo-bd/pet-care-disks/datafile-d03/pdbseed/pet_care_tb_ts_03.dbf         PET_CARE_TB_TS                         50 YES
+       171 /unam/diplo-bd/pet-care-disks/datafile-d01/pdbseed/pet_care_ix_ts_01.dbf         PET_CARE_IX_TS                          5 YES
+       172 /unam/diplo-bd/pet-care-disks/datafile-d02/pdbseed/pet_care_ix_ts_02.dbf         PET_CARE_IX_TS                          5 YES
+       173 /unam/diplo-bd/pet-care-disks/datafile-d03/pdbseed/pet_care_ix_ts_03.dbf         PET_CARE_IX_TS                          5 YES
+       174 /unam/diplo-bd/pet-care-disks/datafile-d01/pdbseed/pet_care_blob_ts_01.dbf       PET_CARE_BLOB_TS                      100 YES
+       175 /unam/diplo-bd/pet-care-disks/datafile-d02/pdbseed/pet_care_blob_ts_02.dbf       PET_CARE_BLOB_TS                      100 YES
+       176 /unam/diplo-bd/pet-care-disks/datafile-d03/pdbseed/pet_care_blob_ts_03.dbf       PET_CARE_BLOB_TS                      100 YES
+
+13 rows selected.
+
+sys@free> 
+sys@free> 
+sys@free> 
+sys@free> 
+sys@free> shutdown immediate
+Pluggable Database closed.
+sys@free> exit

@@ -34,5 +34,12 @@ export LD_LIBRARY_PATH=\$ORACLE_HOME/lib:\$LD_LIBRARY_PATH
 alias sqlplus='rlwrap sqlplus'
 EOF
 
+echo "Otorgando Permisos para entorno Grafico"
+cd /tmp/.X11-unix
+chmod 777 X*
+
+ls -l 
+
+
 echo "Archivo creado exitosamente en $DEST"
 echo "Reiniciar el COntenedor"

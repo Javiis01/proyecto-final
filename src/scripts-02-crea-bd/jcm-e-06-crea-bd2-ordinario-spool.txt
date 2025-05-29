@@ -1,0 +1,30 @@
+conectando como SYS empleando archivo de passwords.
+Connected to an idle instance.
+select lower(sys_context('userenv','current_user')
+*
+ERROR at line 1:
+ORA-01034: The Oracle instance is not available for use. Start the instance.
+Process ID: 0
+Session ID: 0 Serial number: 0
+Help: https://docs.oracle.com/error-help/db/ora-01034/
+
+
+iniciando en modo nomount
+ORACLE instance started.
+
+Total System Global Area  802346584 bytes
+Fixed Size                  5428824 bytes
+Variable Size             515899392 bytes
+Database Buffers          276824064 bytes
+Redo Buffers                4194304 bytes
+1.  Ejecutar la instrucción create database
+
+Database created.
+
+2. Homologando passwords
+
+User altered.
+
+
+User altered.
+

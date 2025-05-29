@@ -23,22 +23,21 @@ if [ -f "disk1.img" ]; then
 fi;
 
 echo "creando archivo disk1.img"
-dd if=/dev/zero of=disk1.img bs=100M count=10
+dd if=/dev/zero of=disk1.img bs=1M count=5120
 
 echo "====={3.2.2 disk2.img}"
 if [ -f "disk2.img" ]; then
   read -p "El archivo ya existe [Enter] para sobrescribir, Ctrl -C Cancelar"
 fi;
 echo "creando archivo disk2.img"
-dd if=/dev/zero of=disk2.img bs=100M count=10
+dd if=/dev/zero of=disk2.img bs=1M count=5120
 
 echo "====={3.2.3 disk3.img}"
 if [ -f "disk3.img" ]; then
   read -p "El archivo ya existe [Enter] para sobrescribir, Ctrl -C Cancelar"
 fi;
-
 echo "creando archivo disk3.img"
-dd if=/dev/zero of=disk3.img bs=100M count=10
+dd if=/dev/zero of=disk3.img bs=1M count=5120
 
 
 echo "====={ 3.3.} Creando Archivos img para los tablespaces"
@@ -48,7 +47,7 @@ if [ -f "disk-datafile-1.img" ]; then
 fi;
 
 echo "creando archivo disk-datafile-1.img"
-dd if=/dev/zero of=disk-datafile-1.img bs=100M count=10
+dd if=/dev/zero of=disk-datafile-1.img bs=1M count=15360
 
 echo "====={3.3.2 disk-datafile-2.img}"
 if [ -f "disk-datafile-2.img" ]; then
@@ -56,7 +55,7 @@ if [ -f "disk-datafile-2.img" ]; then
 fi;
 
 echo "creando archivo disk-datafile-2.img"
-dd if=/dev/zero of=disk-datafile-2.img bs=100M count=10
+dd if=/dev/zero of=disk-datafile-2.img bs=1M count=15360
 
 echo "====={3.3.3 disk-datafile-3.img}"
 if [ -f "disk-datafile-3.img" ]; then
@@ -64,7 +63,7 @@ if [ -f "disk-datafile-3.img" ]; then
 fi;
 
 echo "creando archivo disk-datafile-3.img"
-dd if=/dev/zero of=disk-datafile-3.img bs=100M count=10
+dd if=/dev/zero of=disk-datafile-3.img bs=1M count=15360
 
 echo "========== 4. Mostrando la creación de los archivos ========="
 du -sh disk*.img 
@@ -128,12 +127,12 @@ echo "
 Segun el loop para cada disk editar y ejecutar los siguientes comandos
 
 {Cambiar los ## por el numero asignado al loop device}
-mount -o loop /dev/loop## /unam/diplo-bd/pet-care-disks/d01
-mount -o loop /dev/loop## /unam/diplo-bd/pet-care-disks/d02
-mount -o loop /dev/loop## /unam/diplo-bd/pet-care-disks/d03
-mount -o loop /dev/loop## /unam/diplo-bd/pet-care-disks/datafile-d01
-mount -o loop /dev/loop## /unam/diplo-bd/pet-care-disks/datafile-d02
-mount -o loop /dev/loop## /unam/diplo-bd/pet-care-disks/datafile-d03
+mount -o loop /dev/loop16 /unam/diplo-bd/pet-care-disks/d01
+mount -o loop /dev/loop17 /unam/diplo-bd/pet-care-disks/d02
+mount -o loop /dev/loop18 /unam/diplo-bd/pet-care-disks/d03
+mount -o loop /dev/loop19 /unam/diplo-bd/pet-care-disks/datafile-d01
+mount -o loop /dev/loop20 /unam/diplo-bd/pet-care-disks/datafile-d02
+mount -o loop /dev/loop21 /unam/diplo-bd/pet-care-disks/datafile-d03
 
 nano /etc/fstab y agregar lo siguiente
 
