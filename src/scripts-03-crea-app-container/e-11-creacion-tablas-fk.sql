@@ -17,7 +17,7 @@
 --
 
 
-CREATE TABLE CATEGORIA(
+CREATE TABLE PET_CARE_ADMIN.CATEGORIA(
     clvCategoria            NUMBER(38, 0)    NOT NULL,
     nombreCategoria         VARCHAR2(20)     NOT NULL,
     descripcionCategoria    VARCHAR2(30)     NOT NULL,
@@ -30,7 +30,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: CERTIFICADO 
 --
 
-CREATE TABLE CERTIFICADO(
+CREATE TABLE PET_CARE_ADMIN.CERTIFICADO(
     clvCursoAprobado            NUMBER(38, 0)    NOT NULL,
     clvInscripcionCurso         NUMBER(38, 0)    NOT NULL,
     nombreCertificado           VARCHAR2(30)     NOT NULL,
@@ -46,7 +46,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: CLIENTE 
 --
 
-CREATE TABLE CLIENTE(
+CREATE TABLE PET_CARE_ADMIN.CLIENTE(
     clvCliente             NUMBER(38, 0)    NOT NULL,
     clvMunicipio           NUMBER(38, 0)    NOT NULL,
     nombreClie             VARCHAR2(20)     NOT NULL,
@@ -64,7 +64,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: CONSULTA_MEDICA 
 --
 
-CREATE TABLE CONSULTA_MEDICA(
+CREATE TABLE PET_CARE_ADMIN.CONSULTA_MEDICA(
     clvConsultaMedica            NUMBER(38, 0)    NOT NULL,
     clvVeterinario               NUMBER(38, 0)    NOT NULL,
     clvDiagnostico               NUMBER(38, 0)    NOT NULL,
@@ -82,7 +82,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: CURSO 
 --
 
-CREATE TABLE CURSO(
+CREATE TABLE PET_CARE_ADMIN.CURSO(
     clvCurso              NUMBER(38, 0)    NOT NULL,
     codigoInternoCurso    NUMBER(38, 0)    NOT NULL,
     UUID                  VARCHAR2(36)     NOT NULL,
@@ -98,7 +98,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: DIAGNOSTICO 
 --
 
-CREATE TABLE DIAGNOSTICO(
+CREATE TABLE PET_CARE_ADMIN.DIAGNOSTICO(
     clvDiagnostico              NUMBER(38, 0)    NOT NULL,
     nombreDiagnostico           VARCHAR2(30)     NOT NULL,
     nivelGravedadDiagnostico    NUMBER(38, 0)    NOT NULL,
@@ -113,7 +113,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: EMPLEADO 
 --
 
-CREATE TABLE EMPLEADO(
+CREATE TABLE PET_CARE_ADMIN.EMPLEADO(
     clvEmpleado           NUMBER(38, 0)    NOT NULL,
     clvSupervisorEmp      NUMBER(38, 0),
     rfcEmp                CHAR(12)         NOT NULL,
@@ -140,7 +140,7 @@ lob (fotoEmp) store as (
 -- TABLE: ESTADO 
 --
 
-CREATE TABLE ESTADO(
+CREATE TABLE PET_CARE_ADMIN.ESTADO(
     clvEstado       NUMBER(38, 0)    NOT NULL,
     nombreEstado    CHAR(20)         NOT NULL,
     CONSTRAINT pk_estado PRIMARY KEY (clvEstado)
@@ -153,7 +153,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: ESTATUS_PROD_INVENTARIO 
 --
 
-CREATE TABLE ESTATUS_PROD_INVENTARIO(
+CREATE TABLE PET_CARE_ADMIN.ESTATUS_PROD_INVENTARIO(
     clvEstatusProdInventario     NUMBER(38, 0)    NOT NULL,
     estatusProdInventario        VARCHAR2(15)     NOT NULL,
     descripcionProdInventario    VARCHAR2(20)     NOT NULL,
@@ -167,7 +167,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: ESTILISTA 
 --
 
-CREATE TABLE ESTILISTA(
+CREATE TABLE PET_CARE_ADMIN.ESTILISTA(
     clvEstilista            NUMBER(38, 0)    NOT NULL,
     reseniaHabilidadesEst    CHAR(50)         NOT NULL,
     CONSTRAINT pk_estilistas PRIMARY KEY (clvEstilista)
@@ -180,7 +180,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: FOTO_MASCOTA 
 --
 
-CREATE TABLE FOTO_MASCOTA(
+CREATE TABLE PET_CARE_ADMIN.FOTO_MASCOTA(
     clvFotoMascota    NUMBER(38, 0)    NOT NULL,
     clvMascota        NUMBER(38, 0)    NOT NULL,
     fotoMascota       BLOB         NOT NULL,
@@ -197,7 +197,7 @@ lob (fotoMascota) store as (
 -- TABLE: HISTORICO_ESTATUS_PRODUCTOS 
 --
 
-CREATE TABLE HISTORICO_ESTATUS_PRODUCTOS(
+CREATE TABLE PET_CARE_ADMIN.HISTORICO_ESTATUS_PRODUCTOS(
     clvHistoricoEstatus           NUMBER(38, 0)    NOT NULL,
     clvInventarioVet              NUMBER(38, 0),
     clvEstatusProdInventario      NUMBER(38, 0),
@@ -212,7 +212,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: HISTORICO_PRECIO 
 --
 
-CREATE TABLE HISTORICO_PRECIO(
+CREATE TABLE PET_CARE_ADMIN.HISTORICO_PRECIO(
     clvHistoricoPrecio       NUMBER(38, 0)    NOT NULL,
     SKU                      VARCHAR2(20),
     fechaInicioHistPrecio    DATE             NOT NULL,
@@ -228,7 +228,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: INSCRIPCION_CURSO 
 --
 
-CREATE TABLE INSCRIPCION_CURSO(
+CREATE TABLE PET_CARE_ADMIN.INSCRIPCION_CURSO(
     clvInscripcionCurso    NUMBER(38, 0)    NOT NULL,
     clvCurso               NUMBER(38, 0)    NOT NULL,
     clvEstilista           NUMBER(38, 0)    NOT NULL,
@@ -242,7 +242,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: INVENTARIO_VETERINARIA 
 --
 
-CREATE TABLE INVENTARIO_VETERINARIA(
+CREATE TABLE PET_CARE_ADMIN.INVENTARIO_VETERINARIA(
     clvInventarioVet            NUMBER(38, 0)    NOT NULL,
     clvEstatusProdInventario    NUMBER(38, 0),
     clvVeterinaria              NUMBER(38, 0),
@@ -258,7 +258,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: MASCOTA 
 --
 
-CREATE TABLE MASCOTA(
+CREATE TABLE PET_CARE_ADMIN.MASCOTA(
     clvMascota                NUMBER(38, 0)    NOT NULL,
     clvCliente                NUMBER(38, 0)    NOT NULL,
     razaMasc                  VARCHAR2(20)     NOT NULL,
@@ -277,7 +277,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: MASCOTA_PASEO 
 --
 
-CREATE TABLE MASCOTA_PASEO(
+CREATE TABLE PET_CARE_ADMIN.MASCOTA_PASEO(
     clvMascotaPaseo    NUMBER(38, 0)    NOT NULL,
     clvPaseo           NUMBER(38, 0)    NOT NULL,
     clvMascota         NUMBER(38, 0)    NOT NULL,
@@ -291,7 +291,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: MONITOREO_PASEO 
 --
 
-CREATE TABLE MONITOREO_PASEO(
+CREATE TABLE PET_CARE_ADMIN.MONITOREO_PASEO(
     clvMonitoreoPaseo              NUMBER(38, 0)    NOT NULL,
     clvPaseo                       NUMBER(38, 0)    NOT NULL,
     latitudMonitoreoPaseo          NUMBER(9, 6)     NOT NULL,
@@ -307,7 +307,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: MUNICIPIO 
 --
 
-CREATE TABLE MUNICIPIO(
+CREATE TABLE PET_CARE_ADMIN.MUNICIPIO(
     clvMunicipio       NUMBER(38, 0)    NOT NULL,
     nombreMunicipio    CHAR(50)         NOT NULL,
     clvEstado          NUMBER(38, 0)    NOT NULL,
@@ -321,7 +321,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: ORDEN_COMPRA 
 --
 
-CREATE TABLE ORDEN_COMPRA(
+CREATE TABLE PET_CARE_ADMIN.ORDEN_COMPRA(
     clvOrdenCompra                 NUMBER(38, 0)    NOT NULL,
     clvVendedorCompra              NUMBER(38, 0)    NOT NULL,
     clvClienteCompra               NUMBER(38, 0)    NOT NULL,
@@ -338,7 +338,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: ORDEN_PRODUCTO 
 --
 
-CREATE TABLE ORDEN_PRODUCTO(
+CREATE TABLE PET_CARE_ADMIN.ORDEN_PRODUCTO(
     clvOrdenProducto          NUMBER(38, 0)    NOT NULL,
     clvOrdenCompra            NUMBER(38, 0)    NOT NULL,
     SKU                       VARCHAR2(20)     NOT NULL,
@@ -353,7 +353,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: PASEO 
 --
 
-CREATE TABLE PASEO(
+CREATE TABLE PET_CARE_ADMIN.PASEO(
     clvPaseo       NUMBER(38, 0)    NOT NULL,
     clvVendedor    NUMBER(38, 0)    NOT NULL,
     inicioPaseo    DATE             NOT NULL,
@@ -369,7 +369,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: PRODUCTO 
 --
 
-CREATE TABLE PRODUCTO(
+CREATE TABLE PET_CARE_ADMIN.PRODUCTO(
     SKU                     VARCHAR2(20)     NOT NULL,
     nombreProducto          CHAR(30)         NOT NULL,
     precioActualProducto    NUMBER(10, 2)    NOT NULL,
@@ -384,7 +384,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: SERVICIO_ESTETICA 
 --
 
-create table servicio_estetica (
+create table PET_CARE_ADMIN.servicio_estetica (
     clvservicioestetica       number(38, 0) not null,
     clvestilista              number(38, 0) not null,
     descripcionservicioest    varchar2(40) not null,
@@ -408,7 +408,7 @@ lob (fotoantesest, fotodespuesest) store as (
 -- TABLE: TELEFONO_CLIENTE 
 --
 
-CREATE TABLE TELEFONO_CLIENTE(
+CREATE TABLE PET_CARE_ADMIN.TELEFONO_CLIENTE(
     clvTelefono     NUMBER(38, 0)    NOT NULL,
     telefonoClie    NUMBER(10, 0)    NOT NULL,
     clvCliente      NUMBER(38, 0)    NOT NULL,
@@ -422,7 +422,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: VENDEDOR 
 --
 
-CREATE TABLE VENDEDOR(
+CREATE TABLE PET_CARE_ADMIN.VENDEDOR(
     clvVendedor         NUMBER(38, 0)    NOT NULL,
     horaEntradaVen      DATE             NOT NULL,
     horaSalidaVen       DATE             NOT NULL,
@@ -439,7 +439,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: VETERINARIA 
 --
 
-CREATE TABLE VETERINARIA(
+CREATE TABLE PET_CARE_ADMIN.VETERINARIA(
     clvVeterinaria    NUMBER(38, 0)    NOT NULL,
     clvGerente        NUMBER(38, 0)    NOT NULL,
     latitudVet        NUMBER(9, 6)     NOT NULL,
@@ -457,7 +457,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: VETERINARIO 
 --
 
-CREATE TABLE VETERINARIO(
+CREATE TABLE PET_CARE_ADMIN.VETERINARIO(
     clvVeterinario          NUMBER(38, 0)    NOT NULL,
     cedulaProfesionalVet    CHAR(10)         NOT NULL,
     universidadVet          CHAR(30)         NOT NULL,
@@ -476,9 +476,9 @@ using index tablespace pet_care_ix_ts
 -- TABLE: CERTIFICADO 
 --
 
-ALTER TABLE CERTIFICADO ADD CONSTRAINT fk_inscripcioncurso_certificado 
+ALTER TABLE PET_CARE_ADMIN.CERTIFICADO ADD CONSTRAINT fk_inscripcioncurso_certificado 
     FOREIGN KEY (clvInscripcionCurso)
-    REFERENCES INSCRIPCION_CURSO(clvInscripcionCurso)
+    REFERENCES PET_CARE_ADMIN.INSCRIPCION_CURSO(clvInscripcionCurso)
 ;
 
 
@@ -486,9 +486,9 @@ ALTER TABLE CERTIFICADO ADD CONSTRAINT fk_inscripcioncurso_certificado
 -- TABLE: CLIENTE 
 --
 
-ALTER TABLE CLIENTE ADD CONSTRAINT fk_municipio_cliente 
+ALTER TABLE PET_CARE_ADMIN.CLIENTE ADD CONSTRAINT fk_municipio_cliente 
     FOREIGN KEY (clvMunicipio)
-    REFERENCES MUNICIPIO(clvMunicipio)
+    REFERENCES PET_CARE_ADMIN.MUNICIPIO(clvMunicipio)
 ;
 
 
@@ -496,19 +496,19 @@ ALTER TABLE CLIENTE ADD CONSTRAINT fk_municipio_cliente
 -- TABLE: CONSULTA_MEDICA 
 --
 
-ALTER TABLE CONSULTA_MEDICA ADD CONSTRAINT fk_diagnostico_consultamedico 
+ALTER TABLE PET_CARE_ADMIN.CONSULTA_MEDICA ADD CONSTRAINT fk_diagnostico_consultamedico 
     FOREIGN KEY (clvDiagnostico)
-    REFERENCES DIAGNOSTICO(clvDiagnostico)
+    REFERENCES PET_CARE_ADMIN.DIAGNOSTICO(clvDiagnostico)
 ;
 
-ALTER TABLE CONSULTA_MEDICA ADD CONSTRAINT fk_mascota_consultamedica 
+ALTER TABLE PET_CARE_ADMIN.CONSULTA_MEDICA ADD CONSTRAINT fk_mascota_consultamedica 
     FOREIGN KEY (clvMascota)
-    REFERENCES MASCOTA(clvMascota)
+    REFERENCES PET_CARE_ADMIN.MASCOTA(clvMascota)
 ;
 
-ALTER TABLE CONSULTA_MEDICA ADD CONSTRAINT fk_veterinaria_consulta 
+ALTER TABLE PET_CARE_ADMIN.CONSULTA_MEDICA ADD CONSTRAINT fk_veterinaria_consulta 
     FOREIGN KEY (clvVeterinario)
-    REFERENCES VETERINARIO(clvVeterinario)
+    REFERENCES PET_CARE_ADMIN.VETERINARIO(clvVeterinario)
 ;
 
 
@@ -516,14 +516,14 @@ ALTER TABLE CONSULTA_MEDICA ADD CONSTRAINT fk_veterinaria_consulta
 -- TABLE: EMPLEADO 
 --
 
-ALTER TABLE EMPLEADO ADD CONSTRAINT fk_empleado_supervisor 
+ALTER TABLE PET_CARE_ADMIN.EMPLEADO ADD CONSTRAINT fk_empleado_supervisor 
     FOREIGN KEY (clvSupervisorEmp)
-    REFERENCES EMPLEADO(clvEmpleado)
+    REFERENCES PET_CARE_ADMIN.EMPLEADO(clvEmpleado)
 ;
 
-ALTER TABLE EMPLEADO ADD CONSTRAINT fk_veterinaria_empleado 
+ALTER TABLE PET_CARE_ADMIN.EMPLEADO ADD CONSTRAINT fk_veterinaria_empleado 
     FOREIGN KEY (clvVeterinaria)
-    REFERENCES VETERINARIA(clvVeterinaria)
+    REFERENCES PET_CARE_ADMIN.VETERINARIA(clvVeterinaria)
 ;
 
 
@@ -531,9 +531,9 @@ ALTER TABLE EMPLEADO ADD CONSTRAINT fk_veterinaria_empleado
 -- TABLE: ESTILISTA 
 --
 
-ALTER TABLE ESTILISTA ADD CONSTRAINT RefEMPLEADO56 
+ALTER TABLE PET_CARE_ADMIN.ESTILISTA ADD CONSTRAINT RefEMPLEADO56 
     FOREIGN KEY (clvEstilista)
-    REFERENCES EMPLEADO(clvEmpleado)
+    REFERENCES PET_CARE_ADMIN.EMPLEADO(clvEmpleado)
 ;
 
 
@@ -541,9 +541,9 @@ ALTER TABLE ESTILISTA ADD CONSTRAINT RefEMPLEADO56
 -- TABLE: FOTO_MASCOTA 
 --
 
-ALTER TABLE FOTO_MASCOTA ADD CONSTRAINT fk_mascota_foto_mascota 
+ALTER TABLE PET_CARE_ADMIN.FOTO_MASCOTA ADD CONSTRAINT fk_mascota_foto_mascota 
     FOREIGN KEY (clvMascota)
-    REFERENCES MASCOTA(clvMascota)
+    REFERENCES PET_CARE_ADMIN.MASCOTA(clvMascota)
 ;
 
 
@@ -551,14 +551,14 @@ ALTER TABLE FOTO_MASCOTA ADD CONSTRAINT fk_mascota_foto_mascota
 -- TABLE: HISTORICO_ESTATUS_PRODUCTOS 
 --
 
-ALTER TABLE HISTORICO_ESTATUS_PRODUCTOS ADD CONSTRAINT fk_estatusproducto_historicoestatusprod 
+ALTER TABLE PET_CARE_ADMIN.HISTORICO_ESTATUS_PRODUCTOS ADD CONSTRAINT fk_estatusproducto_historicoestatusprod 
     FOREIGN KEY (clvEstatusProdInventario)
-    REFERENCES ESTATUS_PROD_INVENTARIO(clvEstatusProdInventario)
+    REFERENCES PET_CARE_ADMIN.ESTATUS_PROD_INVENTARIO(clvEstatusProdInventario)
 ;
 
-ALTER TABLE HISTORICO_ESTATUS_PRODUCTOS ADD CONSTRAINT fk_inventarioveterinaria_historicoestatusprod 
+ALTER TABLE PET_CARE_ADMIN.HISTORICO_ESTATUS_PRODUCTOS ADD CONSTRAINT fk_inventarioveterinaria_historicoestatusprod 
     FOREIGN KEY (clvInventarioVet)
-    REFERENCES INVENTARIO_VETERINARIA(clvInventarioVet)
+    REFERENCES PET_CARE_ADMIN.INVENTARIO_VETERINARIA(clvInventarioVet)
 ;
 
 
@@ -566,9 +566,9 @@ ALTER TABLE HISTORICO_ESTATUS_PRODUCTOS ADD CONSTRAINT fk_inventarioveterinaria_
 -- TABLE: HISTORICO_PRECIO 
 --
 
-ALTER TABLE HISTORICO_PRECIO ADD CONSTRAINT fk_producto_historicoprecio 
+ALTER TABLE PET_CARE_ADMIN.HISTORICO_PRECIO ADD CONSTRAINT fk_producto_historicoprecio 
     FOREIGN KEY (SKU)
-    REFERENCES PRODUCTO(SKU)
+    REFERENCES PET_CARE_ADMIN.PRODUCTO(SKU)
 ;
 
 
@@ -576,14 +576,14 @@ ALTER TABLE HISTORICO_PRECIO ADD CONSTRAINT fk_producto_historicoprecio
 -- TABLE: INSCRIPCION_CURSO 
 --
 
-ALTER TABLE INSCRIPCION_CURSO ADD CONSTRAINT fk_curso_inscripcioncurso 
+ALTER TABLE PET_CARE_ADMIN.INSCRIPCION_CURSO ADD CONSTRAINT fk_curso_inscripcioncurso 
     FOREIGN KEY (clvCurso)
-    REFERENCES CURSO(clvCurso)
+    REFERENCES PET_CARE_ADMIN.CURSO(clvCurso)
 ;
 
-ALTER TABLE INSCRIPCION_CURSO ADD CONSTRAINT fk_estilista_inscripcioncurso 
+ALTER TABLE PET_CARE_ADMIN.INSCRIPCION_CURSO ADD CONSTRAINT fk_estilista_inscripcioncurso 
     FOREIGN KEY (clvEstilista)
-    REFERENCES ESTILISTA(clvEstilista)
+    REFERENCES PET_CARE_ADMIN.ESTILISTA(clvEstilista)
 ;
 
 
@@ -591,19 +591,19 @@ ALTER TABLE INSCRIPCION_CURSO ADD CONSTRAINT fk_estilista_inscripcioncurso
 -- TABLE: INVENTARIO_VETERINARIA 
 --
 
-ALTER TABLE INVENTARIO_VETERINARIA ADD CONSTRAINT fk_estatusprod_inventarioveterinaria 
+ALTER TABLE PET_CARE_ADMIN.INVENTARIO_VETERINARIA ADD CONSTRAINT fk_estatusprod_inventarioveterinaria 
     FOREIGN KEY (clvEstatusProdInventario)
-    REFERENCES ESTATUS_PROD_INVENTARIO(clvEstatusProdInventario)
+    REFERENCES PET_CARE_ADMIN.ESTATUS_PROD_INVENTARIO(clvEstatusProdInventario)
 ;
 
-ALTER TABLE INVENTARIO_VETERINARIA ADD CONSTRAINT fk_producto_inventarioveterinaria 
+ALTER TABLE PET_CARE_ADMIN.INVENTARIO_VETERINARIA ADD CONSTRAINT fk_producto_inventarioveterinaria 
     FOREIGN KEY (SKU)
-    REFERENCES PRODUCTO(SKU)
+    REFERENCES PET_CARE_ADMIN.PRODUCTO(SKU)
 ;
 
-ALTER TABLE INVENTARIO_VETERINARIA ADD CONSTRAINT fk_veterinaria_inventarioveterinaria 
+ALTER TABLE PET_CARE_ADMIN.INVENTARIO_VETERINARIA ADD CONSTRAINT fk_veterinaria_inventarioveterinaria 
     FOREIGN KEY (clvVeterinaria)
-    REFERENCES VETERINARIA(clvVeterinaria)
+    REFERENCES PET_CARE_ADMIN.VETERINARIA(clvVeterinaria)
 ;
 
 
@@ -611,9 +611,9 @@ ALTER TABLE INVENTARIO_VETERINARIA ADD CONSTRAINT fk_veterinaria_inventarioveter
 -- TABLE: MASCOTA 
 --
 
-ALTER TABLE MASCOTA ADD CONSTRAINT fk_cliente_mascota 
+ALTER TABLE PET_CARE_ADMIN.MASCOTA ADD CONSTRAINT fk_cliente_mascota 
     FOREIGN KEY (clvCliente)
-    REFERENCES CLIENTE(clvCliente)
+    REFERENCES PET_CARE_ADMIN.CLIENTE(clvCliente)
 ;
 
 
@@ -621,14 +621,14 @@ ALTER TABLE MASCOTA ADD CONSTRAINT fk_cliente_mascota
 -- TABLE: MASCOTA_PASEO 
 --
 
-ALTER TABLE MASCOTA_PASEO ADD CONSTRAINT fk_mascota_mascpaseo 
+ALTER TABLE PET_CARE_ADMIN.MASCOTA_PASEO ADD CONSTRAINT fk_mascota_mascpaseo 
     FOREIGN KEY (clvMascota)
-    REFERENCES MASCOTA(clvMascota)
+    REFERENCES PET_CARE_ADMIN.MASCOTA(clvMascota)
 ;
 
-ALTER TABLE MASCOTA_PASEO ADD CONSTRAINT fk_paseo_mascpaseo 
+ALTER TABLE PET_CARE_ADMIN.MASCOTA_PASEO ADD CONSTRAINT fk_paseo_mascpaseo 
     FOREIGN KEY (clvPaseo)
-    REFERENCES PASEO(clvPaseo)
+    REFERENCES PET_CARE_ADMIN.PASEO(clvPaseo)
 ;
 
 
@@ -636,9 +636,9 @@ ALTER TABLE MASCOTA_PASEO ADD CONSTRAINT fk_paseo_mascpaseo
 -- TABLE: MONITOREO_PASEO 
 --
 
-ALTER TABLE MONITOREO_PASEO ADD CONSTRAINT fk_paseo_monitoreopaseo 
+ALTER TABLE PET_CARE_ADMIN.MONITOREO_PASEO ADD CONSTRAINT fk_paseo_monitoreopaseo 
     FOREIGN KEY (clvPaseo)
-    REFERENCES PASEO(clvPaseo)
+    REFERENCES PET_CARE_ADMIN.PASEO(clvPaseo)
 ;
 
 
@@ -646,9 +646,9 @@ ALTER TABLE MONITOREO_PASEO ADD CONSTRAINT fk_paseo_monitoreopaseo
 -- TABLE: MUNICIPIO 
 --
 
-ALTER TABLE MUNICIPIO ADD CONSTRAINT fk_estado_municipios 
+ALTER TABLE PET_CARE_ADMIN.MUNICIPIO ADD CONSTRAINT fk_estado_municipios 
     FOREIGN KEY (clvEstado)
-    REFERENCES ESTADO(clvEstado)
+    REFERENCES PET_CARE_ADMIN.ESTADO(clvEstado)
 ;
 
 
@@ -656,14 +656,14 @@ ALTER TABLE MUNICIPIO ADD CONSTRAINT fk_estado_municipios
 -- TABLE: ORDEN_COMPRA 
 --
 
-ALTER TABLE ORDEN_COMPRA ADD CONSTRAINT fk_cliente_ordencompra 
+ALTER TABLE PET_CARE_ADMIN.ORDEN_COMPRA ADD CONSTRAINT fk_cliente_ordencompra 
     FOREIGN KEY (clvClienteCompra)
-    REFERENCES CLIENTE(clvCliente)
+    REFERENCES PET_CARE_ADMIN.CLIENTE(clvCliente)
 ;
 
-ALTER TABLE ORDEN_COMPRA ADD CONSTRAINT fk_vendedor_ordencompra 
+ALTER TABLE PET_CARE_ADMIN.ORDEN_COMPRA ADD CONSTRAINT fk_vendedor_ordencompra 
     FOREIGN KEY (clvVendedorCompra)
-    REFERENCES VENDEDOR(clvVendedor)
+    REFERENCES PET_CARE_ADMIN.ENDEDOR(clvVendedor)
 ;
 
 
@@ -671,14 +671,14 @@ ALTER TABLE ORDEN_COMPRA ADD CONSTRAINT fk_vendedor_ordencompra
 -- TABLE: ORDEN_PRODUCTO 
 --
 
-ALTER TABLE ORDEN_PRODUCTO ADD CONSTRAINT fk_ordencompra_ordenproducto 
+ALTER TABLE PET_CARE_ADMIN.ORDEN_PRODUCTO ADD CONSTRAINT fk_ordencompra_ordenproducto 
     FOREIGN KEY (clvOrdenCompra)
-    REFERENCES ORDEN_COMPRA(clvOrdenCompra)
+    REFERENCES PET_CARE_ADMIN.ORDEN_COMPRA(clvOrdenCompra)
 ;
 
-ALTER TABLE ORDEN_PRODUCTO ADD CONSTRAINT fk_producto_ordenproducto 
+ALTER TABLE PET_CARE_ADMIN.ORDEN_PRODUCTO ADD CONSTRAINT fk_producto_ordenproducto 
     FOREIGN KEY (SKU)
-    REFERENCES PRODUCTO(SKU)
+    REFERENCES PET_CARE_ADMIN.PRODUCTO(SKU)
 ;
 
 
@@ -686,9 +686,9 @@ ALTER TABLE ORDEN_PRODUCTO ADD CONSTRAINT fk_producto_ordenproducto
 -- TABLE: PASEO 
 --
 
-ALTER TABLE PASEO ADD CONSTRAINT fk_vendedor_paseo 
+ALTER TABLE PET_CARE_ADMIN.PASEO ADD CONSTRAINT fk_vendedor_paseo 
     FOREIGN KEY (clvVendedor)
-    REFERENCES VENDEDOR(clvVendedor)
+    REFERENCES PET_CARE_ADMIN.VENDEDOR(clvVendedor)
 ;
 
 
@@ -696,9 +696,9 @@ ALTER TABLE PASEO ADD CONSTRAINT fk_vendedor_paseo
 -- TABLE: PRODUCTO 
 --
 
-ALTER TABLE PRODUCTO ADD CONSTRAINT fk_categoria_producto 
+ALTER TABLE PET_CARE_ADMIN.PRODUCTO ADD CONSTRAINT fk_categoria_producto 
     FOREIGN KEY (clvCategoria)
-    REFERENCES CATEGORIA(clvCategoria)
+    REFERENCES PET_CARE_ADMIN.CATEGORIA(clvCategoria)
 ;
 
 
@@ -706,14 +706,14 @@ ALTER TABLE PRODUCTO ADD CONSTRAINT fk_categoria_producto
 -- TABLE: SERVICIO_ESTETICA 
 --
 
-ALTER TABLE SERVICIO_ESTETICA ADD CONSTRAINT fk_estilista_servicioestetica 
+ALTER TABLE PET_CARE_ADMIN.SERVICIO_ESTETICA ADD CONSTRAINT fk_estilista_servicioestetica 
     FOREIGN KEY (clvEstilista)
-    REFERENCES ESTILISTA(clvEstilista)
+    REFERENCES PET_CARE_ADMIN.ESTILISTA(clvEstilista)
 ;
 
-ALTER TABLE SERVICIO_ESTETICA ADD CONSTRAINT fk_mascota_servicioestetica 
+ALTER TABLE PET_CARE_ADMIN.SERVICIO_ESTETICA ADD CONSTRAINT fk_mascota_servicioestetica 
     FOREIGN KEY (clvMascota)
-    REFERENCES MASCOTA(clvMascota)
+    REFERENCES PET_CARE_ADMIN.MASCOTA(clvMascota)
 ;
 
 
@@ -721,9 +721,9 @@ ALTER TABLE SERVICIO_ESTETICA ADD CONSTRAINT fk_mascota_servicioestetica
 -- TABLE: TELEFONO_CLIENTE 
 --
 
-ALTER TABLE TELEFONO_CLIENTE ADD CONSTRAINT fk_cliente_telefono 
+ALTER TABLE PET_CARE_ADMIN.TELEFONO_CLIENTE ADD CONSTRAINT fk_cliente_telefono 
     FOREIGN KEY (clvCliente)
-    REFERENCES CLIENTE(clvCliente)
+    REFERENCES PET_CARE_ADMIN.CLIENTE(clvCliente)
 ;
 
 
@@ -731,9 +731,9 @@ ALTER TABLE TELEFONO_CLIENTE ADD CONSTRAINT fk_cliente_telefono
 -- TABLE: VENDEDOR 
 --
 
-ALTER TABLE VENDEDOR ADD CONSTRAINT RefEMPLEADO58 
+ALTER TABLE PET_CARE_ADMIN.VENDEDOR ADD CONSTRAINT RefEMPLEADO58 
     FOREIGN KEY (clvVendedor)
-    REFERENCES EMPLEADO(clvEmpleado)
+    REFERENCES PET_CARE_ADMIN.EMPLEADO(clvEmpleado)
 ;
 
 
@@ -741,9 +741,9 @@ ALTER TABLE VENDEDOR ADD CONSTRAINT RefEMPLEADO58
 -- TABLE: VETERINARIA 
 --
 
-ALTER TABLE VETERINARIA ADD CONSTRAINT fk_vendedor_veterinaria 
+ALTER TABLE PET_CARE_ADMIN.VETERINARIA ADD CONSTRAINT fk_vendedor_veterinaria 
     FOREIGN KEY (clvGerente)
-    REFERENCES VENDEDOR(clvVendedor)
+    REFERENCES PET_CARE_ADMIN.VENDEDOR(clvVendedor)
 ;
 
 
@@ -751,9 +751,9 @@ ALTER TABLE VETERINARIA ADD CONSTRAINT fk_vendedor_veterinaria
 -- TABLE: VETERINARIO 
 --
 
-ALTER TABLE VETERINARIO ADD CONSTRAINT RefEMPLEADO57 
+ALTER TABLE PET_CARE_ADMIN.VETERINARIO ADD CONSTRAINT RefEMPLEADO57 
     FOREIGN KEY (clvVeterinario)
-    REFERENCES EMPLEADO(clvEmpleado)
+    REFERENCES PET_CARE_ADMIN.EMPLEADO(clvEmpleado)
 ;
 
 
