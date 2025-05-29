@@ -18,7 +18,7 @@ disk_number="${disk_number:-$default_disk_number}"
 read -p "¿Cuántos GB quieres asignar al archivo img? [Default: $default_size_gb]: " gb_size
 gb_size="${gb_size:-$default_size_gb}"
 block_size="1M"
-count=$((gb_size * 1024))
+count=$((gb_size * 1000))
 
 # Nombre de archivo y rutas
 img_filename="disk-datafile-d${disk_number}.img"
