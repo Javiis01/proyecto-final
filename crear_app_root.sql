@@ -38,10 +38,17 @@ alter session set container = pet_care_ac;
 
 alter pluggable database application pet_care_app begin install '1.0';
 
--- crearmkdir -p /opt/oracle/oradata/FREE/pet_care_ac_tbs crear desde oracle
+-- crear mkdir -p /opt/oracle/oradata/FREE/pet_care_ac_tbs crear desde oracle
 
-create tablespace pet_care_ix_ts 
-  datafile '/opt/oracle/oradata/FREE/pet_care_ac_tbs/pet_care_ix_ts_01.dbf'
+ALTER SYSTEM SET db_create_file_dest = '/unam/diplo-bd/pet-care-disks/datafile-pet-care' SCOPE=MEMORY;
+
+create tablespace pet_care_ix_ts
+  datafile size 10m autoextend on next 10m
+  extent management local autoallocate 
+  segment space management auto;
+
+  create tablespace pet_care_ix_ts 
+  datafile '/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf'
   size 5m 
   AUTOEXTEND ON 
   NEXT 10M 
@@ -49,23 +56,35 @@ create tablespace pet_care_ix_ts
   extent management local autoallocate 
   segment space management auto;
 
+
+
 --HAy que darle permisos a las carpetas donde iran lso datafile desde ul usuario root de host
 
-create tablespace pet_care_tbs 
-  datafile
-    '/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_tbs_01.dbf' size 50m autoextend on next 5m maxsize unlimited,
-    '/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_tbs_02.dbf' size 50m autoextend on next 5m maxsize unlimited,
-    '/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_tbs_03.dbf' size 50m autoextend on next 5m maxsize unlimited
-  extent management local autoallocate
+
+create tablespace pet_care_tbs
+  datafile size 50m autoextend on next 50m
+  extent management local autoallocate 
   segment space management auto;
 
-  create tablespace pet_care_blob_ts
+
+
+--ALTER SYSTEM SET db_create_file_dest = '/unam/diplo-bd/pet-care-disks/datafile-d03' SCOPE=MEMORY; 
+
+
+create tablespace pet_care_blob_ts
+  datafile size 10m autoextend on next 50m
+  extent management local autoallocate 
+  segment space management auto;
+
+
+/*
+create tablespace pet_care_blob_ts
 datafile
-'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf' size 100m autoextend on next 50m maxsize unlimited, 
-'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_02.dbf' size 100m autoextend on next 50m maxsize unlimited, 
-'/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_03.dbf' size 100m autoextend on next 50m maxsize unlimited 
+'/unam/diplo-bd/pet-care-disks/datafile-d01/%p/pet_care_blob_ts_01.dbf' size 100m autoextend on next 50m maxsize unlimited, 
+'/unam/diplo-bd/pet-care-disks/datafile-d02/%p/pet_care_blob_ts_02.dbf' size 100m autoextend on next 50m maxsize unlimited, 
+'/unam/diplo-bd/pet-care-disks/datafile-d03/%p/pet_care_blob_ts_03.dbf' size 100m autoextend on next 50m maxsize unlimited 
 extent management local autoallocate 
-segment space management auto;
+segment space management auto;*/
 
 
 create user pet_care_admin identified by pet_care_admin
@@ -89,11 +108,22 @@ alter pluggable database application pet_care_app end install;
 
 alter pluggable database  application pet_care_app begin upgrade '1.0' to '1.1';
 
+
  connect pet_care_admin/pet_care_admin@pet_care_ac 
 
 @petcare_inserts_catalogos
 
 connect sys/system2@pet_care_ac  as sysdba
+create table pet_care_admin.rol_usuario2(
+  id number(10,0) constraint rol_usuario_pk2 primary key,
+  nombre varchar2(40)
+);
+
+Prompt insertando datos
+insert into pet_care_admin.rol_usuario2 (id,nombre) values(1,'AGENTE2');
+insert into pet_care_admin.rol_usuario2 (id,nombre) values(2,'PRESIDENTE2');
+insert into pet_care_admin.rol_usuario2 (id,nombre) values(3,'TÉCNICO2');
+commit;
 alter pluggable database  application  pet_care_app end upgrade;
 
 
@@ -107,7 +137,10 @@ create pluggable database pet_care_sur
 
   alter pluggable database pet_care_sur open read write;
 
+  connect sys/system2@pet_care_sur  as sysdba
 
+
+ connect pet_care_admin/pet_care_admin@pet_care_sur 
 alter session set container=pet_care_sur;
 
 
@@ -139,15 +172,18 @@ datafile
 extent management local autoallocate 
 segment space management auto;
 
+alter pluggable database  application pet_care_app begin upgrade '1.2' to '1.3';
 
-
-Borrar pdb
+--Borrar pdb
 ALTER PLUGGABLE DATABASE pet_care_sur CLOSE IMMEDIATE;
 DROP PLUGGABLE DATABASE pet_care_sur INCLUDING DATAFILES;
 
-Borrar pdb
+--Borrar pdb
 ALTER PLUGGABLE DATABASE pet_care_ac CLOSE IMMEDIATE;
 DROP PLUGGABLE DATABASE pet_care_ac INCLUDING DATAFILES;
+
+select * from pet_care_admin.rol_usuario2;
+select * from pet_care_admin.ESTADO;
 
 */
 alter pluggable database  application all sync;
