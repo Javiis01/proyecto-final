@@ -74,16 +74,17 @@ END;
 
 -- Paso 6: Conectarse a PDBs y sincronizar
 PROMPT ================================
-PROMPT Sincronizando pet_care_norte...
-PROMPT ================================
-ALTER SESSION SET CONTAINER = pet_care_norte;
-ALTER PLUGGABLE DATABASE APPLICATION ALL SYNC;
-
-PROMPT ================================
 PROMPT Sincronizando pet_care_sur...
 PROMPT ================================
 ALTER SESSION SET CONTAINER = pet_care_sur;
 ALTER PLUGGABLE DATABASE APPLICATION ALL SYNC;
+
+
+PROMPT ================================
+PROMPT Para Sincronizando pet_care_norte...
+PROMPT ================================
+PROMPT ALTER SESSION SET CONTAINER = pet_care_norte;
+PROMPT ALTER PLUGGABLE DATABASE APPLICATION ALL SYNC;
 
 PROMPT ===========================================
 PROMPT    Proceso de instalación/upgrade finalizado
