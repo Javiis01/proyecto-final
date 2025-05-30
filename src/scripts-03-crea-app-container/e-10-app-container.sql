@@ -146,12 +146,12 @@ Prompt ============{ 5. Terminando Configuraicon de la App }=================
 connect sys/system2@pet_care_ac  as sysdba
 alter pluggable database application pet_care_app end install;
 
-Prompt =========={ 6. Iniciandpo Prueba de creacion de  }
+Prompt =========={ 6. Iniciandpo Prueba de creacion de PDB NORTE }
 
 Pause [ENTER] para continuar o Ctrl + C para cancelar
 Prompt 6.1 Creando APP PDB pet_care_norte
 create pluggable database pet_care_norte
-  admin user pdb_admin identified by password1
+  admin user admin identified by admin
   FILE_NAME_CONVERT =(
     '/opt/oracle/oradata/FREE/pdbseed', '/opt/oracle/oradata/FREE/pet_care_norte'
     );
@@ -161,6 +161,29 @@ alter pluggable database pet_care_norte open;
 
 Prompt 6.3 entrando a la app pdb pet_care_norte
 alter session set container = pet_care_norte;
+
+Prompt 6.4 Sincronizando la app
+Pause [ENTER] para continuar o Ctrl + C para cancelar
+alter pluggable database application all sync;
+
+Prompt ====> Cambiandonos a pet_care_ac <================
+alter session set container = pet_care_ac;
+
+Prompt =========={ 6. Iniciandpo Prueba de creacion de PDB SUR }
+
+Pause [ENTER] para continuar o Ctrl + C para cancelar
+Prompt 6.1 Creando APP PDB pet_care_sur
+create pluggable database pet_care_sur
+  admin user admin identified by admin
+  FILE_NAME_CONVERT =(
+    '/opt/oracle/oradata/FREE/pdbseed', '/opt/oracle/oradata/FREE/pet_care_sur'
+    );
+
+Prompt 6.2 abriendo la app pdb pet_care_sur
+alter pluggable database pet_care_sur open;
+
+Prompt 6.3 entrando a la app pdb pet_care_sur
+alter session set container = pet_care_sur;
 
 Prompt 6.4 Sincronizando la app
 Pause [ENTER] para continuar o Ctrl + C para cancelar
