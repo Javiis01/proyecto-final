@@ -95,7 +95,27 @@ connect sys/system2@pet_care_sur  as sysdba
 alter pluggable database  application all sync;
 connect pet_care_admin/pet_care_admin@pet_care_sur 
 select * from ESTADO;
-connect sys/system2@pet_care_sur  as sysdba
+
+
+
+connect sys/system2@pet_care_ac  as sysdba
+
+
+create pluggable database pet_care_norte
+  admin user admin identified by admin
+  file_name_convert=(
+    '/opt/oracle/oradata/FREE/pdbseed',
+    '/opt/oracle/oradata/FREE/pet_care_ac/pet_care_norte'
+  );
+
+alter pluggable database pet_care_norte open read write;
+connect sys/system2@pet_care_norte  as sysdba
+alter pluggable database  application all sync;
+connect pet_care_admin/pet_care_admin@pet_care_norte
+select * from ESTADO;
+
+
+connect sys/system2@pet_care_ac  as sysdba
 /*
 
 --Borrar pdb
@@ -104,10 +124,11 @@ ALTER PLUGGABLE DATABASE pet_care_sur CLOSE IMMEDIATE;
 DROP PLUGGABLE DATABASE pet_care_sur INCLUDING DATAFILES;
 
 --Borrar pdb
+ALTER PLUGGABLE DATABASE pet_care_norte CLOSE IMMEDIATE;
+DROP PLUGGABLE DATABASE pet_care_norte INCLUDING DATAFILES;
+
+--Borrar pdb
 ALTER PLUGGABLE DATABASE pet_care_ac CLOSE IMMEDIATE;
 DROP PLUGGABLE DATABASE pet_care_ac INCLUDING DATAFILES;
-
-select * from pet_care_admin.rol_usuario2;
-select * from ESTADO;
 
 */
