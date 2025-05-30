@@ -1,3 +1,7 @@
+--@Autor: Martinez Martinez Francisco David
+--@Fecha creación: 27/05/2025
+--@Descripción: Creacion de Tablas y Foreings Keys  
+
 --
 -- ER/Studio 8.0 SQL Code Generation
 -- Company :      FI-UNAM
@@ -13,7 +17,7 @@
 --
 
 
-CREATE TABLE CATEGORIA(
+CREATE TABLE PET_CARE_ADMIN.CATEGORIA(
     clvCategoria            NUMBER(38, 0)    NOT NULL,
     nombreCategoria         VARCHAR2(20)     NOT NULL,
     descripcionCategoria    VARCHAR2(30)     NOT NULL,
@@ -26,11 +30,11 @@ using index tablespace pet_care_ix_ts
 -- TABLE: CERTIFICADO 
 --
 
-CREATE TABLE CERTIFICADO(
+CREATE TABLE PET_CARE_ADMIN.CERTIFICADO(
     clvCursoAprobado            NUMBER(38, 0)    NOT NULL,
     clvInscripcionCurso         NUMBER(38, 0)    NOT NULL,
     nombreCertificado           VARCHAR2(30)     NOT NULL,
-    certificadoPrueba           CHAR(50)         NOT NULL,
+    certificadoPrueba           CHAR(10)         NOT NULL,
     fechaAprobadoCertificado    DATE             NOT NULL,
     CONSTRAINT pk_certificado PRIMARY KEY (clvCursoAprobado)
 using index tablespace pet_care_ix_ts
@@ -42,7 +46,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: CLIENTE 
 --
 
-CREATE TABLE CLIENTE(
+CREATE TABLE PET_CARE_ADMIN.CLIENTE(
     clvCliente             NUMBER(38, 0)    NOT NULL,
     clvMunicipio           NUMBER(38, 0)    NOT NULL,
     nombreClie             VARCHAR2(20)     NOT NULL,
@@ -60,7 +64,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: CONSULTA_MEDICA 
 --
 
-CREATE TABLE CONSULTA_MEDICA(
+CREATE TABLE PET_CARE_ADMIN.CONSULTA_MEDICA(
     clvConsultaMedica            NUMBER(38, 0)    NOT NULL,
     clvVeterinario               NUMBER(38, 0)    NOT NULL,
     clvDiagnostico               NUMBER(38, 0)    NOT NULL,
@@ -78,7 +82,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: CURSO 
 --
 
-CREATE TABLE CURSO(
+CREATE TABLE PET_CARE_ADMIN.CURSO(
     clvCurso              NUMBER(38, 0)    NOT NULL,
     codigoInternoCurso    NUMBER(38, 0)    NOT NULL,
     UUID                  VARCHAR2(36)     NOT NULL,
@@ -94,7 +98,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: DIAGNOSTICO 
 --
 
-CREATE TABLE DIAGNOSTICO(
+CREATE TABLE PET_CARE_ADMIN.DIAGNOSTICO(
     clvDiagnostico              NUMBER(38, 0)    NOT NULL,
     nombreDiagnostico           VARCHAR2(30)     NOT NULL,
     nivelGravedadDiagnostico    NUMBER(38, 0)    NOT NULL,
@@ -109,7 +113,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: EMPLEADO 
 --
 
-CREATE TABLE EMPLEADO(
+CREATE TABLE PET_CARE_ADMIN.EMPLEADO(
     clvEmpleado           NUMBER(38, 0)    NOT NULL,
     clvSupervisorEmp      NUMBER(38, 0),
     rfcEmp                CHAR(12)         NOT NULL,
@@ -136,7 +140,7 @@ lob (fotoEmp) store as (
 -- TABLE: ESTADO 
 --
 
-CREATE TABLE ESTADO(
+CREATE TABLE PET_CARE_ADMIN.ESTADO(
     clvEstado       NUMBER(38, 0)    NOT NULL,
     nombreEstado    CHAR(20)         NOT NULL,
     CONSTRAINT pk_estado PRIMARY KEY (clvEstado)
@@ -149,7 +153,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: ESTATUS_PROD_INVENTARIO 
 --
 
-CREATE TABLE ESTATUS_PROD_INVENTARIO(
+CREATE TABLE PET_CARE_ADMIN.ESTATUS_PROD_INVENTARIO(
     clvEstatusProdInventario     NUMBER(38, 0)    NOT NULL,
     estatusProdInventario        VARCHAR2(15)     NOT NULL,
     descripcionProdInventario    VARCHAR2(20)     NOT NULL,
@@ -163,7 +167,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: ESTILISTA 
 --
 
-CREATE TABLE ESTILISTA(
+CREATE TABLE PET_CARE_ADMIN.ESTILISTA(
     clvEstilista            NUMBER(38, 0)    NOT NULL,
     reseniaHabilidadesEst    CHAR(50)         NOT NULL,
     CONSTRAINT pk_estilistas PRIMARY KEY (clvEstilista)
@@ -176,7 +180,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: FOTO_MASCOTA 
 --
 
-CREATE TABLE FOTO_MASCOTA(
+CREATE TABLE PET_CARE_ADMIN.FOTO_MASCOTA(
     clvFotoMascota    NUMBER(38, 0)    NOT NULL,
     clvMascota        NUMBER(38, 0)    NOT NULL,
     fotoMascota       BLOB         NOT NULL,
@@ -193,7 +197,7 @@ lob (fotoMascota) store as (
 -- TABLE: HISTORICO_ESTATUS_PRODUCTOS 
 --
 
-CREATE TABLE HISTORICO_ESTATUS_PRODUCTOS(
+CREATE TABLE PET_CARE_ADMIN.HISTORICO_ESTATUS_PRODUCTOS(
     clvHistoricoEstatus           NUMBER(38, 0)    NOT NULL,
     clvInventarioVet              NUMBER(38, 0),
     clvEstatusProdInventario      NUMBER(38, 0),
@@ -208,7 +212,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: HISTORICO_PRECIO 
 --
 
-CREATE TABLE HISTORICO_PRECIO(
+CREATE TABLE PET_CARE_ADMIN.HISTORICO_PRECIO(
     clvHistoricoPrecio       NUMBER(38, 0)    NOT NULL,
     SKU                      VARCHAR2(20),
     fechaInicioHistPrecio    DATE             NOT NULL,
@@ -224,7 +228,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: INSCRIPCION_CURSO 
 --
 
-CREATE TABLE INSCRIPCION_CURSO(
+CREATE TABLE PET_CARE_ADMIN.INSCRIPCION_CURSO(
     clvInscripcionCurso    NUMBER(38, 0)    NOT NULL,
     clvCurso               NUMBER(38, 0)    NOT NULL,
     clvEstilista           NUMBER(38, 0)    NOT NULL,
@@ -238,7 +242,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: INVENTARIO_VETERINARIA 
 --
 
-CREATE TABLE INVENTARIO_VETERINARIA(
+CREATE TABLE PET_CARE_ADMIN.INVENTARIO_VETERINARIA(
     clvInventarioVet            NUMBER(38, 0)    NOT NULL,
     clvEstatusProdInventario    NUMBER(38, 0),
     clvVeterinaria              NUMBER(38, 0),
@@ -254,7 +258,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: MASCOTA 
 --
 
-CREATE TABLE MASCOTA(
+CREATE TABLE PET_CARE_ADMIN.MASCOTA(
     clvMascota                NUMBER(38, 0)    NOT NULL,
     clvCliente                NUMBER(38, 0)    NOT NULL,
     razaMasc                  VARCHAR2(20)     NOT NULL,
@@ -273,7 +277,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: MASCOTA_PASEO 
 --
 
-CREATE TABLE MASCOTA_PASEO(
+CREATE TABLE PET_CARE_ADMIN.MASCOTA_PASEO(
     clvMascotaPaseo    NUMBER(38, 0)    NOT NULL,
     clvPaseo           NUMBER(38, 0)    NOT NULL,
     clvMascota         NUMBER(38, 0)    NOT NULL,
@@ -287,7 +291,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: MONITOREO_PASEO 
 --
 
-CREATE TABLE MONITOREO_PASEO(
+CREATE TABLE PET_CARE_ADMIN.MONITOREO_PASEO(
     clvMonitoreoPaseo              NUMBER(38, 0)    NOT NULL,
     clvPaseo                       NUMBER(38, 0)    NOT NULL,
     latitudMonitoreoPaseo          NUMBER(9, 6)     NOT NULL,
@@ -303,7 +307,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: MUNICIPIO 
 --
 
-CREATE TABLE MUNICIPIO(
+CREATE TABLE PET_CARE_ADMIN.MUNICIPIO(
     clvMunicipio       NUMBER(38, 0)    NOT NULL,
     nombreMunicipio    CHAR(50)         NOT NULL,
     clvEstado          NUMBER(38, 0)    NOT NULL,
@@ -317,7 +321,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: ORDEN_COMPRA 
 --
 
-CREATE TABLE ORDEN_COMPRA(
+CREATE TABLE PET_CARE_ADMIN.ORDEN_COMPRA(
     clvOrdenCompra                 NUMBER(38, 0)    NOT NULL,
     clvVendedorCompra              NUMBER(38, 0)    NOT NULL,
     clvClienteCompra               NUMBER(38, 0)    NOT NULL,
@@ -334,7 +338,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: ORDEN_PRODUCTO 
 --
 
-CREATE TABLE ORDEN_PRODUCTO(
+CREATE TABLE PET_CARE_ADMIN.ORDEN_PRODUCTO(
     clvOrdenProducto          NUMBER(38, 0)    NOT NULL,
     clvOrdenCompra            NUMBER(38, 0)    NOT NULL,
     SKU                       VARCHAR2(20)     NOT NULL,
@@ -349,7 +353,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: PASEO 
 --
 
-CREATE TABLE PASEO(
+CREATE TABLE PET_CARE_ADMIN.PASEO(
     clvPaseo       NUMBER(38, 0)    NOT NULL,
     clvVendedor    NUMBER(38, 0)    NOT NULL,
     inicioPaseo    DATE             NOT NULL,
@@ -365,7 +369,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: PRODUCTO 
 --
 
-CREATE TABLE PRODUCTO(
+CREATE TABLE PET_CARE_ADMIN.PRODUCTO(
     SKU                     VARCHAR2(20)     NOT NULL,
     nombreProducto          CHAR(30)         NOT NULL,
     precioActualProducto    NUMBER(10, 2)    NOT NULL,
@@ -380,7 +384,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: SERVICIO_ESTETICA 
 --
 
-create table servicio_estetica (
+create table PET_CARE_ADMIN.servicio_estetica (
     clvservicioestetica       number(38, 0) not null,
     clvestilista              number(38, 0) not null,
     descripcionservicioest    varchar2(40) not null,
@@ -404,7 +408,7 @@ lob (fotoantesest, fotodespuesest) store as (
 -- TABLE: TELEFONO_CLIENTE 
 --
 
-CREATE TABLE TELEFONO_CLIENTE(
+CREATE TABLE PET_CARE_ADMIN.TELEFONO_CLIENTE(
     clvTelefono     NUMBER(38, 0)    NOT NULL,
     telefonoClie    NUMBER(10, 0)    NOT NULL,
     clvCliente      NUMBER(38, 0)    NOT NULL,
@@ -418,12 +422,12 @@ using index tablespace pet_care_ix_ts
 -- TABLE: VENDEDOR 
 --
 
-CREATE TABLE VENDEDOR(
+CREATE TABLE PET_CARE_ADMIN.VENDEDOR(
     clvVendedor         NUMBER(38, 0)    NOT NULL,
     horaEntradaVen      DATE             NOT NULL,
     horaSalidaVen       DATE             NOT NULL,
-    numOrdenesMinVen    CHAR(50)         NOT NULL,
-    gerenciaVendedor    CHAR(50)         NOT NULL,
+    numOrdenesMinVen    CHAR(10)         NOT NULL,
+    gerenciaVendedor    CHAR(10)         NOT NULL,
     puedePasearVen      NUMBER(1, 0)     NOT NULL,
     CONSTRAINT pk_vendedor PRIMARY KEY (clvVendedor)
 using index tablespace pet_care_ix_ts
@@ -435,7 +439,7 @@ using index tablespace pet_care_ix_ts
 -- TABLE: VETERINARIA 
 --
 
-CREATE TABLE VETERINARIA(
+CREATE TABLE PET_CARE_ADMIN.VETERINARIA(
     clvVeterinaria    NUMBER(38, 0)    NOT NULL,
     clvGerente        NUMBER(38, 0)    NOT NULL,
     latitudVet        NUMBER(9, 6)     NOT NULL,
@@ -453,9 +457,9 @@ using index tablespace pet_care_ix_ts
 -- TABLE: VETERINARIO 
 --
 
-CREATE TABLE VETERINARIO(
+CREATE TABLE PET_CARE_ADMIN.VETERINARIO(
     clvVeterinario          NUMBER(38, 0)    NOT NULL,
-    cedulaProfesionalVet    CHAR(50)         NOT NULL,
+    cedulaProfesionalVet    CHAR(10)         NOT NULL,
     universidadVet          CHAR(30)         NOT NULL,
     fechaTitulacionVet      DATE             NOT NULL,
     CONSTRAINT pk_veterinario PRIMARY KEY (clvVeterinario)
@@ -467,3 +471,5 @@ using index tablespace pet_care_ix_ts
 
 
 --------------------------------------Fi tablas ---------------------------
+
+
