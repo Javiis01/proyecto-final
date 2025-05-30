@@ -8,9 +8,8 @@ Connected.
 NAME                                 TYPE        VALUE
 ------------------------------------ ----------- ------------------------------
 db_recovery_auto_rekey               string      ON
-db_recovery_file_dest                string      /unam/diplo-bd/pet-care-fast-r
-                                                 ecovery-area
-db_recovery_file_dest_size           big integer 30G
+db_recovery_file_dest                string
+db_recovery_file_dest_size           big integer 0
 2.1. Especificando ubicación y tamaño de la FRA
 
 System altered.
@@ -34,8 +33,8 @@ ORACLE instance started.
 
 Total System Global Area  802346584 bytes
 Fixed Size                  5428824 bytes
-Variable Size             708837376 bytes
-Database Buffers           83886080 bytes
+Variable Size             742391808 bytes
+Database Buffers           50331648 bytes
 Redo Buffers                4194304 bytes
 Database mounted.
 3. Habilitar Flashback por al menos 3 días
@@ -64,10 +63,27 @@ NAME                                 TYPE        VALUE
 ------------------------------------ ----------- ------------------------------
 undo_retention                       integer     4320
 7. Un miembro de los Redo Logs en la FRA
-ALTER DATABASE ADD LOGFILE MEMBER '/unam/diplo-bd/pet-care-fast-recovery-area/redo01.log' TO GROUP 1
-*
-ERROR at line 1:
-ORA-01577: cannot add log file '/unam/diplo-bd/pet-care-fast-recovery-area/redo01.log' - file already part of database
-Help: https://docs.oracle.com/error-help/db/ora-01577/
 
+Database altered.
+
+8. Archived Redo Logs en la FRA
+
+System altered.
+
+9 Corroborando
+
+    GROUP# MEMBER
+---------- ----------------------------------------------------------------------
+         1 /unam/diplo-bd/pet-care-disks/d02/app/oracle/oradata/FREE/redo01b.log
+         1 /unam/diplo-bd/pet-care-fast-recovery-area/redo01.log
+         1 /unam/diplo-bd/pet-care-disks/d03/app/oracle/oradata/FREE/redo01c.log
+         1 /unam/diplo-bd/pet-care-disks/d01/app/oracle/oradata/FREE/redo01a.log
+         2 /unam/diplo-bd/pet-care-disks/d03/app/oracle/oradata/FREE/redo02c.log
+         2 /unam/diplo-bd/pet-care-disks/d01/app/oracle/oradata/FREE/redo02a.log
+         2 /unam/diplo-bd/pet-care-disks/d02/app/oracle/oradata/FREE/redo02b.log
+         3 /unam/diplo-bd/pet-care-disks/d02/app/oracle/oradata/FREE/redo03b.log
+         3 /unam/diplo-bd/pet-care-disks/d03/app/oracle/oradata/FREE/redo03c.log
+         3 /unam/diplo-bd/pet-care-disks/d01/app/oracle/oradata/FREE/redo03a.log
+
+10 rows selected.
 

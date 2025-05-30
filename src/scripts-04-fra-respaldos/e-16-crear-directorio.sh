@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "=== Configuración del directorio para Fast Recovery Area ==="
+
 # Preguntar ruta base, valor por defecto: /unam/diplo-bd/
 read -p "Ingrese la ruta base donde se creará el directorio [/unam/diplo-bd/]: " BASE_DIR
 BASE_DIR=${BASE_DIR:-/unam/diplo-bd/}
@@ -34,4 +36,28 @@ chmod 777 "$DIR_NAME"
 chown oracle:oinstall "$DIR_NAME"
 
 echo " Listo: $FULL_PATH creado y configurado correctamente."
+ls -l "$BASE_DIR"
+
+echo "=== Configuración del directorio para Backups ==="
+
+# Nombre del segundo directorio, por defecto: pet-care-backups-database
+read -p "Ingrese el nombre del directorio para respaldos [pet-care-backups-database]: " DIR_NAME_BKP
+DIR_NAME_BKP=${DIR_NAME_BKP:-pet-care-backups-database}
+FULL_PATH_BKP="${BASE_DIR}${DIR_NAME_BKP}"
+
+# Crear y configurar el directorio
+if [ ! -d "$FULL_PATH_BKP" ]; then
+    echo "Creando directorio: $FULL_PATH_BKP"
+    mkdir -p "$FULL_PATH_BKP"
+else
+    echo "El directorio ya existe: $FULL_PATH_BKP"
+fi
+chmod 777 "$FULL_PATH_BKP"
+chown oracle:oinstall "$FULL_PATH_BKP"
+
+echo " Directorio para respaldos creado y configurado correctamente: $FULL_PATH_BKP"
+echo
+
+# Mostrar resultados finales
+echo "Contenido del directorio base:"
 ls -l "$BASE_DIR"
