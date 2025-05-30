@@ -1,0 +1,19 @@
+--@Autor: Martinez Martinez Francisco David
+--@Fecha creación: 27/05/2025
+--@Descripción: 10. Preparar una consulta que muestre la distribución de todos sus datafiles
+
+/*
+Muestra para cada backup:
+  Tipo de backup (FULL, INCREMENTAL, COPY).
+  Tamaño aproximado.
+  Fecha de inicio y fin.
+  Estado del backup.
+*/
+
+rman target /
+
+LIST BACKUP SUMMARY;
+
+rman target sys/system2@pet_care_ac
+
+LIST BACKUP SUMMARY;
