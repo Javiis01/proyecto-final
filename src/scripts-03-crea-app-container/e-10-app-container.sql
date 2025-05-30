@@ -130,10 +130,10 @@ Prompt ===> 5.4.1 Verificamos quienes somos
 show user;
 
 Prompt ================================
-Prompt Ejecutando e-11-creacion-tablas-fk.sql
+Prompt Ejecutando e-11-creacion-tablas.sql
 Prompt ================================
 Pause [ENTER] para continuar o Ctrl + C para cancelar
-@e-11-creacion-tablas-fk.sql
+@e-11-creacion-tablas.sql
 
 Prompt ================================
 Prompt Ejecutando e-12-catalogos-insert.sql
