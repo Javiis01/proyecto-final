@@ -56,8 +56,7 @@ Prompt ===> 2.2 Crear el application container
 create pluggable database pet_care_ac as application container
   admin user admin identified by admin
   file_name_convert = (
-    '/opt/oracle/oradata/FREE/pdbseed',
-    '/opt/oracle/oradata/FREE/pet_care_ac'
+    '/opt/oracle/oradata/FREE/pdbseed', '/opt/oracle/oradata/FREE/pet_care_ac'
   );
 
 Prompt 3. Abrir el application container
@@ -67,6 +66,8 @@ Prompt 4. Conectarse al application container
 alter session set container = pet_care_ac;
 
 Prompt ============{ 5. Configuraicon de la App }=================
+
+
 
 Prompt ===> 5.1 Iniciando la instalacion
 alter pluggable database application pet_care_app begin install '1.0';
