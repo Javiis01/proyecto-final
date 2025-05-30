@@ -3,7 +3,7 @@
 --@Descripción: Creación del App Container y Llamado a creacion de tablas e inserts
 
 Prompt 0. Spool
-spool dmm-s-14-fast-recovery-area-spool.txt
+spool spool-18-fast-recovery-area.txt
 
 Prompt 1. Conectandose a sys
 connect sys/system2 as sysdba

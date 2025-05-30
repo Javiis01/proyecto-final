@@ -5,7 +5,7 @@
 connect sys/system2 as sysdba
 
 Prompt 1. Apagando la instancia
---shutdown immediate
+shutdown immediate
 
 Prompt 2. Iniciando en modo mount
 startup mount
