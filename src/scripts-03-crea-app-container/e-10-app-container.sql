@@ -73,13 +73,15 @@ Prompt ===> 5.1 Iniciando la instalacion
 alter pluggable database application pet_care_app begin install '1.0';
 
 Prompt ===> { 5.2. Distribucion fisica de datafiles }
+/**/
+ALTER SYSTEM SET db_create_file_dest = '/unam/diplo-bd/pet-care-disks/datafile-d04' SCOPE=BOTH;
 
 Prompt 5.2.1. distribucion fisica para =={ TABLAS }==
-create tablespace pet_care_tb_ts 
+create tablespace pet_care_tbs 
   --datafile
-  --  '/unam/diplo-bd/pet-care-disks/datafile-d01/pdbseed/pet_care_tb_ts_01.dbf' size 50m autoextend on next 5m maxsize unlimited,
-  --  '/unam/diplo-bd/pet-care-disks/datafile-d02/pdbseed/pet_care_tb_ts_02.dbf' size 50m autoextend on next 5m maxsize unlimited,
-  --  '/unam/diplo-bd/pet-care-disks/datafile-d03/pdbseed/pet_care_tb_ts_03.dbf' size 50m autoextend on next 5m maxsize unlimited
+  --  '/unam/diplo-bd/pet-care-disks/datafile-d01/pdbseed/pet_care_tbs_01.dbf' size 50m autoextend on next 5m maxsize unlimited,
+  --  '/unam/diplo-bd/pet-care-disks/datafile-d02/pdbseed/pet_care_tbs_02.dbf' size 50m autoextend on next 5m maxsize unlimited,
+  --  '/unam/diplo-bd/pet-care-disks/datafile-d03/pdbseed/pet_care_tbs_03.dbf' size 50m autoextend on next 5m maxsize unlimited
   extent management local autoallocate
   segment space management auto;
 
@@ -106,8 +108,8 @@ Prompt ===> { 5.3. Creando y Configurando Uusarios }
 Prompt ===> 5.3.1 Creando y Definiendo Usuario admin para pet_care_ac
 Prompt            y definiendo sus tablespaces
 create user pet_care_admin identified by pet_care_admin
-  default tablespace pet_care_tb_ts
-  quota unlimited on pet_care_tb_ts
+  default tablespace pet_care_tbs
+  quota unlimited on pet_care_tbs
   container = all;
 
 Prompt ===> 5.3.2 Otorgandole privilegios al usuario admin
@@ -132,6 +134,25 @@ Prompt Ejecutando e-11-creacion-tablas-fk.sql
 Prompt ================================
 Pause [ENTER] para continuar o Ctrl + C para cancelar
 @e-11-creacion-tablas-fk.sql
+
+------------------------------------------
+INSERT INTO PET_CARE_ADMIN.ESTADO (clvEstado, nombreEstado) VALUES (1, 'Nuevo Leon');
+INSERT INTO PET_CARE_ADMIN.ESTADO (clvEstado, nombreEstado) VALUES (2, 'CDMX');
+INSERT INTO PET_CARE_ADMIN.ESTADO (clvEstado, nombreEstado) VALUES (3, 'Quintana Roo');
+INSERT INTO PET_CARE_ADMIN.ESTADO (clvEstado, nombreEstado) VALUES (4, 'Tabasco');
+INSERT INTO PET_CARE_ADMIN.ESTADO (clvEstado, nombreEstado) VALUES (5, 'Tamaulipas');
+
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (1, 'Vieja República Demo', 1);
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (2, 'Nueva Togo', 4);
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (3, 'Vieja Guinea', 5);
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (4, 'San Emilia los altos', 3);
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (5, 'San Sara los altos', 1);
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (6, 'San Violeta de la Mo', 3);
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (7, 'San Rufino los altos', 1);
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (8, 'San Augusto los bajo', 3);
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (9, 'San Gilberto los alt', 2);
+INSERT INTO PET_CARE_ADMIN.MUNICIPIO (clvMunicipio, nombreMunicipio, clvEstado) VALUES (10, 'Nueva Sri Lanka', 1);
+---------------------------------------
 
 Prompt ============{ 5. Terminando Configuraicon de la App }=================
 connect sys/system2@pet_care_ac  as sysdba

@@ -23,7 +23,7 @@ CREATE TABLE PET_CARE_ADMIN.CATEGORIA(
     descripcionCategoria    VARCHAR2(30)     NOT NULL,
     CONSTRAINT pk_categoria PRIMARY KEY (clvCategoria)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 -- 
@@ -38,7 +38,7 @@ CREATE TABLE PET_CARE_ADMIN.CERTIFICADO(
     fechaAprobadoCertificado    DATE             NOT NULL,
     CONSTRAINT pk_certificado PRIMARY KEY (clvCursoAprobado)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -56,7 +56,7 @@ CREATE TABLE PET_CARE_ADMIN.CLIENTE(
     correoClie             VARCHAR2(30)     NOT NULL,
     CONSTRAINT pk_cliente PRIMARY KEY (clvCliente)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -74,7 +74,7 @@ CREATE TABLE PET_CARE_ADMIN.CONSULTA_MEDICA(
     clvMascota                   NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_consulta_medica PRIMARY KEY (clvConsultaMedica)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -90,7 +90,7 @@ CREATE TABLE PET_CARE_ADMIN.CURSO(
     descripcionCurso      VARCHAR2(50)     NOT NULL,
     CONSTRAINT pk_curso PRIMARY KEY (clvCurso)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -105,7 +105,7 @@ CREATE TABLE PET_CARE_ADMIN.DIAGNOSTICO(
     descripcionDiagnostico      VARCHAR2(40)     NOT NULL,
     CONSTRAINT pk_diagnostico PRIMARY KEY (clvDiagnostico)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -129,7 +129,7 @@ CREATE TABLE PET_CARE_ADMIN.EMPLEADO(
     clvVeterinaria        NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_empleado PRIMARY KEY (clvEmpleado)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts
+) tablespace pet_care_tbs
 lob (fotoEmp) store as (
     tablespace pet_care_blob_ts
 );
@@ -145,7 +145,7 @@ CREATE TABLE PET_CARE_ADMIN.ESTADO(
     nombreEstado    CHAR(20)         NOT NULL,
     CONSTRAINT pk_estado PRIMARY KEY (clvEstado)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -159,7 +159,7 @@ CREATE TABLE PET_CARE_ADMIN.ESTATUS_PROD_INVENTARIO(
     descripcionProdInventario    VARCHAR2(20)     NOT NULL,
     CONSTRAINT pk_estatus_productos_inventario PRIMARY KEY (clvEstatusProdInventario)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -172,7 +172,7 @@ CREATE TABLE PET_CARE_ADMIN.ESTILISTA(
     reseniaHabilidadesEst    CHAR(50)         NOT NULL,
     CONSTRAINT pk_estilistas PRIMARY KEY (clvEstilista)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -186,7 +186,7 @@ CREATE TABLE PET_CARE_ADMIN.FOTO_MASCOTA(
     fotoMascota       BLOB         NOT NULL,
     CONSTRAINT pk_foto_mascota PRIMARY KEY (clvFotoMascota)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts
+) tablespace pet_care_tbs
 lob (fotoMascota) store as (
     tablespace pet_care_blob_ts
 );
@@ -204,7 +204,7 @@ CREATE TABLE PET_CARE_ADMIN.HISTORICO_ESTATUS_PRODUCTOS(
     fechaCambioHistEstatusProd    DATE             NOT NULL,
     CONSTRAINT pk_historico_estatus_productos PRIMARY KEY (clvHistoricoEstatus)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -220,7 +220,7 @@ CREATE TABLE PET_CARE_ADMIN.HISTORICO_PRECIO(
     precioHistPrecio         NUMBER(10, 2)    NOT NULL,
     CONSTRAINT plk_historico_precio PRIMARY KEY (clvHistoricoPrecio)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -234,7 +234,7 @@ CREATE TABLE PET_CARE_ADMIN.INSCRIPCION_CURSO(
     clvEstilista           NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_inscripcion_curso PRIMARY KEY (clvInscripcionCurso)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -250,7 +250,7 @@ CREATE TABLE PET_CARE_ADMIN.INVENTARIO_VETERINARIA(
     fechaInventarioVet          DATE             NOT NULL,
     CONSTRAINT pk_inventario_veterinaria PRIMARY KEY (clvInventarioVet)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -269,7 +269,7 @@ CREATE TABLE PET_CARE_ADMIN.MASCOTA(
     razgosParticularesMasc    VARCHAR2(20)     NOT NULL,
     CONSTRAINT pk_mascota PRIMARY KEY (clvMascota)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -283,7 +283,7 @@ CREATE TABLE PET_CARE_ADMIN.MASCOTA_PASEO(
     clvMascota         NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_mascota_paseo PRIMARY KEY (clvMascotaPaseo)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -299,7 +299,7 @@ CREATE TABLE PET_CARE_ADMIN.MONITOREO_PASEO(
     fechaRegistroMonitoreoPaseo    DATE             NOT NULL,
     CONSTRAINT pk_monitoreo_paseo PRIMARY KEY (clvMonitoreoPaseo, clvPaseo)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -313,7 +313,7 @@ CREATE TABLE PET_CARE_ADMIN.MUNICIPIO(
     clvEstado          NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_municipios PRIMARY KEY (clvMunicipio)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -330,7 +330,7 @@ CREATE TABLE PET_CARE_ADMIN.ORDEN_COMPRA(
     importeTotalOrdenCompra        NUMBER(10, 2)    NOT NULL,
     CONSTRAINT pk_orden_compra PRIMARY KEY (clvOrdenCompra)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -345,7 +345,7 @@ CREATE TABLE PET_CARE_ADMIN.ORDEN_PRODUCTO(
     cantidadOrdenProductos    NUMBER(10, 2)    NOT NULL,
     CONSTRAINT pk_orden_producto PRIMARY KEY (clvOrdenProducto)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -361,7 +361,7 @@ CREATE TABLE PET_CARE_ADMIN.PASEO(
     fechaPaseo     DATE             NOT NULL,
     CONSTRAINT pk_paseo PRIMARY KEY (clvPaseo)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -376,7 +376,7 @@ CREATE TABLE PET_CARE_ADMIN.PRODUCTO(
     clvCategoria            NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_producto PRIMARY KEY (SKU)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -396,7 +396,7 @@ create table PET_CARE_ADMIN.servicio_estetica (
     constraint pk_servicio_estetica primary key (clvservicioestetica)
         using index tablespace pet_care_ix_ts
 ) 
-tablespace pet_care_tb_ts
+tablespace pet_care_tbs
 lob (fotoantesest, fotodespuesest) store as (
     tablespace pet_care_blob_ts
 );
@@ -414,7 +414,7 @@ CREATE TABLE PET_CARE_ADMIN.TELEFONO_CLIENTE(
     clvCliente      NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_telefono_cliente PRIMARY KEY (clvTelefono)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -431,7 +431,7 @@ CREATE TABLE PET_CARE_ADMIN.VENDEDOR(
     puedePasearVen      NUMBER(1, 0)     NOT NULL,
     CONSTRAINT pk_vendedor PRIMARY KEY (clvVendedor)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -449,7 +449,7 @@ CREATE TABLE PET_CARE_ADMIN.VETERINARIA(
     domicilioVet      VARCHAR2(300)     NOT NULL,
     CONSTRAINT pk_veterinaria PRIMARY KEY (clvVeterinaria)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -464,7 +464,7 @@ CREATE TABLE PET_CARE_ADMIN.VETERINARIO(
     fechaTitulacionVet      DATE             NOT NULL,
     CONSTRAINT pk_veterinario PRIMARY KEY (clvVeterinario)
 using index tablespace pet_care_ix_ts
-) tablespace pet_care_tb_ts;
+) tablespace pet_care_tbs;
 
 
 
@@ -663,7 +663,7 @@ ALTER TABLE PET_CARE_ADMIN.ORDEN_COMPRA ADD CONSTRAINT fk_cliente_ordencompra
 
 ALTER TABLE PET_CARE_ADMIN.ORDEN_COMPRA ADD CONSTRAINT fk_vendedor_ordencompra 
     FOREIGN KEY (clvVendedorCompra)
-    REFERENCES PET_CARE_ADMIN.ENDEDOR(clvVendedor)
+    REFERENCES PET_CARE_ADMIN.VENDEDOR(clvVendedor)
 ;
 
 
