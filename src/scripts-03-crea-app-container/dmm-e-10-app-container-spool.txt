@@ -157,152 +157,13 @@ Table created.
 
 Table created.
 
+================================
+Ejecutando e-12-catalogos-insert.sql
+================================
+[ENTER] para continuar o Ctrl + C para cancelar
 
-Table altered.
 
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-Table altered.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
-
-1 row created.
+PL/SQL procedure successfully completed.
 
 ============{ 5. Terminando Configuraicon de la App }=================
 Connected.
@@ -312,7 +173,7 @@ Connected.
 
 Pluggable database altered.
 
-=========={ 6. Iniciandpo Prueba de creacion de  }
+=========={ 6. Iniciandpo Prueba de creacion de PDB NORTE }
 [ENTER] para continuar o Ctrl + C para cancelar
 
 6.1 Creando APP PDB pet_care_norte
@@ -332,4 +193,47 @@ Session altered.
 
 
 Pluggable database altered.
+
+====> Cambiandonos a pet_care_ac <================
+
+Session altered.
+
+=========={ 6. Iniciandpo Prueba de creacion de PDB SUR }
+[ENTER] para continuar o Ctrl + C para cancelar
+
+6.1 Creando APP PDB pet_care_sur
+
+Pluggable database created.
+
+===> 6.2 abriendo la app pdb pet_care_sur
+
+Pluggable database altered.
+
+===> 6.3 entrando a la app pdb pet_care_sur
+
+Session altered.
+
+===> 6.4 Sincronizando la app
+[ENTER] para continuar o Ctrl + C para cancelar
+
+
+Pluggable database altered.
+
+===> 6.5 Comprobando Existencia de Tablas
+
+ CLVESTADO NOMBREESTADO
+---------- --------------------
+         1 Nuevo Leon
+         2 CDMX
+         3 Quintana Roo
+         4 Tabasco
+         5 Tamaulipas
+
+================================
+Ejecutando e-13-inserts-pdb-sur.sql
+================================
+[ENTER] para continuar o Ctrl + C para cancelar
+
+
+PL/SQL procedure successfully completed.
 

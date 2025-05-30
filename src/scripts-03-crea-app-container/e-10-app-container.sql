@@ -179,15 +179,24 @@ create pluggable database pet_care_sur
     '/opt/oracle/oradata/FREE/pdbseed', '/opt/oracle/oradata/FREE/pet_care_sur'
     );
 
-Prompt 6.2 abriendo la app pdb pet_care_sur
+Prompt ===> 6.2 abriendo la app pdb pet_care_sur
 alter pluggable database pet_care_sur open;
 
-Prompt 6.3 entrando a la app pdb pet_care_sur
+Prompt ===> 6.3 entrando a la app pdb pet_care_sur
 alter session set container = pet_care_sur;
 
-Prompt 6.4 Sincronizando la app
+Prompt ===> 6.4 Sincronizando la app
 Pause [ENTER] para continuar o Ctrl + C para cancelar
 alter pluggable database application all sync;
+
+Prompt ===> 6.5 Comprobando Existencia de Tablas
+select * from pet_care_admin.estado;
+
+Prompt ================================
+Prompt Ejecutando e-13-inserts-pdb-sur.sql
+Prompt ================================
+Pause [ENTER] para continuar o Ctrl + C para cancelar
+@e-13-inserts-pdb-sur
 
 spool off
 
