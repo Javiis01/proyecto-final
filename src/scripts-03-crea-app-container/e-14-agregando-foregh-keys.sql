@@ -57,7 +57,7 @@ PROMPT ================================
 PROMPT Ejecutando e-15-foreigh-keys.sql
 PROMPT ================================
 PAUSE Presione [ENTER] para continuar o Ctrl+C para cancelar
-@e-15-foreigh-keys.sql
+@s-15-foreigh-keys.sql
 
 -- Paso 5: Finalizar instalación o upgrade
 set serveroutput on

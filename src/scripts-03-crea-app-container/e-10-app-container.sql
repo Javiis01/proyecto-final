@@ -133,13 +133,13 @@ Prompt ================================
 Prompt Ejecutando e-11-creacion-tablas.sql
 Prompt ================================
 Pause [ENTER] para continuar o Ctrl + C para cancelar
-@e-11-creacion-tablas.sql
+@s-11-creacion-tablas.sql
 
 Prompt ================================
 Prompt Ejecutando e-12-catalogos-insert.sql
 Prompt ================================
 Pause [ENTER] para continuar o Ctrl + C para cancelar
-@e-12-catalogos-insert.sql
+@s-12-catalogos-insert.sql
 
 
 Prompt ============{ 5. Terminando Configuraicon de la App }=================
@@ -196,8 +196,15 @@ Prompt ================================
 Prompt Ejecutando e-13-inserts-pdb-sur.sql
 Prompt ================================
 Pause [ENTER] para continuar o Ctrl + C para cancelar
-@e-13-inserts-pdb-sur
+@s-13-inserts-pdb-sur.sql
+Prompt ================================
+Prompt Agregando Fotos 
+Prompt ================================
+@s-13-inserts-fotos-sur.sql
 
+Prompt ================================
+Prompt Ejecucion Finalizada
+Prompt ================================
 spool off
 
 /*
