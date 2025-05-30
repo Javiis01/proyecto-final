@@ -34,7 +34,7 @@ CREATE TABLE PET_CARE_ADMIN.CERTIFICADO(
     clvCursoAprobado            NUMBER(38, 0)    NOT NULL,
     clvInscripcionCurso         NUMBER(38, 0)    NOT NULL,
     nombreCertificado           VARCHAR2(30)     NOT NULL,
-    certificadoPrueba           CHAR(10)         NOT NULL,
+    certificadoPrueba           char(50)         NOT NULL,
     fechaAprobadoCertificado    DATE             NOT NULL,
     CONSTRAINT pk_certificado PRIMARY KEY (clvCursoAprobado)
 using index tablespace pet_care_ix_ts
@@ -118,9 +118,9 @@ CREATE TABLE PET_CARE_ADMIN.EMPLEADO(
     clvSupervisorEmp      NUMBER(38, 0),
     rfcEmp                CHAR(12)         NOT NULL,
     curpEmp               CHAR(18)         NOT NULL,
-    nombreEmp             CHAR(30)         NOT NULL,
-    apPaternoEmp          CHAR(30)         NOT NULL,
-    apMaternoEmp          CHAR(30)         NOT NULL,
+    nombreEmp             char(50)         NOT NULL,
+    apPaternoEmp          char(50)         NOT NULL,
+    apMaternoEmp          char(50)         NOT NULL,
     telefonoEmp           NUMBER(10, 0)    NOT NULL,
     edadEmp               NUMBER(38, 0)    NOT NULL,
     fotoEmp               BLOB         NOT NULL,
@@ -142,7 +142,7 @@ lob (fotoEmp) store as (
 
 CREATE TABLE PET_CARE_ADMIN.ESTADO(
     clvEstado       NUMBER(38, 0)    NOT NULL,
-    nombreEstado    CHAR(20)         NOT NULL,
+    nombreEstado    char(50)         NOT NULL,
     CONSTRAINT pk_estado PRIMARY KEY (clvEstado)
 using index tablespace pet_care_ix_ts
 ) tablespace pet_care_tbs;
@@ -371,7 +371,7 @@ using index tablespace pet_care_ix_ts
 
 CREATE TABLE PET_CARE_ADMIN.PRODUCTO(
     SKU                     VARCHAR2(20)     NOT NULL,
-    nombreProducto          CHAR(30)         NOT NULL,
+    nombreProducto          char(50)         NOT NULL,
     precioActualProducto    NUMBER(10, 2)    NOT NULL,
     clvCategoria            NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_producto PRIMARY KEY (SKU)
@@ -426,8 +426,8 @@ CREATE TABLE PET_CARE_ADMIN.VENDEDOR(
     clvVendedor         NUMBER(38, 0)    NOT NULL,
     horaEntradaVen      DATE             NOT NULL,
     horaSalidaVen       DATE             NOT NULL,
-    numOrdenesMinVen    CHAR(10)         NOT NULL,
-    gerenciaVendedor    CHAR(10)         NOT NULL,
+    numOrdenesMinVen    char(50)         NOT NULL,
+    gerenciaVendedor    char(50)         NOT NULL,
     puedePasearVen      NUMBER(1, 0)     NOT NULL,
     CONSTRAINT pk_vendedor PRIMARY KEY (clvVendedor)
 using index tablespace pet_care_ix_ts
@@ -459,8 +459,8 @@ using index tablespace pet_care_ix_ts
 
 CREATE TABLE PET_CARE_ADMIN.VETERINARIO(
     clvVeterinario          NUMBER(38, 0)    NOT NULL,
-    cedulaProfesionalVet    CHAR(10)         NOT NULL,
-    universidadVet          CHAR(30)         NOT NULL,
+    cedulaProfesionalVet    char(50)         NOT NULL,
+    universidadVet          char(50)         NOT NULL,
     fechaTitulacionVet      DATE             NOT NULL,
     CONSTRAINT pk_veterinario PRIMARY KEY (clvVeterinario)
 using index tablespace pet_care_ix_ts

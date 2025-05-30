@@ -95,6 +95,7 @@ connect sys/system2@pet_care_sur  as sysdba
 alter pluggable database  application all sync;
 connect pet_care_admin/pet_care_admin@pet_care_sur 
 select * from ESTADO;
+connect sys/system2@pet_care_sur  as sysdba
 /*
 
 --Borrar pdb
