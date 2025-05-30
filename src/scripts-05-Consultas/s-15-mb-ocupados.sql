@@ -10,15 +10,15 @@ alter session set container = cdb$root;
 
 Prompt ==> definiendo valores
 set linesize window
-col destination format a50
-col error format a30
+col owner format a30
 
-Prompt ==> consulta que muestre las ubicaciones de los grupos de Redo Logs <===
-SELECT DEST_ID,
-       STATUS,
-       DESTINATION,
-       TARGET,
-       ARCHIVER,
-       ERROR
-FROM   V$ARCHIVE_DEST
-WHERE  STATUS = 'VALID' AND DESTINATION IS NOT NULL;
+SELECT
+  owner,
+  segment_type,
+  ROUND(SUM(bytes) / 1024 / 1024, 2) AS mb_ocupados
+FROM
+  dba_segments
+GROUP BY
+  owner, segment_type
+ORDER BY
+  mb_ocupados DESC;
