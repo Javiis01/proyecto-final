@@ -79,10 +79,9 @@ ALTER USER pet_care_admin QUOTA UNLIMITED ON pet_care_blob_ts;
 
 -- Crear tablas con sus respectivos tablespaces
 @petCare.sql
-connect pet_care_admin/pet_care_admin@pet_care_ac 
 @petcare_inserts_catalogos
-connect sys/system@pet_care_ac as sysdba
-alter pluggable database  application  pet_care_app end upgrade;
+connect sys/system2@pet_care_ac as sysdba
+alter pluggable database application pet_care_app end install;
 
 create pluggable database pet_care_sur
   admin user admin identified by admin
@@ -93,11 +92,13 @@ create pluggable database pet_care_sur
 
 alter pluggable database pet_care_sur open read write;
 connect sys/system2@pet_care_sur  as sysdba
-
-select * from pet_care_admin.ESTADO;
+alter pluggable database  application all sync;
+connect pet_care_admin/pet_care_admin@pet_care_sur 
+select * from ESTADO;
 /*
 
 --Borrar pdb
+connect sys/system2 as sysdba
 ALTER PLUGGABLE DATABASE pet_care_sur CLOSE IMMEDIATE;
 DROP PLUGGABLE DATABASE pet_care_sur INCLUDING DATAFILES;
 
@@ -106,7 +107,6 @@ ALTER PLUGGABLE DATABASE pet_care_ac CLOSE IMMEDIATE;
 DROP PLUGGABLE DATABASE pet_care_ac INCLUDING DATAFILES;
 
 select * from pet_care_admin.rol_usuario2;
-select * from pet_care_admin.ESTADO;
+select * from ESTADO;
 
 */
-alter pluggable database  application all sync;
