@@ -55,4 +55,15 @@ SELECT GROUP#, MEMBER
 FROM V$LOGFILE
 ORDER BY GROUP#;
 
+Prompt 10. Abriendo las PDBS
+
+Prompt 10.1 Abriendo pet_care_ac
+ALTER PLUGGABLE DATABASE pet_care_ac OPEN;
+
+Prompt 10.2 Abriendo pet_care_norte
+ALTER PLUGGABLE DATABASE pet_care_norte OPEN;
+
+Prompt 10.3 Abriendo pet_care_sur
+ALTER PLUGGABLE DATABASE pet_care_sur OPEN;
+
 spool off

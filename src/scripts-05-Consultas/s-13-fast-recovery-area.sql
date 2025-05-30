@@ -10,6 +10,11 @@ alter session set container = pet_care_ac;
 Prompt ==> definiendo valores
 set linesize window
 
+Prompt ===> 1. Verificando que la base de datos este en modo flashback
+select flashback_on from v$database;
+
+prompt ==> 
+col FRA_ubicacion format a60
 /*
 Esta consulta te muestra:
   Dónde está ubicada la FRA.
@@ -17,11 +22,15 @@ Esta consulta te muestra:
   Cuánto se está usando y cuánto podría recuperarse.
   Cuántos archivos hay dentro de la FRA.
 */
+
 SELECT 
   name AS FRA_ubicacion,
-  space_limit / 1024 / 1024 AS FRA_tamano_MB,
-  space_used / 1024 / 1024 AS FRA_espacio_usado_MB,
-  space_reclaimable / 1024 / 1024 AS FRA_espacio_recuperable_MB,
+  space_limit / 1024 / 1024 AS MB_ASIGNADOS,
+  space_used / 1024 / 1024 AS MB_USADOS,
+  space_reclaimable / 1024 / 1024 AS espacio_recuperable_MB,
   number_of_files AS Archivos_en_FRA
 FROM 
   v$recovery_file_dest;
+
+Prompt ===> 3. Vericando el área de FRA 
+show parameter db_recovery
