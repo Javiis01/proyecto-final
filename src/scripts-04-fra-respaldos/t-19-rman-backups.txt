@@ -10,21 +10,22 @@ Punto 7 Una copia de los backups tipo BackupSet deberá ubicarse en la FRA, otra
 
 # 7.1 BackupSet en FRA y fuera de FRA
 #Dentro de FRA
-rman target sys/system2@pet_care_ac
+rman target sys/system2
+rman target /
 BACKUP AS BACKUPSET DATABASE TAG petcareBkSetInFRA01;
 
 # Fuera de FRA
-rman target sys/system2
+
 BACKUP AS BACKUPSET DATABASE TAG petcareBkSetOutFRA01 FORMAT '/unam/diplo-bd/pet-care-backups-database/backupset_%U.bkp';
 
 # 7.2 Backup Copy en FRA y fuera de FRA
 # En FRA
-rman target sys/system2@pet_care_ac
+
 BACKUP AS COPY DATABASE TAG petcareBkCopyInFRA01;
 
 # Fuera de FRA
-rman target sys/system2
-BACKUP AS COPY DATABASE FORMAT '/unam/diplo-bd/pet-care-backups-database/copy_%U.bkp';
+
+BACKUP AS COPY DATABASE TAG petcareBkCopyOutFRA01 FORMAT '/unam/diplo-bd/pet-care-backups-database/copy_%U.bkp';
 
 Punto 8
 backup database plus archivelog tag petcareFullBk01;
@@ -34,291 +35,24 @@ backup incremental level 0 database tag petcareIncBk01;
 
 Dentro de la FRA
 
-Punto 7.1 Respuesta 
-RMAN> BACKUP AS BACKUPSET DATABASE TAG petcareBkSetInFRA01;
-BACKUP AS BACKUPSET DATABASE TAG petcareBkSetInFRA01;
-Starting backup at 27-MAY-25
-using target database control file instead of recovery catalog
-allocated channel: ORA_DISK_1
-channel ORA_DISK_1: SID=40 device type=DISK
-channel ORA_DISK_1: starting full datafile backup set
-channel ORA_DISK_1: specifying datafile(s) in backup set
-input datafile file number=00068 name=/opt/oracle/oradata/FREE/pet_care_ac/system01.dbf
-input datafile file number=00076 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf
-input datafile file number=00073 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_tbs_01.dbf
-input datafile file number=00077 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_blob_ts_02.dbf
-input datafile file number=00074 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_tbs_02.dbf
-input datafile file number=00078 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_blob_ts_03.dbf
-input datafile file number=00075 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_tbs_03.dbf
-input datafile file number=00069 name=/opt/oracle/oradata/FREE/pet_care_ac/sysaux01.dbf
-input datafile file number=00070 name=/opt/oracle/oradata/FREE/pet_care_ac/undotbs01.dbf
-channel ORA_DISK_1: starting piece 1 at 27-MAY-25
-channel ORA_DISK_1: finished piece 1 at 27-MAY-25
-piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/backupset/2025_05_27/o1_mf_nnndf_PETCAREBKSETINFRA01_n3f8hx37_.bkp tag=PETCAREBKSETINFRA01 comment=NONE
-channel ORA_DISK_1: backup set complete, elapsed time: 00:00:08
-channel ORA_DISK_1: starting full datafile backup set
-channel ORA_DISK_1: specifying datafile(s) in backup set
-input datafile file number=00071 name=/opt/oracle/oradata/FREE/pet_care_ac/users01.dbf
-input datafile file number=00072 name=/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf
-channel ORA_DISK_1: starting piece 1 at 27-MAY-25
-channel ORA_DISK_1: finished piece 1 at 27-MAY-25
-piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/backupset/2025_05_27/o1_mf_nnndf_PETCAREBKSETINFRA01_n3f8j5jy_.bkp tag=PETCAREBKSETINFRA01 comment=NONE
-channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
-Finished backup at 27-MAY-25
+PUNTO 7.1 BackupSet en FRA y fuera de FRA
+RUN {
+  ALLOCATE CHANNEL fra_ch1 DEVICE TYPE DISK FORMAT '/unam/diplo-bd/pet-care-fast-recovery-area/%U';
+  ALLOCATE CHANNEL ext_ch1 DEVICE TYPE DISK FORMAT '/unam/diplo-bd/pet-care-backups-database/%U';
 
-Punto 7.2 Respuesta
-RMAN> BACKUP AS COPY DATABASE TAG petcareBkCopyInFRA01;
-BACKUP AS COPY DATABASE TAG petcareBkCopyInFRA01;
-Starting backup at 27-MAY-25
-using channel ORA_DISK_1
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00068 name=/opt/oracle/oradata/FREE/pet_care_ac/system01.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_system_n3f8xk56_.dbf tag=PETCAREBKCOPYINFRA01 RECID=1 STAMP=1202255314
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00078 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_blob_ts_03.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_pet_care_n3f8xnlj_.dbf tag=PETCAREBKCOPYINFRA01 RECID=2 STAMP=1202255317
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00077 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_blob_ts_02.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_pet_care_n3f8xp2q_.dbf tag=PETCAREBKCOPYINFRA01 RECID=3 STAMP=1202255318
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00076 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_pet_care_n3f8xqjk_.dbf tag=PETCAREBKCOPYINFRA01 RECID=4 STAMP=1202255320
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00070 name=/opt/oracle/oradata/FREE/pet_care_ac/undotbs01.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_undotbs1_n3f8xrz3_.dbf tag=PETCAREBKCOPYINFRA01 RECID=5 STAMP=1202255321
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:02
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00069 name=/opt/oracle/oradata/FREE/pet_care_ac/sysaux01.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_sysaux_n3f8xtl7_.dbf tag=PETCAREBKCOPYINFRA01 RECID=6 STAMP=1202255323
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00072 name=/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_pet_care_n3f8xy3w_.dbf tag=PETCAREBKCOPYINFRA01 RECID=7 STAMP=1202255326
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00075 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_tbs_03.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_pet_care_n3f8y06l_.dbf tag=PETCAREBKCOPYINFRA01 RECID=8 STAMP=1202255328
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00074 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_tbs_02.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_pet_care_n3f8y278_.dbf tag=PETCAREBKCOPYINFRA01 RECID=9 STAMP=1202255330
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00073 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_tbs_01.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_pet_care_n3f8y48c_.dbf tag=PETCAREBKCOPYINFRA01 RECID=10 STAMP=1202255332
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00071 name=/opt/oracle/oradata/FREE/pet_care_ac/users01.dbf
-output file name=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/362B1FCF2E574092E063020011ACA925/datafile/o1_mf_users_n3f8y617_.dbf tag=PETCAREBKCOPYINFRA01 RECID=11 STAMP=1202255334
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:02
-Finished backup at 27-MAY-25
+  BACKUP AS BACKUPSET DATABASE TAG petcareBkSetInFRA01 PLUS ARCHIVELOG;
 
+  RELEASE CHANNEL fra_ch1;
+  RELEASE CHANNEL ext_ch1;
+}
 
-FUERA DE LA FRA 
-RMAN> BACKUP AS BACKUPSET DATABASE TAG petcareBkSetOutFRA01 FORMAT '/unam/diplo-bd/pet-care-backups-database/backupset_%U.bkp';
-BACKUP AS BACKUPSET DATABASE TAG petcareBkSetOutFRA01 FORMAT '/unam/diplo-bd/pet-care-backups-database/backupset_%U.bkp';
-Starting backup at 27-MAY-25
-using target database control file instead of recovery catalog
-allocated channel: ORA_DISK_1
-channel ORA_DISK_1: SID=15 device type=DISK
-channel ORA_DISK_1: starting full datafile backup set
-channel ORA_DISK_1: specifying datafile(s) in backup set
-input datafile file number=00001 name=/opt/oracle/oradata/FREE/system01.dbf
-input datafile file number=00003 name=/opt/oracle/oradata/FREE/sysaux01.dbf
-input datafile file number=00005 name=/opt/oracle/oradata/FREE/undotbs01.dbf
-input datafile file number=00007 name=/opt/oracle/oradata/FREE/users01.dbf
-channel ORA_DISK_1: starting piece 1 at 27-MAY-25
-channel ORA_DISK_1: finished piece 1 at 27-MAY-25
-piece handle=/unam/diplo-bd/pet-care-backups-database/backupset_0g3qhthf_16_1_1.bkp tag=PETCAREBKSETOUTFRA01 comment=NONE
-channel ORA_DISK_1: backup set complete, elapsed time: 00:00:07
-channel ORA_DISK_1: starting full datafile backup set
-channel ORA_DISK_1: specifying datafile(s) in backup set
-input datafile file number=00090 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_system_n3f2c62v_.dbf
-input datafile file number=00091 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_sysaux_n3f2c62x_.dbf
-input datafile file number=00092 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_undotbs1_n3f2c62z_.dbf
-input datafile file number=00098 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63m_.dbf
-input datafile file number=00099 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63p_.dbf
-input datafile file number=00100 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63s_.dbf
-input datafile file number=00093 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_users_n3f2c633_.dbf
-input datafile file number=00095 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63d_.dbf
-input datafile file number=00096 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63h_.dbf
-input datafile file number=00097 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63k_.dbf
-input datafile file number=00094 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c638_.dbf
-channel ORA_DISK_1: starting piece 1 at 27-MAY-25
-channel ORA_DISK_1: finished piece 1 at 27-MAY-25
-piece handle=/unam/diplo-bd/pet-care-backups-database/backupset_0h3qhthn_17_1_1.bkp tag=PETCAREBKSETOUTFRA01 comment=NONE
-channel ORA_DISK_1: backup set complete, elapsed time: 00:00:07
-channel ORA_DISK_1: starting full datafile backup set
-channel ORA_DISK_1: specifying datafile(s) in backup set
-input datafile file number=00068 name=/opt/oracle/oradata/FREE/pet_care_ac/system01.dbf
-input datafile file number=00076 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf
-input datafile file number=00073 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_tbs_01.dbf
-input datafile file number=00077 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_blob_ts_02.dbf
-input datafile file number=00074 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_tbs_02.dbf
-input datafile file number=00078 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_blob_ts_03.dbf
-input datafile file number=00075 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_tbs_03.dbf
-input datafile file number=00069 name=/opt/oracle/oradata/FREE/pet_care_ac/sysaux01.dbf
-input datafile file number=00070 name=/opt/oracle/oradata/FREE/pet_care_ac/undotbs01.dbf
-channel ORA_DISK_1: starting piece 1 at 27-MAY-25
-channel ORA_DISK_1: finished piece 1 at 27-MAY-25
-piece handle=/unam/diplo-bd/pet-care-backups-database/backupset_0i3qhthu_18_1_1.bkp tag=PETCAREBKSETOUTFRA01 comment=NONE
-channel ORA_DISK_1: backup set complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting full datafile backup set
-channel ORA_DISK_1: specifying datafile(s) in backup set
-input datafile file number=00071 name=/opt/oracle/oradata/FREE/pet_care_ac/users01.dbf
-input datafile file number=00072 name=/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf
-channel ORA_DISK_1: starting piece 1 at 27-MAY-25
-channel ORA_DISK_1: finished piece 1 at 27-MAY-25
-piece handle=/unam/diplo-bd/pet-care-backups-database/backupset_0j3qhti2_19_1_1.bkp tag=PETCAREBKSETOUTFRA01 comment=NONE
-channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting full datafile backup set
-channel ORA_DISK_1: specifying datafile(s) in backup set
-input datafile file number=00002 name=/opt/oracle/oradata/FREE/pdbseed/system01.dbf
-input datafile file number=00004 name=/opt/oracle/oradata/FREE/pdbseed/sysaux01.dbf
-input datafile file number=00006 name=/opt/oracle/oradata/FREE/pdbseed/undotbs01.dbf
-input datafile file number=00008 name=/opt/oracle/oradata/FREE/pdbseed/users01.dbf
-channel ORA_DISK_1: starting piece 1 at 27-MAY-25
-channel ORA_DISK_1: finished piece 1 at 27-MAY-25
-piece handle=/unam/diplo-bd/pet-care-backups-database/backupset_0k3qhti3_20_1_1.bkp tag=PETCAREBKSETOUTFRA01 comment=NONE
-channel ORA_DISK_1: backup set complete, elapsed time: 00:00:03
-Finished backup at 27-MAY-25
+PUNTO 7.1 BackupSet en FRA y fuera de FRA
+RUN {
+  ALLOCATE CHANNEL fra_ch1 DEVICE TYPE DISK FORMAT '/unam/diplo-bd/pet-care-fast-recovery-area/%U';
+  ALLOCATE CHANNEL ext_ch1 DEVICE TYPE DISK FORMAT '/unam/diplo-bd/pet-care-backups-database/%U';
 
-Starting Control File and SPFILE Autobackup at 27-MAY-25
-piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/autobackup/2025_05_27/o1_mf_s_1202255431_n3f917np_.bkp comment=NONE
-Finished Control File and SPFILE Autobackup at 27-MAY-25
+  BACKUP AS BACKUPSET DATABASE TAG petcareBkSetInFRA01 PLUS ARCHIVELOG;
 
-
-RMAN> BACKUP AS COPY DATABASE FORMAT '/unam/diplo-bd/pet-care-backups-database/copy_%U.bkp';
-BACKUP AS COPY DATABASE FORMAT '/unam/diplo-bd/pet-care-backups-database/copy_%U.bkp';
-Starting backup at 27-MAY-25
-using channel ORA_DISK_1
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00001 name=/opt/oracle/oradata/FREE/system01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-SYSTEM_FNO-1_0m3qhtln.bkp tag=TAG20250527T235223 RECID=12 STAMP=1202255547
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:07
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00003 name=/opt/oracle/oradata/FREE/sysaux01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-SYSAUX_FNO-3_0n3qhtlv.bkp tag=TAG20250527T235223 RECID=13 STAMP=1202255556
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:07
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00007 name=/opt/oracle/oradata/FREE/users01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-USERS_FNO-7_0o3qhtm6.bkp tag=TAG20250527T235223 RECID=14 STAMP=1202255559
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00005 name=/opt/oracle/oradata/FREE/undotbs01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-UNDOTBS1_FNO-5_0p3qhtm8.bkp tag=TAG20250527T235223 RECID=15 STAMP=1202255561
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00002 name=/opt/oracle/oradata/FREE/pdbseed/system01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-SYSTEM_FNO-2_0q3qhtmb.bkp tag=TAG20250527T235223 RECID=16 STAMP=1202255564
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00004 name=/opt/oracle/oradata/FREE/pdbseed/sysaux01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-SYSAUX_FNO-4_0r3qhtme.bkp tag=TAG20250527T235223 RECID=17 STAMP=1202255568
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00008 name=/opt/oracle/oradata/FREE/pdbseed/users01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-USERS_FNO-8_0s3qhtmh.bkp tag=TAG20250527T235223 RECID=18 STAMP=1202255570
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00006 name=/opt/oracle/oradata/FREE/pdbseed/undotbs01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-UNDOTBS1_FNO-6_0t3qhtmj.bkp tag=TAG20250527T235223 RECID=19 STAMP=1202255573
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00068 name=/opt/oracle/oradata/FREE/pet_care_ac/system01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-SYSTEM_FNO-68_0u3qhtmm.bkp tag=TAG20250527T235223 RECID=20 STAMP=1202255577
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00078 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_blob_ts_03.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_BLOB_TS_FNO-78_0v3qhtmq.bkp tag=TAG20250527T235223 RECID=21 STAMP=1202255578
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00077 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_blob_ts_02.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_BLOB_TS_FNO-77_103qhtmr.bkp tag=TAG20250527T235223 RECID=22 STAMP=1202255579
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00076 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_blob_ts_01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_BLOB_TS_FNO-76_113qhtms.bkp tag=TAG20250527T235223 RECID=23 STAMP=1202255581
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00070 name=/opt/oracle/oradata/FREE/pet_care_ac/undotbs01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-UNDOTBS1_FNO-70_123qhtmt.bkp tag=TAG20250527T235223 RECID=24 STAMP=1202255582
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00069 name=/opt/oracle/oradata/FREE/pet_care_ac/sysaux01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-SYSAUX_FNO-69_133qhtmv.bkp tag=TAG20250527T235223 RECID=25 STAMP=1202255584
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00072 name=/opt/oracle/oradata/FREE/pet_care_ac/pet_care_ix_ts_01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_IX_TS_FNO-72_143qhtn2.bkp tag=TAG20250527T235223 RECID=26 STAMP=1202255586
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00075 name=/unam/diplo-bd/pet-care-disks/datafile-d03/pet_care_tbs_03.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_TBS_FNO-75_153qhtn3.bkp tag=TAG20250527T235223 RECID=27 STAMP=1202255588
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00074 name=/unam/diplo-bd/pet-care-disks/datafile-d02/pet_care_tbs_02.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_TBS_FNO-74_163qhtn4.bkp tag=TAG20250527T235223 RECID=28 STAMP=1202255589
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00073 name=/unam/diplo-bd/pet-care-disks/datafile-d01/pet_care_tbs_01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_TBS_FNO-73_173qhtn6.bkp tag=TAG20250527T235223 RECID=29 STAMP=1202255590
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00071 name=/opt/oracle/oradata/FREE/pet_care_ac/users01.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-USERS_FNO-71_183qhtn7.bkp tag=TAG20250527T235223 RECID=30 STAMP=1202255591
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00090 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_system_n3f2c62v_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-SYSTEM_FNO-90_193qhtn8.bkp tag=TAG20250527T235223 RECID=31 STAMP=1202255594
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00100 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63s_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_BLOB_TS_FNO-100_1a3qhtnc.bkp tag=TAG20250527T235223 RECID=32 STAMP=1202255596
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00099 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63p_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_BLOB_TS_FNO-99_1b3qhtnd.bkp tag=TAG20250527T235223 RECID=33 STAMP=1202255598
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00098 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63m_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_BLOB_TS_FNO-98_1c3qhtnf.bkp tag=TAG20250527T235223 RECID=34 STAMP=1202255599
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00092 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_undotbs1_n3f2c62z_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-UNDOTBS1_FNO-92_1d3qhtng.bkp tag=TAG20250527T235223 RECID=35 STAMP=1202255602
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00091 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_sysaux_n3f2c62x_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-SYSAUX_FNO-91_1e3qhtnj.bkp tag=TAG20250527T235223 RECID=36 STAMP=1202255605
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00094 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c638_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_IX_TS_FNO-94_1f3qhtnn.bkp tag=TAG20250527T235223 RECID=37 STAMP=1202255607
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00097 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63k_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_TBS_FNO-97_1g3qhtno.bkp tag=TAG20250527T235223 RECID=38 STAMP=1202255609
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:02
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00096 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63h_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_TBS_FNO-96_1h3qhtnq.bkp tag=TAG20250527T235223 RECID=39 STAMP=1202255611
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00095 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_pet_care_n3f2c63d_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-PET_CARE_TBS_FNO-95_1i3qhtns.bkp tag=TAG20250527T235223 RECID=40 STAMP=1202255612
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-channel ORA_DISK_1: starting datafile copy
-input datafile file number=00093 name=/opt/oracle/oradata/FREE/pet_care_ac/FREE/362B29EE8E8F40BDE063020011ACCA60/datafile/o1_mf_users_n3f2c633_.dbf
-output file name=/unam/diplo-bd/pet-care-backups-database/copy_data_D-FREE_I-1474208544_TS-USERS_FNO-93_1j3qhtnt.bkp tag=TAG20250527T235223 RECID=41 STAMP=1202255613
-channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:01
-Finished backup at 27-MAY-25
-
-Starting Control File and SPFILE Autobackup at 27-MAY-25
-piece handle=/unam/diplo-bd/pet-care-fast-recovery-area/FREE/autobackup/2025_05_27/o1_mf_s_1202255614_n3f96z84_.bkp comment=NONE
-Finished Control File and SPFILE Autobackup at 27-MAY-25
-
+  RELEASE CHANNEL fra_ch1;
+  RELEASE CHANNEL ext_ch1;
+}
