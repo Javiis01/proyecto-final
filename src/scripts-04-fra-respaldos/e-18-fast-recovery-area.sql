@@ -44,7 +44,10 @@ Prompt 6.Mostrar el tiempo de retención
 show parameter undo_ret;
 
 Prompt 7. Un miembro de los Redo Logs en la FRA
-ALTER DATABASE ADD LOGFILE MEMBER '/unam/diplo-bd/pet-care-fast-recovery-area/redo01.log' TO GROUP 1;
+ALTER DATABASE ADD LOGFILE MEMBER '/unam/diplo-bd/pet-care-fast-recovery-area/fra_redo01.log' TO GROUP 1;
+ALTER DATABASE ADD LOGFILE MEMBER '/unam/diplo-bd/pet-care-fast-recovery-area/fra_redo02.log' TO GROUP 2;
+ALTER DATABASE ADD LOGFILE MEMBER '/unam/diplo-bd/pet-care-fast-recovery-area/fra_redo03.log' TO GROUP 3;
+ALTER DATABASE DROP LOGFILE MEMBER '/unam/diplo-bd/pet-care-fast-recovery-area/redo01.log';
 
 Prompt 8. Archived Redo Logs en la FRA
 ALTER SYSTEM SET LOG_ARCHIVE_DEST_1='LOCATION=USE_DB_RECOVERY_FILE_DEST' SCOPE=BOTH;

@@ -25,3 +25,18 @@ FROM v$logfile;
        ERROR
 FROM   V$ARCHIVE_DEST
 WHERE  STATUS = 'VALID' AND DESTINATION IS NOT NULL;*/
+
+Prompt ====>
+col archivo_log format a50
+SELECT
+    name   AS archivo_log,
+    first_time,
+    next_time,
+    applied,
+    deleted
+FROM
+    v$archived_log
+WHERE
+    name IS NOT NULL
+ORDER BY
+    first_time DESC;

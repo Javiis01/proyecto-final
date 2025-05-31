@@ -12,9 +12,25 @@ Prompt ==> definiendo valores
 set linesize window
 col tablespace_name format a20
 col file_name format a70
-
+col pdb_name format a20
 Prompt ==> consulta que muestre la distribución de todos sus datafiles <===
+/*
 select 
   tablespace_name, file_name, bytes / 1024 / 1024 AS size_mb, autoextensible
-from dba_data_files
+from cdb_data_files
 order by tablespace_name;
+*/
+
+SELECT 
+  vc.name AS pdb_name,
+  df.tablespace_name,
+  df.file_name,
+  ROUND(df.bytes / 1024 / 1024, 2) AS size_mb,
+  df.autoextensible
+FROM 
+  cdb_data_files df
+JOIN 
+  v$containers vc
+  ON df.con_id = vc.con_id
+ORDER BY 
+  vc.name, df.tablespace_name;
