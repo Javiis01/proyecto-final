@@ -13,7 +13,23 @@ ACCEPT pdb_name CHAR DEFAULT 'CDB$ROOT' PROMPT 'Nombre del contenedor [CDB$ROOT]
 PROMPT ===> Conectandose al contenedor &&pdb_name...
 ALTER SESSION SET CONTAINER = &&pdb_name;
 
-Prompt ==> definiendo valores
+Prompt ===========================
+show con_name
+Prompt ===========================
+
+
+Prompt ==============={ Mostrando segmentos }================
+select t.tablespace_name, 
+  count(s.tablespace_name) as total_segmentos,
+  ROUND(NVL(SUM(s.bytes) / 1024 / 1024, 0), 2) AS mb_usados
+from dba_tablespaces t
+left outer join dba_segments s
+on t.tablespace_name = s.tablespace_name
+group by t.tablespace_name
+order by 2 desc;
+
+/*
+Prompt ==============={ Desglozando segmentos }================
 set linesize window
 col owner format a30
 
@@ -26,16 +42,4 @@ GROUP BY
   segment_type
 ORDER BY 
   size_mb DESC;
-/*
-SELECT
-  owner,
-  segment_type,
-  ROUND(SUM(bytes) / 1024 / 1024, 2) AS mb_ocupados
-FROM
-  dba_segments
-GROUP BY
-  owner, segment_type
-ORDER BY
-  mb_ocupados DESC;
-  
 */
